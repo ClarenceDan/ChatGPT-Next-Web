@@ -10,7 +10,7 @@ const tw: LocaleType = {
     ChatItemCount: (count: number) => `${count} 條對話`,
   },
   Chat: {
-    SubTitle: (count: number) => `您已經與 ChatGPT 進行了 ${count} 條對話`,
+    SubTitle: (count: number) => `您已經與 Aivesa 進行了 ${count} 條對話`,
     Actions: {
       ChatList: "查看訊息列表",
       CompressedHistory: "查看壓縮後的歷史 Prompt",
@@ -40,7 +40,7 @@ const tw: LocaleType = {
     Copy: "複製全部",
     Download: "下載檔案",
     MessageFromYou: "來自您的訊息",
-    MessageFromChatGPT: "來自 ChatGPT 的訊息",
+    MessageFromAivesa: "來自 Aivesa 的訊息",
   },
   Memory: {
     Title: "上下文記憶 Prompt",
@@ -123,7 +123,7 @@ const tw: LocaleType = {
     Token: {
       Title: "API Key",
       SubTitle: "使用自己的 Key 可規避授權存取限制",
-      Placeholder: "OpenAI API Key",
+      Placeholder: "sk-xxxxxx",
     },
     Usage: {
       Title: "帳戶餘額",
@@ -175,7 +175,7 @@ const tw: LocaleType = {
     Edit: "前置上下文和歷史記憶",
     Add: "新增一條",
   },
-  Plugin: { Name: "插件" },
+  Plugin: { Name: "关于" },
   Mask: {
     Name: "面具",
     Page: {

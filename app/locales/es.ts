@@ -11,7 +11,7 @@ const es: LocaleType = {
     ChatItemCount: (count: number) => `${count} mensajes`,
   },
   Chat: {
-    SubTitle: (count: number) => `${count} mensajes con ChatGPT`,
+    SubTitle: (count: number) => `${count} mensajes con Aivesa`,
     Actions: {
       ChatList: "Ir a la lista de chats",
       CompressedHistory: "Historial de memoria comprimido",
@@ -41,7 +41,7 @@ const es: LocaleType = {
     Copy: "Copiar todo",
     Download: "Descargar",
     MessageFromYou: "Mensaje de ti",
-    MessageFromChatGPT: "Mensaje de ChatGPT",
+    MessageFromAivesa: "Mensaje de Aivesa",
   },
   Memory: {
     Title: "Historial de memoria",
@@ -126,7 +126,7 @@ const es: LocaleType = {
     Token: {
       Title: "Clave de API",
       SubTitle: "Utiliza tu clave para ignorar el límite de código de acceso",
-      Placeholder: "Clave de la API de OpenAI",
+      Placeholder: "sk-xxxxxx",
     },
     Usage: {
       Title: "Saldo de la cuenta",

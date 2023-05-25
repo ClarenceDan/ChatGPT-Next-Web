@@ -11,7 +11,7 @@ const de: LocaleType = {
     ChatItemCount: (count: number) => `${count} Nachrichten`,
   },
   Chat: {
-    SubTitle: (count: number) => `${count} Nachrichten mit ChatGPT`,
+    SubTitle: (count: number) => `${count} Nachrichten mit Aivesa`,
     Actions: {
       ChatList: "Zur Chat-Liste gehen",
       CompressedHistory: "Komprimierter Gedächtnis-Prompt",
@@ -41,7 +41,7 @@ const de: LocaleType = {
     Copy: "Alles kopieren",
     Download: "Herunterladen",
     MessageFromYou: "Deine Nachricht",
-    MessageFromChatGPT: "Nachricht von ChatGPT",
+    MessageFromAivesa: "Nachricht von Aivesa",
   },
   Memory: {
     Title: "Gedächtnis-Prompt",
@@ -126,9 +126,8 @@ const de: LocaleType = {
     },
     Token: {
       Title: "API-Schlüssel",
-      SubTitle:
-        "Verwenden Sie Ihren Schlüssel, um das Zugangscode-Limit zu ignorieren",
-      Placeholder: "OpenAI API-Schlüssel",
+      SubTitle:"Verwenden Sie Ihren Schlüssel, um das Zugangscode-Limit zu ignorieren",
+      Placeholder: "sk-xxxxxx",
     },
     Usage: {
       Title: "Kontostand",

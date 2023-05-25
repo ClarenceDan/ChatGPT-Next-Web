@@ -7,9 +7,8 @@ import { copyToClipboard, downloadAs, useMobileScreen } from "../utils";
 
 import CopyIcon from "../icons/copy.svg";
 import LoadingIcon from "../icons/three-dots.svg";
-import ChatGptIcon from "../icons/chatgpt.png";
 import ShareIcon from "../icons/share.svg";
-import BotIcon from "../icons/bot.png";
+import BotIcon from "../icons/aivesa.png";
 
 import DownloadIcon from "../icons/download.svg";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -427,19 +426,12 @@ export function ImagePreviewer(props: {
         ref={previewRef}
       >
         <div className={styles["chat-info"]}>
-          <div className={styles["logo"] + " no-dark"}>
-            <NextImage
-              src={ChatGptIcon.src}
-              alt="logo"
-              width={50}
-              height={50}
-            />
-          </div>
+
 
           <div>
-            <div className={styles["main-title"]}>ChatGPT Next Web</div>
+            <div className={styles["main-title"]}>Aivesa Chat</div>
             <div className={styles["sub-title"]}>
-              github.com/Yidadaa/ChatGPT-Next-Web
+            https://aivesa.com/
             </div>
             <div className={styles["icons"]}>
               <ExportAvatar avatar={config.avatar} />
@@ -449,16 +441,16 @@ export function ImagePreviewer(props: {
           </div>
           <div>
             <div className={styles["chat-info-item"]}>
-              Model: {mask.modelConfig.model}
+              模型: {mask.modelConfig.model}
             </div>
             <div className={styles["chat-info-item"]}>
-              Messages: {props.messages.length}
+              消息: {props.messages.length}
             </div>
             <div className={styles["chat-info-item"]}>
-              Topic: {session.topic}
+              话题: {session.topic}
             </div>
             <div className={styles["chat-info-item"]}>
-              Time:{" "}
+              时间:{" "}
               {new Date(
                 props.messages.at(-1)?.date ?? Date.now(),
               ).toLocaleString()}
@@ -502,7 +494,7 @@ export function MarkdownPreviewer(props: {
       .map((m) => {
         return m.role === "user"
           ? `## ${Locale.Export.MessageFromYou}:\n${m.content}`
-          : `## ${Locale.Export.MessageFromChatGPT}:\n${m.content.trim()}`;
+          : `## ${Locale.Export.MessageFromAivesa}:\n${m.content.trim()}`;
       })
       .join("\n\n");
 

@@ -11,7 +11,7 @@ const vi: LocaleType = {
     ChatItemCount: (count: number) => `${count} tin nhắn`,
   },
   Chat: {
-    SubTitle: (count: number) => `${count} tin nhắn với ChatGPT`,
+    SubTitle: (count: number) => `${count} tin nhắn với Aivesa`,
     Actions: {
       ChatList: "Xem danh sách chat",
       CompressedHistory: "Nén tin nhắn trong quá khứ",
@@ -41,7 +41,7 @@ const vi: LocaleType = {
     Copy: "Sao chép tất cả",
     Download: "Tải xuống",
     MessageFromYou: "Tin nhắn của bạn",
-    MessageFromChatGPT: "Tin nhắn từ ChatGPT",
+    MessageFromAivesa: "Tin nhắn từ Aivesa",
   },
   Memory: {
     Title: "Lịch sử tin nhắn",
@@ -125,7 +125,7 @@ const vi: LocaleType = {
     Token: {
       Title: "API Key",
       SubTitle: "Sử dụng khóa của bạn để bỏ qua giới hạn mã truy cập",
-      Placeholder: "OpenAI API Key",
+      Placeholder: "sk-xxxxxx",
     },
     Usage: {
       Title: "Hạn mức tài khoản",

@@ -11,7 +11,7 @@ const en: RequiredLocaleType = {
     ChatItemCount: (count: number) => `${count} messages`,
   },
   Chat: {
-    SubTitle: (count: number) => `${count} messages with ChatGPT`,
+    SubTitle: (count: number) => `${count} messages with Aivesa`,
     Actions: {
       ChatList: "Go To Chat List",
       CompressedHistory: "Compressed History Memory Prompt",
@@ -41,7 +41,7 @@ const en: RequiredLocaleType = {
     Copy: "Copy All",
     Download: "Download",
     MessageFromYou: "Message From You",
-    MessageFromChatGPT: "Message From ChatGPT",
+    MessageFromAivesa: "Message From Aivesa",
     Share: "Share to ShareGPT",
     Format: {
       Title: "Export Format",
@@ -145,7 +145,7 @@ const en: RequiredLocaleType = {
     Token: {
       Title: "API Key",
       SubTitle: "Use your key to ignore access code limit",
-      Placeholder: "OpenAI API Key",
+      Placeholder: "sk-xxxxxx",
     },
     Usage: {
       Title: "Account Balance",
@@ -201,7 +201,7 @@ const en: RequiredLocaleType = {
     Revert: "Revert",
   },
   Plugin: {
-    Name: "Plugin",
+    Name: "About",
   },
   Mask: {
     Name: "Mask",
