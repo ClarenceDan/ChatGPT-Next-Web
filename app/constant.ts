@@ -1,6 +1,6 @@
 export const OWNER = "ClarenceDan";
 export const REPO = "Aivesa-Chat";
-export const REPO_URL = `https://sourl.cn/RqtWEC`;
+export const REPO_URL = `https://sourl.cn/vCDKuc`;
 export const ISSUE_URL = `https://sourl.cn/vCDKuc`;
 export const UPDATE_URL = `https://sourl.cn/vCDKuc`;
 export const FETCH_COMMIT_URL = `https://sourl.cn/vCDKuc`;
