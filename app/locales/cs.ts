@@ -11,7 +11,7 @@ const cs: LocaleType = {
     ChatItemCount: (count: number) => `${count} zpráv`,
   },
   Chat: {
-    SubTitle: (count: number) => `${count} zpráv s ChatGPT`,
+    SubTitle: (count: number) => `${count} zpráv s Aivesa`,
     Actions: {
       ChatList: "Přejít na seznam chatů",
       CompressedHistory: "Pokyn z komprimované paměti historie",
@@ -41,7 +41,7 @@ const cs: LocaleType = {
     Copy: "Kopírovat vše",
     Download: "Stáhnout",
     MessageFromYou: "Zpráva od vás",
-    MessageFromChatGPT: "Zpráva z ChatGPT",
+    MessageFromAivesa: "Zpráva z Aivesa",
   },
   Memory: {
     Title: "Pokyn z paměti",
@@ -126,7 +126,7 @@ const cs: LocaleType = {
     Token: {
       Title: "API klíč",
       SubTitle: "Použitím klíče ignorujete omezení přístupového kódu",
-      Placeholder: "Klíč API OpenAI",
+      Placeholder: "sk-xxxxx",
     },
     Usage: {
       Title: "Stav účtu",

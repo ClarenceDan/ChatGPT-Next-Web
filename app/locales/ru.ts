@@ -11,7 +11,7 @@ const ru: LocaleType = {
     ChatItemCount: (count: number) => `${count} сообщений`,
   },
   Chat: {
-    SubTitle: (count: number) => `${count} сообщений с ChatGPT`,
+    SubTitle: (count: number) => `${count} сообщений с Aivesa`,
     Actions: {
       ChatList: "Перейти к списку чатов",
       CompressedHistory: "Сжатая история памяти",
@@ -41,7 +41,7 @@ const ru: LocaleType = {
     Copy: "Копировать все",
     Download: "Скачать",
     MessageFromYou: "Сообщение от вас",
-    MessageFromChatGPT: "Сообщение от ChatGPT",
+    MessageFromAivesa: "Сообщение от Aivesa",
   },
   Memory: {
     Title: "Память",
@@ -127,7 +127,7 @@ const ru: LocaleType = {
     Token: {
       Title: "API ключ",
       SubTitle: "Используйте свой ключ, чтобы игнорировать лимит доступа",
-      Placeholder: "API ключ OpenAI",
+      Placeholder: "sk-xxxxx",
     },
     Usage: {
       Title: "Баланс аккаунта",

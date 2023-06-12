@@ -11,7 +11,7 @@ const ko: LocaleType = {
     ChatItemCount: (count: number) => `${count}개의 메시지`,
   },
   Chat: {
-    SubTitle: (count: number) => `ChatGPT와의 ${count}개의 메시지`,
+    SubTitle: (count: number) => `Aivesa와의 ${count}개의 메시지`,
     Actions: {
       ChatList: "채팅 목록으로 이동",
       CompressedHistory: "압축된 기억력 메모리 프롬프트",
@@ -41,7 +41,7 @@ const ko: LocaleType = {
     Copy: "모두 복사",
     Download: "다운로드",
     MessageFromYou: "나의 메시지",
-    MessageFromChatGPT: "ChatGPT의 메시지",
+    MessageFromAivesa: "Aivesa의 메시지",
   },
   Memory: {
     Title: "기억 프롬프트",
@@ -125,7 +125,7 @@ const ko: LocaleType = {
     Token: {
       Title: "API 키",
       SubTitle: "액세스 코드 제한을 무시하기 위해 키 사용",
-      Placeholder: "OpenAI API 키",
+      Placeholder: "sk-xxxxx",
     },
     Usage: {
       Title: "계정 잔액",
