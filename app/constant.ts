@@ -23,6 +23,7 @@ export enum SlotID {
 export enum FileName {
   Masks = "masks.json",
   Prompts = "prompts.json",
+  History = "aivesa_chat_history.json",
 }
 
 export enum StoreKey {

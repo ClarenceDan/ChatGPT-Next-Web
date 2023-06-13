@@ -7,7 +7,8 @@ import AddIcon from "../icons/add.svg";
 import CloseIcon from "../icons/close.svg";
 import CopyIcon from "../icons/copy.svg";
 import ClearIcon from "../icons/clear.svg";
-import LoadingIcon from "../icons/three-dots.svg";
+import DownloadIcon from "../icons/download.svg";
+import UploadIcon from "../icons/upload.svg";
 import EditIcon from "../icons/edit.svg";
 import EyeIcon from "../icons/eye.svg";
 import {
@@ -18,6 +19,7 @@ import {
   PasswordInput,
   Popover,
   Select,
+  showToast,
 } from "./ui-lib";
 import { ModelConfigList } from "./model-config";
 
@@ -37,9 +39,9 @@ import Locale, {
   changeLang,
   getLang,
 } from "../locales";
-import { copyToClipboard } from "../utils";
+import { copyToClipboard, downloadAs, readFromFile } from "../utils";
 import Link from "next/link";
-import { Path, UPDATE_URL } from "../constant";
+import { Path, UPDATE_URL, StoreKey, FileName } from "../constant";
 import { Prompt, SearchService, usePromptStore } from "../store/prompt";
 import { ErrorBoundary } from "./error";
 import { InputRange } from "./input-range";
@@ -245,6 +247,71 @@ export function Settings() {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // clear chat history
+  const clearHistory = () => {
+    localStorage.removeItem(StoreKey.Chat);
+    location.reload();
+  };
+
+  // download chat history
+  const chatHistory = JSON.parse(localStorage.getItem(StoreKey.Chat) ?? "");
+  const downloadHistory = () => {
+    downloadAs(JSON.stringify(chatHistory), FileName.History);
+  };
+
+  // upload chat history
+// upload and merge chat history
+// upload and merge chat history
+// upload and merge chat history
+// upload and merge chat history
+// upload and merge chat history
+const importHistory = () => {
+  readFromFile().then((content) => {
+    try {
+      const importChatHistoryState = JSON.parse(content).state; // 将上传的内容解析为JSON对象并获取state
+
+      // 获取已经存在的聊天记录的state
+      let existingChatHistoryState = JSON.parse(localStorage.getItem(StoreKey.Chat) ?? "{}").state;
+
+      // 检查sessions是否是一个数组，如果不是，设置为一个空数组
+      if (!Array.isArray(existingChatHistoryState.sessions)) {
+        existingChatHistoryState.sessions = [];
+      }
+
+      // 创建一个集合来存储已经存在的聊天记录的id
+      const existingIds = new Set(existingChatHistoryState.sessions.map(session => session.id));
+
+      // 过滤掉重复的聊天记录并合并
+      const filteredImportSessions = importChatHistoryState.sessions.map(session => {
+        // 如果ID已存在，并且消息内容不同，则更改ID以确保唯一性
+        if (existingIds.has(session.id) && !existingChatHistoryState.sessions.some(existingSession => JSON.stringify(existingSession.messages) === JSON.stringify(session.messages))) {
+          session.id += Math.random() * 0.0001; // 添加一个小的随机数以修改ID
+        }
+        return session;
+      });
+
+      existingChatHistoryState.sessions = [
+        ...existingChatHistoryState.sessions,
+        ...filteredImportSessions
+      ];
+
+      // 将合并后的聊天记录state保存到本地存储
+      localStorage.setItem(StoreKey.Chat, JSON.stringify({state: existingChatHistoryState, version: 2}));
+
+      console.log(`[Chat History] Successfully imported and merged!`); // 控制台输出成功信息
+      showToast(Locale.Settings.ChatHistory.ImportToast); // 显示导入成功的通知
+      location.reload(); // 重新加载当前页面
+    } catch (e) {
+      console.error(`[Chat History] Error importing and merging chat history: ${e}`); // 如果在导入和合并过程中发生错误，则在控制台输出错误信息
+    }
+  });
+};
+
+
+
+
+
 
   return (
     <ErrorBoundary>
@@ -481,6 +548,42 @@ export function Settings() {
             )}
           </ListItem>
         </List>
+
+
+        <List>
+          <ListItem
+            title={Locale.Settings.ChatHistory.Title}
+            subTitle={Locale.Settings.ChatHistory.SubTitle}
+          >
+            <div className={"password-input-container"}>
+              <IconButton
+                icon={<ClearIcon />}
+                text={Locale.Settings.ChatHistory.Clear}
+                // onClick={() => clearHistory()}
+                onClick={() => {
+                  if (confirm(Locale.Settings.ChatHistory.ClearConfirm)) {
+                    chatStore.clearHistory();
+                  }
+                }}
+              />
+              <IconButton
+                icon={<UploadIcon />}
+                text={Locale.Settings.ChatHistory.Import}
+                onClick={() => {
+                  if (confirm(Locale.Settings.ChatHistory.ImportConfirm)) {
+                    importHistory();
+                  }
+                }}
+              />
+              <IconButton
+                icon={<DownloadIcon />}
+                text={Locale.Settings.ChatHistory.Export}
+                onClick={downloadHistory}
+              />
+            </div>
+          </ListItem>
+        </List>
+
 
         <List>
           <ListItem

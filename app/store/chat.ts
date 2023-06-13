@@ -98,6 +98,7 @@ interface ChatStore {
   getMessagesWithMemory: () => ChatMessage[];
   getMemoryPrompt: () => ChatMessage;
 
+  clearHistory: () => void;
   clearAllData: () => void;
 }
 
@@ -517,6 +518,11 @@ export const useChatStore = create<ChatStore>()(
         const index = get().currentSessionIndex;
         updater(sessions[index]);
         set(() => ({ sessions }));
+      },
+
+      clearHistory() {
+        localStorage.removeItem(StoreKey.Chat);
+        location.reload();
       },
 
       clearAllData() {
