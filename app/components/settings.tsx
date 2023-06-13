@@ -260,12 +260,42 @@ export function Settings() {
     downloadAs(JSON.stringify(chatHistory), FileName.History);
   };
 
-  // upload chat history
   const importHistory = () => {
     readFromFile().then((content) => {
       try {
-        const importChatHistory = JSON.parse(content);
-        localStorage.setItem(StoreKey.Chat, JSON.stringify(importChatHistory));
+        const importedChatHistory = JSON.parse(content);
+        const currentChatHistory = JSON.parse(localStorage.getItem(StoreKey.Chat) || '{"state": {"sessions": []}}');
+        const currentSessions = currentChatHistory.state.sessions;
+  
+        // 遍历每个导入的会话
+        for (const importedSession of importedChatHistory.state.sessions) {
+          let isDuplicate = false;
+  
+          // 检查导入的会话是否与当前会话重复
+          for (const currentSession of currentSessions) {
+            if (currentSession.id === importedSession.id && currentSession.lastUpdate === importedSession.lastUpdate) {
+              isDuplicate = true;
+              break;
+            }
+          }
+  
+          // 如果不是重复的，检查id是否需要调整，然后添加到当前会话
+          if (!isDuplicate) {
+            for (const currentSession of currentSessions) {
+              if (currentSession.id === importedSession.id) {
+                importedSession.id += 0.1; // 在 id 上加一个小数点
+                break;
+              }
+            }
+            // 将导入的会话添加到当前会话列表
+            currentSessions.push(importedSession);
+          }
+        }
+  
+        // 保存更新后的聊天历史记录
+        currentChatHistory.state.sessions = currentSessions;
+        localStorage.setItem(StoreKey.Chat, JSON.stringify(currentChatHistory));
+  
         console.log(`[Chat History] Successfully imported!`);
         showToast(Locale.Settings.ChatHistory.ImportToast);
         location.reload();
@@ -274,7 +304,7 @@ export function Settings() {
       }
     });
   };
-
+  
 
   return (
     <ErrorBoundary>
