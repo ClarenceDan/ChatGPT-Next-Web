@@ -139,7 +139,10 @@ export const ModalConfigValidator = {
   model(x: string) {
     return limitModel(x) as ModelType;
   },
-  max_tokens(x: number) {
+  max_tokens(x: number, model: string) {
+    if (model === 'gpt-3.5-turbo-16k') {
+      return limitNumber(x, 0, 32000, 4000);
+    }
     return limitNumber(x, 0, 32000, 2000);
   },
   presence_penalty(x: number) {
@@ -149,6 +152,7 @@ export const ModalConfigValidator = {
     return limitNumber(x, 0, 1, 1);
   },
 };
+
 
 export const useAppConfig = create<ChatConfigStore>()(
   persist(
