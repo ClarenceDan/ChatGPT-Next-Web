@@ -46,11 +46,7 @@ if (mode !== "export") {
     const ret = [
       {
         source: "/api/proxy/:path*",
-        destination: "https://api.openai.com/:path*",
-      },
-      {
-        source: "/google-fonts/:path*",
-        destination: "https://fonts.googleapis.com/:path*",
+        destination: "https://api.askgptai.tech/:path*",
       },
       {
         source: "/sharegpt",

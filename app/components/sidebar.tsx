@@ -4,8 +4,8 @@ import styles from "./home.module.scss";
 
 import { IconButton } from "./button";
 import SettingsIcon from "../icons/settings.svg";
-import GithubIcon from "../icons/github.svg";
-import ChatGptIcon from "../icons/chatgpt.svg";
+import QQIcon from "../icons/qq.svg";
+import AivesaIcon from "../icons/aivesa.svg";
 import AddIcon from "../icons/add.svg";
 import CloseIcon from "../icons/close.svg";
 import MaskIcon from "../icons/mask.svg";
@@ -118,15 +118,18 @@ export function SideBar(props: { className?: string }) {
         shouldNarrow && styles["narrow-sidebar"]
       }`}
     >
-      <div className={styles["sidebar-header"]} data-tauri-drag-region>
-        <div className={styles["sidebar-title"]} data-tauri-drag-region>
-          ChatGPT Next
-        </div>
-        <div className={styles["sidebar-sub-title"]}>
-          Build your own AI assistant.
+      <div className={styles["sidebar-header"]}>
+        <div className={styles["title-container"]}>
+          <div className={styles["title-version-container"]}>
+            <div className={styles["sidebar-title"]}>Aivesa Chat</div>
+            {!shouldNarrow && <div className={styles["version-pill"]}>2.8.0</div>}
+          </div>
+          <div className={styles["sidebar-sub-title"]}>
+            Chat with your own AI assistant.
+          </div>
         </div>
         <div className={styles["sidebar-logo"] + " no-dark"}>
-          <ChatGptIcon />
+          <AivesaIcon />
         </div>
       </div>
 
@@ -142,7 +145,7 @@ export function SideBar(props: { className?: string }) {
           icon={<PluginIcon />}
           text={shouldNarrow ? undefined : Locale.Plugin.Name}
           className={styles["sidebar-bar-button"]}
-          onClick={() => showToast(Locale.WIP)}
+          onClick={() => window.open('https://rptzik3toh.feishu.cn/docx/M34yd0CoSoGHQExQ0f5cgKcCnHb', '_blank')}
           shadow
         />
       </div>
@@ -177,7 +180,7 @@ export function SideBar(props: { className?: string }) {
           </div>
           <div className={styles["sidebar-action"]}>
             <a href={REPO_URL} target="_blank">
-              <IconButton icon={<GithubIcon />} shadow />
+              <IconButton icon={<QQIcon />} shadow />
             </a>
           </div>
         </div>

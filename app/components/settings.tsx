@@ -7,7 +7,8 @@ import AddIcon from "../icons/add.svg";
 import CloseIcon from "../icons/close.svg";
 import CopyIcon from "../icons/copy.svg";
 import ClearIcon from "../icons/clear.svg";
-import LoadingIcon from "../icons/three-dots.svg";
+import DownloadIcon from "../icons/download.svg";
+import UploadIcon from "../icons/upload.svg";
 import EditIcon from "../icons/edit.svg";
 import EyeIcon from "../icons/eye.svg";
 import {
@@ -18,6 +19,7 @@ import {
   PasswordInput,
   Popover,
   Select,
+  showToast,
 } from "./ui-lib";
 import { ModelConfigList } from "./model-config";
 
@@ -37,9 +39,9 @@ import Locale, {
   changeLang,
   getLang,
 } from "../locales";
-import { copyToClipboard } from "../utils";
+import { copyToClipboard, downloadAs, readFromFile } from "../utils";
 import Link from "next/link";
-import { Path, UPDATE_URL } from "../constant";
+import { Path, UPDATE_URL, StoreKey, FileName } from "../constant";
 import { Prompt, SearchService, usePromptStore } from "../store/prompt";
 import { ErrorBoundary } from "./error";
 import { InputRange } from "./input-range";
@@ -198,18 +200,6 @@ function UserPromptModal(props: { onClose?: () => void }) {
   );
 }
 
-function formatVersionDate(t: string) {
-  const d = new Date(+t);
-  const year = d.getUTCFullYear();
-  const month = d.getUTCMonth() + 1;
-  const day = d.getUTCDate();
-
-  return [
-    year.toString(),
-    month.toString().padStart(2, "0"),
-    day.toString().padStart(2, "0"),
-  ].join("");
-}
 
 export function Settings() {
   const navigate = useNavigate();
@@ -220,26 +210,7 @@ export function Settings() {
   const chatStore = useChatStore();
 
   const updateStore = useUpdateStore();
-  const [checkingUpdate, setCheckingUpdate] = useState(false);
-  const currentVersion = formatVersionDate(updateStore.version);
-  const remoteId = formatVersionDate(updateStore.remoteVersion);
-  const hasNewVersion = currentVersion !== remoteId;
 
-  function checkUpdate(force = false) {
-    setCheckingUpdate(true);
-    updateStore.getLatestVersion(force).then(() => {
-      setCheckingUpdate(false);
-    });
-
-    console.log(
-      "[Update] local version ",
-      new Date(+updateStore.version).toLocaleString(),
-    );
-    console.log(
-      "[Update] remote version ",
-      new Date(+updateStore.remoteVersion).toLocaleString(),
-    );
-  }
 
   const usage = {
     used: updateStore.used,
@@ -266,12 +237,6 @@ export function Settings() {
   const [shouldShowPromptModal, setShowPromptModal] = useState(false);
 
   const showUsage = accessStore.isAuthorized();
-  useEffect(() => {
-    // checks per minutes
-    checkUpdate();
-    showUsage && checkUsage();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     const keydownEvent = (e: KeyboardEvent) => {
@@ -288,6 +253,66 @@ export function Settings() {
 
   const clientConfig = useMemo(() => getClientConfig(), []);
   const showAccessCode = enabledAccessControl && !clientConfig?.isApp;
+
+
+    // clear chat history
+    const clearHistory = () => {
+      localStorage.removeItem(StoreKey.Chat);
+      location.reload();
+    };
+  
+    // download chat history
+    const chatHistory = JSON.parse(localStorage.getItem(StoreKey.Chat) ?? "");
+    const downloadHistory = () => {
+      downloadAs(JSON.stringify(chatHistory), FileName.History);
+    };
+  
+    const importHistory = () => {
+      readFromFile().then((content) => {
+        try {
+          const importedChatHistory = JSON.parse(content);
+          const currentChatHistory = JSON.parse(localStorage.getItem(StoreKey.Chat) || '{"state": {"sessions": []}}');
+          const currentSessions = currentChatHistory.state.sessions;
+    
+          // 遍历每个导入的会话
+          for (const importedSession of importedChatHistory.state.sessions) {
+            let isDuplicate = false;
+    
+            // 检查导入的会话是否与当前会话重复
+            for (const currentSession of currentSessions) {
+              if (currentSession.id === importedSession.id && currentSession.lastUpdate === importedSession.lastUpdate) {
+                isDuplicate = true;
+                break;
+              }
+            }
+    
+            // 如果不是重复的，检查id是否需要调整，然后添加到当前会话
+            if (!isDuplicate) {
+              for (const currentSession of currentSessions) {
+                if (currentSession.id === importedSession.id) {
+                  importedSession.id += 0.1; // 在 id 上加一个小数点
+                  break;
+                }
+              }
+              // 将导入的会话添加到当前会话列表
+              currentSessions.push(importedSession);
+            }
+          }
+    
+          // 保存更新后的聊天历史记录
+          currentChatHistory.state.sessions = currentSessions;
+          localStorage.setItem(StoreKey.Chat, JSON.stringify(currentChatHistory));
+    
+          console.log(`[Chat History] Successfully imported!`);
+          showToast(Locale.Settings.ChatHistory.ImportToast);
+          location.reload();
+        } catch (e) {
+          console.error(`[Chat History] Error importing chat history: ${e}`);
+        }
+      });
+    };
+    
+  
 
   return (
     <ErrorBoundary>
@@ -359,30 +384,6 @@ export function Settings() {
             </Popover>
           </ListItem>
 
-          <ListItem
-            title={Locale.Settings.Update.Version(currentVersion ?? "unknown")}
-            subTitle={
-              checkingUpdate
-                ? Locale.Settings.Update.IsChecking
-                : hasNewVersion
-                ? Locale.Settings.Update.FoundUpdate(remoteId ?? "ERROR")
-                : Locale.Settings.Update.IsLatest
-            }
-          >
-            {checkingUpdate ? (
-              <LoadingIcon />
-            ) : hasNewVersion ? (
-              <Link href={UPDATE_URL} target="_blank" className="link">
-                {Locale.Settings.Update.GoToUpdate}
-              </Link>
-            ) : (
-              <IconButton
-                icon={<ResetIcon></ResetIcon>}
-                text={Locale.Settings.Update.CheckUpdate}
-                onClick={() => checkUpdate(true)}
-              />
-            )}
-          </ListItem>
 
           <ListItem title={Locale.Settings.SendKey}>
             <Select
@@ -525,7 +526,9 @@ export function Settings() {
           <ListItem
             title={Locale.Settings.Usage.Title}
             subTitle={
-              showUsage
+              !accessStore.token
+                ? "使用自己的 Key 可查询余额"
+                : showUsage
                 ? loadingUsage
                   ? Locale.Settings.Usage.IsChecking
                   : Locale.Settings.Usage.SubTitle(
@@ -535,7 +538,7 @@ export function Settings() {
                 : Locale.Settings.Usage.NoAccess
             }
           >
-            {!showUsage || loadingUsage ? (
+            {!showUsage || loadingUsage || !accessStore.token || !accessStore.token.startsWith('sk-') ? (
               <div />
             ) : (
               <IconButton
@@ -545,21 +548,40 @@ export function Settings() {
               />
             )}
           </ListItem>
+        </List>
 
-          {!accessStore.hideUserApiKey ? (
-            <ListItem
-              title={Locale.Settings.Endpoint.Title}
-              subTitle={Locale.Settings.Endpoint.SubTitle}
-            >
-              <input
-                type="text"
-                value={accessStore.openaiUrl}
-                onChange={(e) =>
-                  accessStore.updateOpenAiUrl(e.currentTarget.value)
-                }
-              ></input>
-            </ListItem>
-          ) : null}
+        <List>
+          <ListItem
+            title={Locale.Settings.ChatHistory.Title}
+            subTitle={Locale.Settings.ChatHistory.SubTitle}
+          >
+            <div className={"password-input-container"}>
+              <IconButton
+                icon={<ClearIcon />}
+                text={Locale.Settings.ChatHistory.Clear}
+                // onClick={() => clearHistory()}
+                onClick={() => {
+                  if (confirm(Locale.Settings.ChatHistory.ClearConfirm)) {
+                    chatStore.clearHistory();
+                  }
+                }}
+              />
+              <IconButton
+                icon={<UploadIcon />}
+                text={Locale.Settings.ChatHistory.Import}
+                onClick={() => {
+                  if (confirm(Locale.Settings.ChatHistory.ImportConfirm)) {
+                    importHistory();
+                  }
+                }}
+              />
+              <IconButton
+                icon={<DownloadIcon />}
+                text={Locale.Settings.ChatHistory.Export}
+                onClick={downloadHistory}
+              />
+            </div>
+          </ListItem>
         </List>
 
         <List>
