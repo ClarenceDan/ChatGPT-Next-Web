@@ -4,7 +4,7 @@ const cn = {
   WIP: "该功能仍在开发中……",
   Error: {
     Unauthorized:
-      "前往公众号：**[Aivesa](https://sourl.cn/9mwPzL)** 回复 **密码** 免费获取密码，然后👉 **[点击这里](/#/auth)** 输入密码后解锁**免费使用**。\n\n **提问：** 能免费用 GPT-4 吗？\n **回答：** 太贵了，一次对话一块钱，日常用 3.5 足够，后续会开放专业用户的 GPT-4 充值 \n\n 常见问题与使用说明点击查看👉 **[Aivesa产品简介](https://sourl.cn/uTB6WS)** \n\n卡顿或无响应？可能是用户量太大， [👉点这里获得独立账号 KEY 使用](https://sourl.cn/38eM4A)\n\n欢迎来聊聊 🐧 [QQ频道](https://sourl.cn/XFbJKM) 或 🚀 [TG群组](https://t.me/+gJ-GQFE1GN40NGJl)\n\n 已补充额度并更新版本，更新时间：2023.06.16 14:00",
+      "前往公众号：**[Aivesa](https://sourl.cn/9mwPzL)** 回复 **密码** 免费获取密码，然后👉 **[点击这里](/#/auth)** 输入密码后解锁**免费使用**。\n\n **提问：** 能免费用 GPT-4 吗？\n **回答：** 太贵了，一次对话一块钱，日常用 3.5 足够，后续会开放专业用户的 GPT-4 充值 \n\n 常见问题与使用说明点击查看👉 **[Aivesa产品简介](https://sourl.cn/uTB6WS)** \n\n卡顿或无响应？可能是用户量太大， [👉点这里获得独立账号 KEY 使用](https://sourl.cn/38eM4A)\n\n欢迎来聊聊 🐧 [QQ频道](https://sourl.cn/XFbJKM) 或 🚀 [TG群组](https://t.me/+gJ-GQFE1GN40NGJl)\n\n 已补充额度并更新版本，更新时间：2023.06.16 15:00",
   },
   Auth: {
     Title: "需要密码",
