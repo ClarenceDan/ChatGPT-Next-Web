@@ -44,7 +44,7 @@ export async function requestOpenai(req: NextRequest) {
     method: req.method,
     body: req.body,
     signal: controller.signal,
-    duplex: true,
+    duplex: half,
   };
 
   // #1815 try to refuse gpt4 request
