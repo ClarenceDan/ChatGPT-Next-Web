@@ -180,7 +180,7 @@ const en: RequiredLocaleType = {
       Title: "Chat History",
       SubTitle: "Clear, import & export chat history (JSON)",
       Clear: "Clear",
-      ClearConfirm: "Confirm to delete all chat history?",
+      ClearConfirm: "Are you sure to delete all chat history?",
       Import: "Import",
       ImportConfirm:
         "Confirm to import and overwrite the existing chat history?",
@@ -191,10 +191,6 @@ const en: RequiredLocaleType = {
       Title: "Access Code",
       SubTitle: "Access control enabled",
       Placeholder: "Need Access Code",
-    },
-    Endpoint: {
-      Title: "Endpoint",
-      SubTitle: "Custom endpoint must start with http(s)://",
     },
     Model: "Model",
     Temperature: {
