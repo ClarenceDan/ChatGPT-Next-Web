@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { getClientConfig } from "../config/client";
 import { StoreKey } from "../constant";
 
 export enum SubmitKey {
@@ -21,7 +22,7 @@ export const DEFAULT_CONFIG = {
   avatar: "1f603",
   fontSize: 14,
   theme: Theme.Auto as Theme,
-  tightBorder: false,
+  tightBorder: !!getClientConfig()?.isApp,
   sendPreviewBubble: true,
   sidebarWidth: 300,
 
@@ -30,7 +31,7 @@ export const DEFAULT_CONFIG = {
   dontShowMaskSplashScreen: false, // dont show splash screen when create chat
 
   modelConfig: {
-    model: "gpt-3.5-turbo-0613" as ModelType,
+    model: "gpt-3.5-turbo" as ModelType,
     temperature: 0.5,
     max_tokens: 2000,
     presence_penalty: 0,
@@ -61,15 +62,15 @@ export const ALL_MODELS = [
     available: ENABLE_GPT4,
   },
   {
+    name: "gpt-4-0613",
+    available: ENABLE_GPT4,
+  },
+  {
     name: "gpt-4-32k",
     available: ENABLE_GPT4,
   },
   {
     name: "gpt-4-32k-0314",
-    available: ENABLE_GPT4,
-  },
-  {
-    name: "gpt-4-0613",
     available: ENABLE_GPT4,
   },
   {
@@ -90,6 +91,10 @@ export const ALL_MODELS = [
   },
   {
     name: "gpt-3.5-turbo-16k",
+    available: true,
+  },
+  {
+    name: "gpt-3.5-turbo-16k-0613",
     available: true,
   },
   {
@@ -132,17 +137,14 @@ export function limitNumber(
 export function limitModel(name: string) {
   return ALL_MODELS.some((m) => m.name === name && m.available)
     ? name
-    : ALL_MODELS[4].name;
+    : "gpt-3.5-turbo";
 }
 
 export const ModalConfigValidator = {
   model(x: string) {
     return limitModel(x) as ModelType;
   },
-  max_tokens(x: number, model: string) {
-    if (model === 'gpt-3.5-turbo-16k') {
-      return limitNumber(x, 0, 32000, 4000);
-    }
+  max_tokens(x: number) {
     return limitNumber(x, 0, 32000, 2000);
   },
   presence_penalty(x: number) {
@@ -152,7 +154,6 @@ export const ModalConfigValidator = {
     return limitNumber(x, 0, 1, 1);
   },
 };
-
 
 export const useAppConfig = create<ChatConfigStore>()(
   persist(
