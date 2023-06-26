@@ -10,7 +10,7 @@ const tw: PartialLocaleType = {
     ChatItemCount: (count: number) => `${count} 條對話`,
   },
   Chat: {
-    SubTitle: (count: number) => `您已經與 ChatGPT 進行了 ${count} 條對話`,
+    SubTitle: (count: number) => `您已經與 Aivesa 進行了 ${count} 條對話`,
     Actions: {
       ChatList: "查看訊息列表",
       CompressedHistory: "查看壓縮後的歷史 Prompt",
@@ -40,7 +40,7 @@ const tw: PartialLocaleType = {
     Copy: "複製全部",
     Download: "下載檔案",
     MessageFromYou: "來自您的訊息",
-    MessageFromChatGPT: "來自 ChatGPT 的訊息",
+    MessageFromAivesa: "來自 Aivesa 的訊息",
   },
   Memory: {
     Title: "上下文記憶 Prompt",
@@ -134,6 +134,16 @@ const tw: PartialLocaleType = {
       Check: "重新檢查",
       NoAccess: "輸入API Key查看餘額",
     },
+    ChatHistory: {
+      Title: "聊天紀錄",
+      SubTitle: "清空，匯入/匯出聊天紀錄（JSON 檔案）",
+      Clear: "清空",
+      ClearConfirm: "確認刪除所有聊天紀錄？",
+      Import: "匯入",
+      ImportConfirm: "確認匯入並覆蓋現有的聊天記錄嗎？",
+      ImportToast: "聊天紀錄匯入成功！",
+      Export: "匯出",
+    },
     AccessCode: {
       Title: "授權碼",
       SubTitle: "目前是未授權存取狀態",
@@ -179,7 +189,7 @@ const tw: PartialLocaleType = {
     Edit: "前置上下文和歷史記憶",
     Add: "新增一條",
   },
-  Plugin: { Name: "插件" },
+  Plugin: { Name: "关于" },
   Mask: {
     Name: "面具",
     Page: {

@@ -30,26 +30,8 @@ export const useUpdateStore = create<UpdateStore>()(
       version: "unknown",
 
       async getLatestVersion(force = false) {
-        set(() => ({ version: getClientConfig()?.commitId ?? "unknown" }));
-
-        const overTenMins = Date.now() - get().lastUpdate > 10 * ONE_MINUTE;
-        if (!force && !overTenMins) return;
-
-        set(() => ({
-          lastUpdate: Date.now(),
-        }));
-
-        try {
-          const data = await (await fetch(FETCH_COMMIT_URL)).json();
-          const remoteCommitTime = data[0].commit.committer.date;
-          const remoteId = new Date(remoteCommitTime).getTime().toString();
-          set(() => ({
-            remoteVersion: remoteId,
-          }));
-          console.log("[Got Upstream] ", remoteId);
-        } catch (error) {
-          console.error("[Fetch Upstream Commit Id]", error);
-        }
+        // Version checking functionality is disabled.
+        return;
       },
 
       async updateUsage(force = false) {

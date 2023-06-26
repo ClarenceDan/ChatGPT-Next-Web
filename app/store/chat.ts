@@ -100,6 +100,7 @@ interface ChatStore {
   getMessagesWithMemory: () => ChatMessage[];
   getMemoryPrompt: () => ChatMessage;
 
+  clearHistory: () => void;
   clearAllData: () => void;
 }
 
@@ -291,6 +292,14 @@ export const useChatStore = create<ChatStore>()(
           streaming: true,
           id: userMessage.id! + 1,
           model: modelConfig.model,
+        });
+
+        const systemInfo = createMessage({
+          role: "system",
+          content: `IMPORTANT: You are a virtual assistant called Aivesa Assistant, powered by the ${
+            modelConfig.model
+          } model, now time is ${new Date().toLocaleString()}}`,
+          id: botMessage.id! + 1,
         });
 
         // get recent messages
@@ -558,10 +567,15 @@ export const useChatStore = create<ChatStore>()(
       },
 
       updateCurrentSession(updater) {
-        const sessions = get().sessions;
+        const sessions = [...get().sessions]; // Create a new session to refresh sessions.
         const index = get().currentSessionIndex;
         updater(sessions[index]);
         set(() => ({ sessions }));
+      },
+
+      clearHistory() {
+        localStorage.removeItem(StoreKey.Chat);
+        location.reload();
       },
 
       clearAllData() {
