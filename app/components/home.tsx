@@ -111,7 +111,7 @@ function Screen() {
           config.tightBorder && !isMobileScreen
             ? styles["tight-container"]
             : styles.container
-        } ${getLang() === "ar" ? styles["rtl-screen"] : ""}`
+        }`
       }
     >
       {isAuth ? (
