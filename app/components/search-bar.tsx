@@ -238,7 +238,7 @@ import {
               input={input}
               selectSession={selectSession}
               index={sessions.findIndex(
-                (session) => session.id === result.sessionId,
+                (session) => Number(session.id) === result.sessionId,
               )}
             />
           ))}
