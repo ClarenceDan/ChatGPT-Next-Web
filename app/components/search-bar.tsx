@@ -192,7 +192,7 @@ import {
         if (matchingMessages.length > 0) {
           newResults.push({
             topic: session.topic,
-            sessionId: session.id,
+            sessionId: Number(session.id), // convert string to number
             lastUpdate: session.lastUpdate,
             message: matchingMessages,
           });
