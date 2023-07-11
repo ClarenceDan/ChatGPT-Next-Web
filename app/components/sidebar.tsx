@@ -76,15 +76,15 @@ function useDragSideBar() {
     window.removeEventListener("mousemove", handleMouseMove.current);
     window.removeEventListener("mouseup", handleMouseUp.current);
   });
-  const expandSidebar = () => {
-    config.update((config) => (config.sidebarWidth = MAX_SIDEBAR_WIDTH));
-  };
 
   const onDragMouseDown = (e: MouseEvent) => {
     startX.current = e.clientX;
 
     window.addEventListener("mousemove", handleMouseMove.current);
     window.addEventListener("mouseup", handleMouseUp.current);
+  };
+  const expandSidebar = () => {
+    config.update((config) => (config.sidebarWidth = MAX_SIDEBAR_WIDTH));
   };
   const isMobileScreen = useMobileScreen();
   const shouldNarrow =
