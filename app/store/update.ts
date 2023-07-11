@@ -73,30 +73,8 @@ export const useUpdateStore = create<UpdateStore>()(
       },
 
       async getLatestVersion(force = false) {
-        const versionType = get().versionType;
-        let version =
-          versionType === "date"
-            ? getClientConfig()?.commitDate
-            : getClientConfig()?.version;
-
-        set(() => ({ version }));
-
-        const shouldCheck = Date.now() - get().lastUpdate > 2 * 60 * ONE_MINUTE;
-        if (!force && !shouldCheck) return;
-
-        set(() => ({
-          lastUpdate: Date.now(),
-        }));
-
-        try {
-          const remoteId = await getVersion(versionType);
-          set(() => ({
-            remoteVersion: remoteId,
-          }));
-          console.log("[Got Upstream] ", remoteId);
-        } catch (error) {
-          console.error("[Fetch Upstream Commit Id]", error);
-        }
+        // Version checking functionality is disabled.
+        return;
       },
 
       async updateUsage(force = false) {
