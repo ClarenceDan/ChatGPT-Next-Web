@@ -8,8 +8,8 @@ const cn = {
   },
   Auth: {
     Title: "需要密码",
-    Tips: "管理员开启了密码验证，请在下方填入访问码",
-    Input: "在此处填写访问码",
+    Tips: "为避免滥用，本站需填写密码后使用",
+    Input: "填写密码，免费试用",
     Confirm: "确认",
     Later: "稍后再说",
   },
@@ -59,7 +59,7 @@ const cn = {
       if (submitKey === String(SubmitKey.Enter)) {
         inputHints += "，Shift + Enter 换行";
       }
-      return inputHints + "，/ 触发补全，: 触发命令";
+      return inputHints + "，按下 / 激活预设，使用 : 激活命令";
     },
     Send: "发送",
     Config: {
@@ -74,7 +74,7 @@ const cn = {
     Download: "下载文件",
     Share: "分享到 ShareGPT",
     MessageFromYou: "来自你的消息",
-    MessageFromChatGPT: "来自 ChatGPT 的消息",
+    MessageFromAivesa: "来自 Aivesa 的消息",
     Format: {
       Title: "导出格式",
       SubTitle: "可以导出 Markdown 文本或者 PNG 图片",
@@ -140,8 +140,8 @@ const cn = {
       SubTitle: "聊天内容的字体大小",
     },
     InjectSystemPrompts: {
-      Title: "注入系统级提示信息",
-      SubTitle: "强制给每次请求的消息列表开头添加一个模拟 ChatGPT 的系统提示",
+      Title: "是否开启助手预设",
+      SubTitle: "未使用面具时，默认使用 Aivesa 助手预设",
     },
     InputTemplate: {
       Title: "用户输入预处理",
@@ -202,7 +202,7 @@ const cn = {
     Token: {
       Title: "API Key",
       SubTitle: "使用自己的 Key 可绕过密码访问限制",
-      Placeholder: "OpenAI API Key",
+      Placeholder: "sk-xxxxx",
     },
 
     Usage: {
@@ -214,9 +214,19 @@ const cn = {
       Check: "重新检查",
       NoAccess: "输入 API Key 或访问密码查看余额",
     },
+    ChatHistory: {
+      Title: "聊天记录",
+      SubTitle: "清空，导入/导出聊天记录（JSON 格式）",
+      Clear: "清空",
+      ClearConfirm: "确认删除所有聊天记录？",
+      Import: "导入",
+      ImportConfirm: "确认导入并覆盖现有的聊天记录吗？",
+      ImportToast: "聊天记录导入成功！",
+      Export: "导出",
+    },
     AccessCode: {
       Title: "访问密码",
-      SubTitle: "管理员已开启加密访问",
+      SubTitle: "到公众号：Aivesa 回复【密码】获取",
       Placeholder: "请输入访问密码",
     },
     Endpoint: {
@@ -251,7 +261,7 @@ const cn = {
   },
   Store: {
     DefaultTopic: "新的聊天",
-    BotHello: "有什么可以帮你的吗",
+    BotHello: "建议关注：**[Aivesa](https://sourl.cn/9mwPzL)** 或收藏 🚀 **[防失联发布页](https://aivesa.com)** \n\n 已解锁免费使用，有什么可以帮你的吗？ \n\n卡顿或无响应？可能是当前访问量太大\n\n [👉点这里获得独立账号 KEY 使用](https://sourl.cn/38eM4A)\n\n欢迎来聊聊 🐧 [QQ频道](https://sourl.cn/XFbJKM) 或 🚀 [TG群组](https://t.me/+gJ-GQFE1GN40NGJl)",
     Error: "出错了，稍后重试吧",
     Prompt: {
       History: (content: string) => "这是历史聊天总结作为前情提要：" + content,
@@ -273,7 +283,7 @@ const cn = {
     Revert: "恢复上下文",
   },
   Plugin: {
-    Name: "插件",
+    Name: "关于",
   },
   Mask: {
     Name: "面具",

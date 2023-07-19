@@ -1,15 +1,16 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import styles from "./home.module.scss";
 
 import { IconButton } from "./button";
 import SettingsIcon from "../icons/settings.svg";
-import GithubIcon from "../icons/github.svg";
-import ChatGptIcon from "../icons/chatgpt.svg";
+import QQIcon from "../icons/qq.svg";
+import AivesaIcon from "../icons/aivesa.svg";
 import AddIcon from "../icons/add.svg";
 import CloseIcon from "../icons/close.svg";
 import MaskIcon from "../icons/mask.svg";
 import PluginIcon from "../icons/plugin.svg";
+import SearchIcon from "../icons/search.svg";
 import DragIcon from "../icons/drag.svg";
 
 import Locale from "../locales";
@@ -28,6 +29,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useMobileScreen } from "../utils";
 import dynamic from "next/dynamic";
 import { showConfirm, showToast } from "./ui-lib";
+import { SearchBar, SearchInputRef } from "@/app/components/search-bar";
 
 const ChatList = dynamic(async () => (await import("./chat-list")).ChatList, {
   loading: () => null,
@@ -82,6 +84,9 @@ function useDragSideBar() {
     window.addEventListener("mousemove", handleMouseMove.current);
     window.addEventListener("mouseup", handleMouseUp.current);
   };
+  const expandSidebar = () => {
+    config.update((config) => (config.sidebarWidth = MAX_SIDEBAR_WIDTH));
+  };
   const isMobileScreen = useMobileScreen();
   const shouldNarrow =
     !isMobileScreen && config.sidebarWidth < MIN_SIDEBAR_WIDTH;
@@ -97,6 +102,7 @@ function useDragSideBar() {
   return {
     onDragMouseDown,
     shouldNarrow,
+    expandSidebar,
   };
 }
 
@@ -104,9 +110,22 @@ export function SideBar(props: { className?: string }) {
   const chatStore = useChatStore();
 
   // drag side bar
-  const { onDragMouseDown, shouldNarrow } = useDragSideBar();
+  const { onDragMouseDown, shouldNarrow, expandSidebar } = useDragSideBar();
   const navigate = useNavigate();
   const config = useAppConfig();
+
+  // search bar
+  const searchBarRef = useRef<SearchInputRef>(null);
+  const [isSearching, setIsSearching] = useState(false);
+
+  useEffect(() => {
+    if (shouldNarrow) stopSearch();
+  }, [shouldNarrow]);
+
+  const stopSearch = () => {
+    setIsSearching(false);
+    searchBarRef.current?.clearInput();
+  };
 
   useHotKey();
 
@@ -116,15 +135,18 @@ export function SideBar(props: { className?: string }) {
         shouldNarrow && styles["narrow-sidebar"]
       }`}
     >
-      <div className={styles["sidebar-header"]} data-tauri-drag-region>
-        <div className={styles["sidebar-title"]} data-tauri-drag-region>
-          ChatGPT Next
-        </div>
-        <div className={styles["sidebar-sub-title"]}>
-          Build your own AI assistant.
+      <div className={styles["sidebar-header"]}>
+        <div className={styles["title-container"]}>
+          <div className={styles["title-version-container"]}>
+            <div className={styles["sidebar-title"]}>Aivesa Chat</div>
+            {!shouldNarrow && <div className={styles["version-pill"]}>2.9.0</div>}
+          </div>
+          <div className={styles["sidebar-sub-title"]}>
+            Chat with your own AI assistant.
+          </div>
         </div>
         <div className={styles["sidebar-logo"] + " no-dark"}>
-          <ChatGptIcon />
+          <AivesaIcon />
         </div>
       </div>
 
@@ -140,21 +162,49 @@ export function SideBar(props: { className?: string }) {
           icon={<PluginIcon />}
           text={shouldNarrow ? undefined : Locale.Plugin.Name}
           className={styles["sidebar-bar-button"]}
-          onClick={() => showToast(Locale.WIP)}
+          onClick={() => window.open('https://rptzik3toh.feishu.cn/docx/M34yd0CoSoGHQExQ0f5cgKcCnHb', '_blank')}
           shadow
         />
+        {shouldNarrow && (
+          <IconButton
+            icon={<SearchIcon />}
+            className={styles["sidebar-bar-button"]}
+            onClick={() => {
+              expandSidebar();
+              // use setTimeout to avoid the input element not ready
+              setTimeout(() => {
+                searchBarRef.current?.inputElement?.focus();
+              }, 0);
+            }}
+            shadow
+          />
+        )}
       </div>
 
       <div
-        className={styles["sidebar-body"]}
-        onClick={(e) => {
-          if (e.target === e.currentTarget) {
-            navigate(Path.Home);
-          }
-        }}
+        className={
+          styles["sidebar-search-bar"] +
+          " " +
+          (isSearching ? styles["sidebar-search-bar-isSearching"] : "")
+        }
       >
-        <ChatList narrow={shouldNarrow} />
+        {!shouldNarrow && (
+          <SearchBar ref={searchBarRef} setIsSearching={setIsSearching} />
+        )}
       </div>
+
+      {!isSearching && (
+        <div
+          className={styles["sidebar-body"]}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              navigate(Path.Home);
+            }
+          }}
+        >
+          <ChatList narrow={shouldNarrow} />
+        </div>
+      )}
 
       <div className={styles["sidebar-tail"]}>
         <div className={styles["sidebar-actions"]}>
@@ -175,7 +225,7 @@ export function SideBar(props: { className?: string }) {
           </div>
           <div className={styles["sidebar-action"]}>
             <a href={REPO_URL} target="_blank">
-              <IconButton icon={<GithubIcon />} shadow />
+              <IconButton icon={<QQIcon />} shadow />
             </a>
           </div>
         </div>
@@ -190,6 +240,7 @@ export function SideBar(props: { className?: string }) {
               } else {
                 navigate(Path.NewChat);
               }
+              stopSearch();
             }}
             shadow
           />

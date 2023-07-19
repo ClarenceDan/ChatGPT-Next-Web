@@ -230,6 +230,7 @@ export function PromptHints(props: {
 }) {
   const noPrompts = props.prompts.length === 0;
   const [selectIndex, setSelectIndex] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
   const selectedRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -250,9 +251,11 @@ export function PromptHints(props: {
           Math.min(props.prompts.length - 1, selectIndex + delta),
         );
         setSelectIndex(nextIndex);
+        setIsScrolling(true);
         selectedRef.current?.scrollIntoView({
           block: "center",
         });
+        setTimeout(() => setIsScrolling(false), 100);
       };
 
       if (e.key === "ArrowUp") {
@@ -285,7 +288,11 @@ export function PromptHints(props: {
           }
           key={prompt.title + i.toString()}
           onClick={() => props.onPromptSelect(prompt)}
-          onMouseEnter={() => setSelectIndex(i)}
+          onMouseEnter={() => {
+            if (!isScrolling) {
+              setSelectIndex(i);
+            }
+          }}
         >
           <div className={styles["hint-title"]}>{prompt.title}</div>
           <div className={styles["hint-content"]}>{prompt.content}</div>
@@ -606,7 +613,7 @@ export function Chat() {
       setPromptHints(chatCommands.search(text));
     } else if (!config.disablePromptHint && n < SEARCH_TEXT_LIMIT) {
       // check if need to trigger auto completion
-      if (text.startsWith("/")) {
+      if (text.startsWith("/") || text.startsWith("、")) {
         let searchText = text.slice(1);
         onSearch(searchText);
       }

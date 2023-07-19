@@ -75,7 +75,7 @@ const en: LocaleType = {
     Copy: "Copy All",
     Download: "Download",
     MessageFromYou: "Message From You",
-    MessageFromChatGPT: "Message From ChatGPT",
+    MessageFromAivesa: "Message From Aivesa",
     Share: "Share to ShareGPT",
     Format: {
       Title: "Export Format",
@@ -205,7 +205,7 @@ const en: LocaleType = {
     Token: {
       Title: "API Key",
       SubTitle: "Use your key to ignore access code limit",
-      Placeholder: "OpenAI API Key",
+      Placeholder: "sk-xxxxx",
     },
     Usage: {
       Title: "Account Balance",
@@ -215,6 +215,17 @@ const en: LocaleType = {
       IsChecking: "Checking...",
       Check: "Check",
       NoAccess: "Enter API Key to check balance",
+    },
+    ChatHistory: {
+      Title: "Chat History",
+      SubTitle: "Clear, import & export chat history (JSON)",
+      Clear: "Clear",
+      ClearConfirm: "Confirm to delete all chat history?",
+      Import: "Import",
+      ImportConfirm:
+        "Confirm to import and overwrite the existing chat history?",
+      ImportToast: "Chat history imported!",
+      Export: "Export",
     },
     AccessCode: {
       Title: "Access Code",
@@ -278,7 +289,7 @@ const en: LocaleType = {
     Revert: "Revert",
   },
   Plugin: {
-    Name: "Plugin",
+    Name: "About",
   },
   Mask: {
     Name: "Mask",

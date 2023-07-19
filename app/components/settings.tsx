@@ -7,6 +7,8 @@ import AddIcon from "../icons/add.svg";
 import CloseIcon from "../icons/close.svg";
 import CopyIcon from "../icons/copy.svg";
 import ClearIcon from "../icons/clear.svg";
+import DownloadIcon from "../icons/download.svg";
+import UploadIcon from "../icons/upload.svg";
 import LoadingIcon from "../icons/three-dots.svg";
 import EditIcon from "../icons/edit.svg";
 import EyeIcon from "../icons/eye.svg";
@@ -18,6 +20,7 @@ import {
   PasswordInput,
   Popover,
   Select,
+  showToast,
   showConfirm,
 } from "./ui-lib";
 import { ModelConfigList } from "./model-config";
@@ -38,9 +41,9 @@ import Locale, {
   changeLang,
   getLang,
 } from "../locales";
-import { copyToClipboard } from "../utils";
+import { copyToClipboard, downloadAs, readFromFile } from "../utils";
 import Link from "next/link";
-import { Path, RELEASE_URL, UPDATE_URL } from "../constant";
+import { Path, StoreKey, FileName  } from "../constant";
 import { Prompt, SearchService, usePromptStore } from "../store/prompt";
 import { ErrorBoundary } from "./error";
 import { InputRange } from "./input-range";
@@ -247,94 +250,16 @@ function SyncItems() {
 
   // not ready: https://github.com/Yidadaa/ChatGPT-Next-Web/issues/920#issuecomment-1609866332
   return null;
-
-  return (
-    <List>
-      <ListItem
-        title={"上次同步：" + new Date().toLocaleString()}
-        subTitle={"20 次对话，100 条消息，200 提示词，20 面具"}
-      >
-        <IconButton
-          icon={<ResetIcon />}
-          text="同步"
-          onClick={() => {
-            syncStore.check().then(console.log);
-          }}
-        />
-      </ListItem>
-
-      <ListItem
-        title={"本地备份"}
-        subTitle={"20 次对话，100 条消息，200 提示词，20 面具"}
-      ></ListItem>
-
-      <ListItem
-        title={"Web Dav Server"}
-        subTitle={Locale.Settings.AccessCode.SubTitle}
-      >
-        <input
-          value={webdav.server}
-          type="text"
-          placeholder={"https://example.com"}
-          onChange={(e) => {
-            syncStore.update(
-              (config) => (config.server = e.currentTarget.value),
-            );
-          }}
-        />
-      </ListItem>
-
-      <ListItem title="Web Dav User Name" subTitle="user name here">
-        <input
-          value={webdav.username}
-          type="text"
-          placeholder={"username"}
-          onChange={(e) => {
-            syncStore.update(
-              (config) => (config.username = e.currentTarget.value),
-            );
-          }}
-        />
-      </ListItem>
-
-      <ListItem title="Web Dav Password" subTitle="password here">
-        <input
-          value={webdav.password}
-          type="text"
-          placeholder={"password"}
-          onChange={(e) => {
-            syncStore.update(
-              (config) => (config.password = e.currentTarget.value),
-            );
-          }}
-        />
-      </ListItem>
-    </List>
-  );
 }
 
 export function Settings() {
+  const chatStore = useChatStore();
   const navigate = useNavigate();
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const config = useAppConfig();
   const updateConfig = config.update;
 
   const updateStore = useUpdateStore();
-  const [checkingUpdate, setCheckingUpdate] = useState(false);
-  const currentVersion = updateStore.formatVersion(updateStore.version);
-  const remoteId = updateStore.formatVersion(updateStore.remoteVersion);
-  const hasNewVersion = currentVersion !== remoteId;
-  const updateUrl = getClientConfig()?.isApp ? RELEASE_URL : UPDATE_URL;
-
-  function checkUpdate(force = false) {
-    setCheckingUpdate(true);
-    updateStore.getLatestVersion(force).then(() => {
-      setCheckingUpdate(false);
-    });
-
-    console.log("[Update] local version ", updateStore.version);
-    console.log("[Update] remote version ", updateStore.remoteVersion);
-  }
 
   const usage = {
     used: updateStore.used,
@@ -365,12 +290,6 @@ export function Settings() {
   const [shouldShowPromptModal, setShowPromptModal] = useState(false);
 
   const showUsage = accessStore.isAuthorized();
-  useEffect(() => {
-    // checks per minutes
-    checkUpdate();
-    showUsage && checkUsage();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     const keydownEvent = (e: KeyboardEvent) => {
@@ -387,6 +306,75 @@ export function Settings() {
 
   const clientConfig = useMemo(() => getClientConfig(), []);
   const showAccessCode = enabledAccessControl && !clientConfig?.isApp;
+
+  
+  function createHistoryFileName() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0'); // JS month index starts from 0
+    const day = String(now.getDate()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    return `chats-${year}_${month}_${day}-${hours}_${minutes}.json`;
+  }
+  // clear chat history
+  const clearHistory = () => {
+    localStorage.removeItem(StoreKey.Chat);
+    location.reload();
+  };
+
+  // download chat history
+  const chatHistory = JSON.parse(localStorage.getItem(StoreKey.Chat) ?? "");
+  const downloadHistory = () => {
+    const filename = createHistoryFileName();  // 使用函数生成的文件名替代原来的文件名
+    downloadAs(JSON.stringify(chatHistory), filename);
+  };
+
+  const importHistory = () => {
+    readFromFile().then((content) => {
+      try {
+        const importedChatHistory = JSON.parse(content);
+        const currentChatHistory = JSON.parse(localStorage.getItem(StoreKey.Chat) || '{"state": {"sessions": []}}');
+        const currentSessions = currentChatHistory.state.sessions;
+  
+        // 遍历每个导入的会话
+        for (const importedSession of importedChatHistory.state.sessions) {
+          let isDuplicate = false;
+  
+          // 检查导入的会话是否与当前会话重复
+          for (const currentSession of currentSessions) {
+            if (currentSession.id === importedSession.id && currentSession.lastUpdate === importedSession.lastUpdate) {
+              isDuplicate = true;
+              break;
+            }
+          }
+  
+          // 如果不是重复的，检查id是否需要调整，然后添加到当前会话
+          if (!isDuplicate) {
+            for (const currentSession of currentSessions) {
+              if (currentSession.id === importedSession.id) {
+                importedSession.id += 0.1; // 在 id 上加一个小数点
+                break;
+              }
+            }
+            // 将导入的会话添加到当前会话列表
+            currentSessions.push(importedSession);
+          }
+        }
+  
+        // 保存更新后的聊天历史记录
+        currentChatHistory.state.sessions = currentSessions;
+        localStorage.setItem(StoreKey.Chat, JSON.stringify(currentChatHistory));
+  
+        console.log(`[Chat History] Successfully imported!`);
+        showToast(Locale.Settings.ChatHistory.ImportToast);
+        location.reload();
+      } catch (e) {
+        console.error(`[Chat History] Error importing chat history: ${e}`);
+      }
+    });
+  };
+  
 
   return (
     <ErrorBoundary>
@@ -433,31 +421,6 @@ export function Settings() {
                 <Avatar avatar={config.avatar} />
               </div>
             </Popover>
-          </ListItem>
-
-          <ListItem
-            title={Locale.Settings.Update.Version(currentVersion ?? "unknown")}
-            subTitle={
-              checkingUpdate
-                ? Locale.Settings.Update.IsChecking
-                : hasNewVersion
-                ? Locale.Settings.Update.FoundUpdate(remoteId ?? "ERROR")
-                : Locale.Settings.Update.IsLatest
-            }
-          >
-            {checkingUpdate ? (
-              <LoadingIcon />
-            ) : hasNewVersion ? (
-              <Link href={updateUrl} target="_blank" className="link">
-                {Locale.Settings.Update.GoToUpdate}
-              </Link>
-            ) : (
-              <IconButton
-                icon={<ResetIcon></ResetIcon>}
-                text={Locale.Settings.Update.CheckUpdate}
-                onClick={() => checkUpdate(true)}
-              />
-            )}
           </ListItem>
 
           <ListItem title={Locale.Settings.SendKey}>
@@ -667,7 +630,9 @@ export function Settings() {
             <ListItem
               title={Locale.Settings.Usage.Title}
               subTitle={
-                showUsage
+                !accessStore.token
+                  ? "使用自己的 Key 可查询余额"
+                  : showUsage
                   ? loadingUsage
                     ? Locale.Settings.Usage.IsChecking
                     : Locale.Settings.Usage.SubTitle(
@@ -677,7 +642,7 @@ export function Settings() {
                   : Locale.Settings.Usage.NoAccess
               }
             >
-              {!showUsage || loadingUsage ? (
+              {!showUsage || loadingUsage || !accessStore.token || !accessStore.token.startsWith('sk-') ? (
                 <div />
               ) : (
                 <IconButton
@@ -696,7 +661,7 @@ export function Settings() {
             <input
               type="text"
               value={config.customModels}
-              placeholder="model1,model2,model3"
+              placeholder="models"
               onChange={(e) =>
                 config.update(
                   (config) => (config.customModels = e.currentTarget.value),
@@ -707,6 +672,40 @@ export function Settings() {
         </List>
 
         <SyncItems />
+
+        <List>
+          <ListItem
+            title={Locale.Settings.ChatHistory.Title}
+            subTitle={Locale.Settings.ChatHistory.SubTitle}
+          >
+            <div className={"password-input-container"}>
+              <IconButton
+                icon={<ClearIcon />}
+                text={Locale.Settings.ChatHistory.Clear}
+                // onClick={() => clearHistory()}
+                onClick={() => {
+                  if (confirm(Locale.Settings.ChatHistory.ClearConfirm)) {
+                    chatStore.clearHistory();
+                  }
+                }}
+              />
+              <IconButton
+                icon={<UploadIcon />}
+                text={Locale.Settings.ChatHistory.Import}
+                onClick={() => {
+                  if (confirm(Locale.Settings.ChatHistory.ImportConfirm)) {
+                    importHistory();
+                  }
+                }}
+              />
+              <IconButton
+                icon={<DownloadIcon />}
+                text={Locale.Settings.ChatHistory.Export}
+                onClick={downloadHistory}
+              />
+            </div>
+          </ListItem>
+        </List>
 
         <List>
           <ModelConfigList
