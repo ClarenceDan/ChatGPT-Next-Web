@@ -38,6 +38,8 @@ export const getServerSideConfig = () => {
   }
 
   const apiKeys = (process.env.OPENAI_API_KEY ?? '').split(',')
+  let keyUsage: { [key: string]: { count: number, timestamp: number } } = {};
+
 
   // Filter keys based on usage in the past minute
   const availableKeys = apiKeys.filter((key) => {
