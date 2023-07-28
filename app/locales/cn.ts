@@ -4,7 +4,7 @@ const cn = {
   WIP: "该功能仍在开发中……",
   Error: {
     Unauthorized:
-          "前往公众号：**[Aivesa](https://sourl.cn/9mwPzL)** 回复 **密码** 免费获取密码，然后👉 **[点击这里](/#/auth)** 输入密码后解锁**免费使用**。\n\n **提问：** 会一直免费吗？\n **回答：** 网站已免费提供了4个月服务，但最近一个月被疯狂薅羊毛，最高单日被撸40万次请求，说实话有点顶不住了 \n\n 常见问题与使用说明点击查看👉 **[Aivesa产品简介](https://sourl.cn/uTB6WS)** \n\n卡顿或无响应？可能是用户量太大， [👉点这里获得独立账号 KEY 使用](https://sourl.cn/38eM4A)\n\n欢迎来聊聊 🐧 [QQ频道](https://sourl.cn/XFbJKM) 或 🚀 [TG群组](https://t.me/+gJ-GQFE1GN40NGJl)\n\n 已补充额度并更新版本，更新时间：2023.07.19 14:00",
+          "前往公众号：**[Aivesa](https://sourl.cn/9mwPzL)** 回复 **密码** 免费获取密码，然后👉 **[点击这里](/#/auth)** 输入密码后解锁**免费使用**。\n\n **提问：** 为什么无法使用？\n **回答：** 可能是当前用户量太大，导致后台暂无可用资源，稍等片刻即可 \n\n 常见问题与使用说明点击查看👉 **[Aivesa产品简介](https://sourl.cn/uTB6WS)** \n\n卡顿或无响应？可能是用户量太大， [👉点这里获得独立账号 KEY 使用](https://sourl.cn/38eM4A)\n\n欢迎来聊聊 🐧 [QQ频道](https://sourl.cn/XFbJKM) 或 🚀 [TG群组](https://t.me/+gJ-GQFE1GN40NGJl)\n\n 已补充额度并更新版本，更新时间：2023.07.28 11:20",
   },
   Auth: {
     Title: "需要密码",

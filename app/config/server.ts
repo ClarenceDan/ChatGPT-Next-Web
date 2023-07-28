@@ -37,8 +37,38 @@ export const getServerSideConfig = () => {
     );
   }
 
+  const apiKeys = (process.env.OPENAI_API_KEY ?? '').split(',')
+  const apiKey = apiKeys.at(Math.floor(Math.random() * apiKeys.lenght)) ?? ''
+
+  // Filter keys based on usage in the past minute
+  const availableKeys = apiKeys.filter((key) => {
+    const usage = keyUsage[key];
+    if (!usage) {
+      return true;
+    }
+    const timeElapsed = Date.now() - usage.timestamp;
+    return timeElapsed >= 60 * 1000 || usage.count < 3;
+  });
+
+  const apiKey = availableKeys[Math.floor(Math.random() * availableKeys.length)] ?? '';
+
+  // Update the usage record for the selected key
+  const usage = keyUsage[apiKey];
+  if (!usage) {
+    keyUsage[apiKey] = { count: 1, timestamp: Date.now() };
+  } else {
+    if (Date.now() - usage.timestamp >= 60 * 1000) {
+      // Reset the usage count after a minute
+      usage.count = 1;
+      usage.timestamp = Date.now();
+    } else {
+      usage.count += 1;
+    }
+  }
+
+  
   return {
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey,
     code: process.env.CODE,
     codes: ACCESS_CODES,
     needCode: ACCESS_CODES.size > 0,
