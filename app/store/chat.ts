@@ -333,7 +333,7 @@ export const useChatStore = create<ChatStore>()(
           },
           onError(error) {
             const isAborted = error.message.includes("aborted");
-            botMessage.content =
+            botMessage.content +=
               "\n\n" +
               prettyObject({
                 error: true,
@@ -554,7 +554,7 @@ export const useChatStore = create<ChatStore>()(
                 date: "",
               }),
             ),
-            config: { ...modelConfig, stream: true },
+            config: { ...modelConfig, stream: true, model: "gpt-3.5-turbo" },
             onUpdate(message) {
               session.memoryPrompt = message;
             },

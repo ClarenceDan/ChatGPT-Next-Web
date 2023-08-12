@@ -11,6 +11,13 @@ const tw: PartialLocaleType = {
   },
   Chat: {
     SubTitle: (count: number) => `您已經與 Aivesa 進行了 ${count} 條對話`,
+    EditMessage: {
+      Title: "编辑消息记录",
+      Topic: {
+        Title: "聊天主题",
+        SubTitle: "更改当前聊天主题",
+      },
+    },
     Actions: {
       ChatList: "查看訊息列表",
       CompressedHistory: "查看壓縮後的歷史 Prompt",
@@ -225,6 +232,10 @@ const tw: PartialLocaleType = {
     More: "搜索更多",
     NotShow: "不再展示",
     ConfirmNoShow: "确认禁用？禁用后可以随时在设置中重新启用。",
+  },
+  URLCommand: {
+    Code: "检测到链接中已经包含访问码，是否自动填入？",
+    Settings: "检测到链接中包含了预制设置，是否自动填入？",
   },
   UI: {
     Confirm: "确认",
