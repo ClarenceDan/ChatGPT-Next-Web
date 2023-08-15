@@ -4,7 +4,7 @@ const cn = {
   WIP: "该功能仍在开发中……",
   Error: {
     Unauthorized:
-      "访问密码不正确或为空，请前往[登录](/#/auth)页输入正确的访问密码，或者在[设置](/#/settings)页填入你自己的 OpenAI API Key。",
+          "前往公众号：**[Aivesa](https://sourl.cn/9mwPzL)** 回复 **密码** 免费获取密码，然后👉 **[点击这里](/#/auth)** 输入密码后解锁**免费使用**。\n\n **提问：** 为什么无法使用？\n **回答：** 可能是当前用户量太大，导致后台暂无可用资源，稍等片刻即可 \n\n 常见问题与使用说明点击查看👉 **[Aivesa产品简介](https://sourl.cn/uTB6WS)** \n\n卡顿或无响应？ [👉点这里获得独立账号 KEY 使用](https://sourl.cn/38eM4A)\n\n需要GPT-4？ [👉点这里使用登录版本](https://a01.aivesa.site/)\n\n欢迎来聊聊 🐧 [QQ频道](https://sourl.cn/XFbJKM) 或 🚀 [TG群组](https://t.me/+gJ-GQFE1GN40NGJl)\n\n 已补充额度并更新版本，更新时间：2023.08.15 14:00",
   },
   Auth: {
     Title: "需要密码",
@@ -213,7 +213,7 @@ const cn = {
     Token: {
       Title: "API Key",
       SubTitle: "使用自己的 Key 可绕过密码访问限制",
-      Placeholder: "OpenAI API Key",
+      Placeholder: "sk-xxxxx",
     },
 
     Usage: {
@@ -237,7 +237,7 @@ const cn = {
     },
     AccessCode: {
       Title: "访问密码",
-      SubTitle: "管理员已开启加密访问",
+      SubTitle: "到公众号：Aivesa 回复【密码】获取",
       Placeholder: "请输入访问密码",
     },
     Endpoint: {
@@ -294,7 +294,7 @@ const cn = {
     Revert: "恢复上下文",
   },
   Plugin: {
-    Name: "插件",
+    Name: "关于",
   },
   Mask: {
     Name: "面具",

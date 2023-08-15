@@ -123,7 +123,7 @@ const tw: PartialLocaleType = {
     Token: {
       Title: "API Key",
       SubTitle: "使用自己的 Key 可規避授權存取限制",
-      Placeholder: "OpenAI API Key",
+      Placeholder: "sk-xxxxx",
     },
     Usage: {
       Title: "帳戶餘額",
@@ -189,7 +189,7 @@ const tw: PartialLocaleType = {
     Edit: "前置上下文和歷史記憶",
     Add: "新增一條",
   },
-  Plugin: { Name: "插件" },
+  Plugin: { Name: "关于" },
   Mask: {
     Name: "面具",
     Page: {

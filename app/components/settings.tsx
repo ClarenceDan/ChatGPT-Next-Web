@@ -244,6 +244,7 @@ function DangerItems() {
 
 
 export function Settings() {
+  const chatStore = useChatStore();
   const navigate = useNavigate();
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const config = useAppConfig();

@@ -216,7 +216,7 @@ const en: LocaleType = {
     Token: {
       Title: "API Key",
       SubTitle: "Use your key to ignore access code limit",
-      Placeholder: "OpenAI API Key",
+      Placeholder: "sk-xxxxx",
     },
     Usage: {
       Title: "Account Balance",
@@ -300,7 +300,7 @@ const en: LocaleType = {
     Revert: "Revert",
   },
   Plugin: {
-    Name: "Plugin",
+    Name: "About",
   },
   Mask: {
     Name: "Mask",
