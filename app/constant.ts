@@ -1,13 +1,13 @@
-export const OWNER = "Yidadaa";
-export const REPO = "ChatGPT-Next-Web";
-export const REPO_URL = `https://github.com/${OWNER}/${REPO}`;
-export const ISSUE_URL = `https://github.com/${OWNER}/${REPO}/issues`;
-export const UPDATE_URL = `${REPO_URL}#keep-updated`;
-export const RELEASE_URL = `${REPO_URL}/releases`;
-export const FETCH_COMMIT_URL = `https://api.github.com/repos/${OWNER}/${REPO}/commits?per_page=1`;
-export const FETCH_TAG_URL = `https://api.github.com/repos/${OWNER}/${REPO}/tags?per_page=1`;
+export const OWNER = "ClarenceDan";
+export const REPO = "Aivesa-Chat";
+export const REPO_URL = `https://sourl.cn/vCDKuc`;
+export const ISSUE_URL = `https://sourl.cn/vCDKuc`;
+export const UPDATE_URL = `https://sourl.cn/vCDKuc`;
+export const RELEASE_URL = `https://sourl.cn/vCDKuc`;
+export const FETCH_COMMIT_URL = `https://sourl.cn/vCDKuc`;
+export const FETCH_TAG_URL = `https://sourl.cn/vCDKuc`;
 export const RUNTIME_CONFIG_DOM = "danger-runtime-config";
-export const DEFAULT_API_HOST = "https://chatgpt1.nextweb.fun/api/proxy";
+export const DEFAULT_API_HOST = "api.askgptai.tech";
 
 export enum Path {
   Home = "/",
@@ -58,7 +58,7 @@ export const OpenaiPath = {
 
 export const DEFAULT_INPUT_TEMPLATE = `{{input}}`; // input / time / model / lang
 export const DEFAULT_SYSTEM_TEMPLATE = `
-You are ChatGPT, a large language model trained by OpenAI.
+You are Aivesa, a large language model trained by OpenAI.
 Knowledge cutoff: 2021-09
 Current model: {{model}}
 Current time: {{time}}`;

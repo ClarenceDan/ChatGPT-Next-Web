@@ -1,7 +1,10 @@
 {
-  "name": "chatgpt-next-web",
+  "name": "aivesa-chat",
+  "version":"2.9.3",
+  "description":"Chat with your own AI assistant",
+  "author":"ClarenceDan",
   "private": false,
-  "license": "mit",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "cross-env BUILD_MODE=standalone next build",

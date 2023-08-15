@@ -105,6 +105,7 @@ interface ChatStore {
   getMemoryPrompt: () => ChatMessage;
 
   clearAllData: () => void;
+  clearHistory: () => void;
 }
 
 function countMessages(msgs: ChatMessage[]) {
@@ -385,7 +386,7 @@ export const useChatStore = create<ChatStore>()(
         // in-context prompts
         const contextPrompts = session.mask.context.slice();
 
-        // system prompts, to get close to OpenAI Web ChatGPT
+        // system prompts, to get close to OpenAI Web Aivesa
         const shouldInjectSystemPrompts = modelConfig.enableInjectSystemPrompts;
         const systemPrompts = shouldInjectSystemPrompts
           ? [
@@ -423,7 +424,7 @@ export const useChatStore = create<ChatStore>()(
         );
 
         // lets concat send messages, including 4 parts:
-        // 0. system prompt: to get close to OpenAI Web ChatGPT
+        // 0. system prompt: to get close to OpenAI Web Aivesa
         // 1. long term memory: summarized memory messages
         // 2. pre-defined in-context prompts
         // 3. short term memory: latest n messages
@@ -464,7 +465,7 @@ export const useChatStore = create<ChatStore>()(
         messageIndex: number,
         updater: (message?: ChatMessage) => void,
       ) {
-        const sessions = get().sessions;
+        const sessions = [...get().sessions]; // Create a new session to refresh sessions.
         const session = sessions.at(sessionIndex);
         const messages = session?.messages;
         updater(messages?.at(messageIndex));
@@ -583,6 +584,12 @@ export const useChatStore = create<ChatStore>()(
         updater(sessions[index]);
         set(() => ({ sessions }));
       },
+
+      clearHistory() {
+        localStorage.removeItem(StoreKey.Chat);
+        location.reload();
+      },
+
 
       clearAllData() {
         localStorage.clear();

@@ -82,7 +82,7 @@ const en: LocaleType = {
     Copy: "Copy All",
     Download: "Download",
     MessageFromYou: "Message From You",
-    MessageFromChatGPT: "Message From ChatGPT",
+    MessageFromAivesa: "Message From Aivesa",
     Share: "Share to ShareGPT",
     Format: {
       Title: "Export Format",
@@ -226,6 +226,17 @@ const en: LocaleType = {
       IsChecking: "Checking...",
       Check: "Check",
       NoAccess: "Enter API Key to check balance",
+    },
+    ChatHistory: {
+      Title: "Chat History",
+      SubTitle: "Clear, import & export chat history (JSON)",
+      Clear: "Clear",
+      ClearConfirm: "Confirm to delete all chat history?",
+      Import: "Import",
+      ImportConfirm:
+        "Confirm to import and overwrite the existing chat history?",
+      ImportToast: "Chat history imported!",
+      Export: "Export",
     },
     AccessCode: {
       Title: "Access Code",

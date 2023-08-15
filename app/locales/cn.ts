@@ -81,7 +81,7 @@ const cn = {
     Download: "下载文件",
     Share: "分享到 ShareGPT",
     MessageFromYou: "来自你的消息",
-    MessageFromChatGPT: "来自 ChatGPT 的消息",
+    MessageFromAivesa: "来自 Aivesa 的消息",
     Format: {
       Title: "导出格式",
       SubTitle: "可以导出 Markdown 文本或者 PNG 图片",
@@ -148,7 +148,7 @@ const cn = {
     },
     InjectSystemPrompts: {
       Title: "注入系统级提示信息",
-      SubTitle: "强制给每次请求的消息列表开头添加一个模拟 ChatGPT 的系统提示",
+      SubTitle: "强制给每次请求的消息列表开头添加一个模拟 Aivesa 的系统提示",
     },
     InputTemplate: {
       Title: "用户输入预处理",
@@ -224,6 +224,16 @@ const cn = {
       IsChecking: "正在检查…",
       Check: "重新检查",
       NoAccess: "输入 API Key 或访问密码查看余额",
+    },
+    ChatHistory: {
+      Title: "聊天记录",
+      SubTitle: "清空，导入/导出聊天记录（JSON 格式）",
+      Clear: "清空",
+      ClearConfirm: "确认删除所有聊天记录？",
+      Import: "导入",
+      ImportConfirm: "确认导入并覆盖现有的聊天记录吗？",
+      ImportToast: "聊天记录导入成功！",
+      Export: "导出",
     },
     AccessCode: {
       Title: "访问密码",
