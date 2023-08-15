@@ -5,7 +5,7 @@ import styles from "./home.module.scss";
 import { IconButton } from "./button";
 import SettingsIcon from "../icons/settings.svg";
 import QQIcon from "../icons/qq.svg";
-import AivesaIcon from "../icons/Aivesa.svg";
+import AivesaIcon from "../icons/aivesa.svg";
 import AddIcon from "../icons/add.svg";
 import CloseIcon from "../icons/close.svg";
 import MaskIcon from "../icons/mask.svg";
