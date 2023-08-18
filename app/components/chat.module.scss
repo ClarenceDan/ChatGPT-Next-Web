@@ -345,7 +345,6 @@
     justify-content: center;
     opacity: 0;
     transition: all ease 0.3s;
-    top: 0;
 
     button {
       padding: 7px;
@@ -356,7 +355,6 @@
     @supports (-webkit-touch-callout: none) {
       .chat-message-edit {
         top: -10%;
-        padding: 7px
       }
     }
   }
