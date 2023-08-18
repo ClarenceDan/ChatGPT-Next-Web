@@ -52,7 +52,7 @@ export function EmojiAvatar(props: { avatar: string; size?: number }) {
   return (
     <Emoji
       unified={props.avatar}
-      size={props.size ?? 18}
+      size={props.size ?? 22}
       getEmojiUrl={getEmojiUrl}
     />
   );
