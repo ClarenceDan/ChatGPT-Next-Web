@@ -351,6 +351,14 @@
       padding: 7px;
     }
   }
+    /* Specific styles for Safari */
+  @media not all and (min-resolution:.001dpcm) { 
+    @supports (-webkit-appearance:none) {
+      .chat-message-edit {
+        top: -2.5px;
+      }
+    }
+  }
 }
 
 .chat-message-status {
