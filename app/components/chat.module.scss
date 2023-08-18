@@ -355,6 +355,10 @@
   @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 2) {
     .chat-message-edit {
       top: -0.2em;
+
+      button {
+        padding: 6px;
+      }
     }
   }
 }
