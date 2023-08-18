@@ -333,6 +333,7 @@
 
 .chat-message-avatar {
   position: relative;
+  -webkit-transform: translate3d(0, 0, 0);
 
   .chat-message-edit {
     position: absolute;
