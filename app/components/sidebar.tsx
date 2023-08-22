@@ -138,7 +138,7 @@ export function SideBar(props: { className?: string }) {
         <div className={styles["title-container"]}>
           <div className={styles["title-version-container"]}>
             <div className={styles["sidebar-title"]}>Aivesa Chat</div>
-            {!shouldNarrow && <div className={styles["version-pill"]}>2.9.3</div>}
+            {!shouldNarrow && <div className={styles["version-pill"]}>2.9.4</div>}
           </div>
           <div className={styles["sidebar-sub-title"]}>
             Chat with your own AI assistant.

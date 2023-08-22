@@ -809,7 +809,7 @@ function _Chat() {
       (m) => m.id === message.id,
     );
 
-    if (resendingIndex <= 0 || resendingIndex >= session.messages.length) {
+    if (resendingIndex < 0 || resendingIndex >= session.messages.length) {
       console.error("[Chat] failed to find resending message", message);
       return;
     }
@@ -1130,9 +1130,9 @@ function _Chat() {
                               10,
                             );
                             chatStore.updateCurrentSession((session) => {
-                              const m = session.messages.find(
-                                (m) => m.id === message.id,
-                              );
+                              const m = session.mask.context
+                                .concat(session.messages)
+                                .find((m) => m.id === message.id);
                               if (m) {
                                 m.content = newMessage;
                               }
