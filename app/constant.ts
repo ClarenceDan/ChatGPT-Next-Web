@@ -44,6 +44,7 @@ export const NARROW_SIDEBAR_WIDTH = 100;
 export const ACCESS_CODE_PREFIX = "nk-";
 
 export const LAST_INPUT_KEY = "last-input";
+export const UNFINISHED_INPUT = (id: string) => "unfinished-input-" + id;
 
 export const REQUEST_TIMEOUT_MS = 60000;
 
@@ -62,6 +63,8 @@ You are Aivesa, a large language model trained by OpenAI.
 Knowledge cutoff: 2021-09
 Current model: {{model}}
 Current time: {{time}}`;
+
+export const SUMMARIZE_MODEL = "gpt-3.5-turbo";
 
 export const DEFAULT_MODELS = [
   {
