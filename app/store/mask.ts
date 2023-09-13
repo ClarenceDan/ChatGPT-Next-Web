@@ -18,6 +18,7 @@ export type Mask = {
   modelConfig: ModelConfig;
   lang: Lang;
   builtin: boolean;
+  usePlugins?: boolean;
 };
 
 export const DEFAULT_MASK_STATE = {
@@ -36,17 +37,18 @@ type MaskStore = MaskState & {
 
 export const DEFAULT_MASK_AVATAR = "gpt-bot";
 export const createEmptyMask = () =>
-  ({
-    id: nanoid(),
-    avatar: DEFAULT_MASK_AVATAR,
-    name: DEFAULT_TOPIC,
-    context: [],
-    syncGlobalConfig: true, // use global config as default
-    modelConfig: { ...useAppConfig.getState().modelConfig },
-    lang: getLang(),
-    builtin: false,
-    createdAt: Date.now(),
-  } as Mask);
+({
+  id: nanoid(),
+  avatar: DEFAULT_MASK_AVATAR,
+  name: DEFAULT_TOPIC,
+  context: [],
+  syncGlobalConfig: true, // use global config as default
+  modelConfig: { ...useAppConfig.getState().modelConfig },
+  lang: getLang(),
+  builtin: false,
+  createdAt: Date.now(),
+  usePlugins: !/03\d{2}$/.test(useAppConfig.getState().modelConfig.model),
+} as Mask);
 
 export const useMaskStore = create<MaskStore>()(
   persist(
@@ -93,13 +95,13 @@ export const useMaskStore = create<MaskStore>()(
         if (config.hideBuiltinMasks) return userMasks;
         const buildinMasks = BUILTIN_MASKS.map(
           (m) =>
-            ({
-              ...m,
-              modelConfig: {
-                ...config.modelConfig,
-                ...m.modelConfig,
-              },
-            } as Mask),
+          ({
+            ...m,
+            modelConfig: {
+              ...config.modelConfig,
+              ...m.modelConfig,
+            },
+          } as Mask),
         );
         return userMasks.concat(buildinMasks);
       },

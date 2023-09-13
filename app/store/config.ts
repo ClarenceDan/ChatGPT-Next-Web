@@ -51,6 +51,12 @@ export const DEFAULT_CONFIG = {
     enableInjectSystemPrompts: true,
     template: DEFAULT_INPUT_TEMPLATE,
   },
+
+  pluginConfig: {
+    enable: true,
+    maxIterations: 10,
+    returnIntermediateSteps: true,
+  },
 };
 
 export type ChatConfig = typeof DEFAULT_CONFIG;
@@ -63,6 +69,7 @@ export type ChatConfigStore = ChatConfig & {
 };
 
 export type ModelConfig = ChatConfig["modelConfig"];
+export type PluginConfig = ChatConfig["pluginConfig"];
 
 export function limitNumber(
   x: number,
@@ -154,7 +161,7 @@ export const useAppConfig = create<ChatConfigStore>()(
 
         if (version < 3.4) {
           state.modelConfig.sendMemory = true;
-          state.modelConfig.historyMessageCount = 3;
+          state.modelConfig.historyMessageCount = 4;
           state.modelConfig.compressMessageLengthThreshold = 1000;
           state.modelConfig.frequency_penalty = 0;
           state.modelConfig.top_p = 1;

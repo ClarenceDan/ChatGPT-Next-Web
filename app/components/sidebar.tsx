@@ -12,6 +12,7 @@ import MaskIcon from "../icons/mask.svg";
 import PluginIcon from "../icons/plugin.svg";
 import SearchIcon from "../icons/search.svg";
 import DragIcon from "../icons/drag.svg";
+import AboutIcon from "../icons/about.svg";
 
 import Locale from "../locales";
 
@@ -108,6 +109,7 @@ function useDragSideBar() {
 
 export function SideBar(props: { className?: string }) {
   const chatStore = useChatStore();
+  const isMobileScreen = useMobileScreen();
 
   // drag side bar
   const { onDragMouseDown, shouldNarrow, expandSidebar } = useDragSideBar();
@@ -138,7 +140,7 @@ export function SideBar(props: { className?: string }) {
         <div className={styles["title-container"]}>
           <div className={styles["title-version-container"]}>
             <div className={styles["sidebar-title"]}>Aivesa Chat</div>
-            {!shouldNarrow && <div className={styles["version-pill"]}>2.9.5</div>}
+            {(isMobileScreen || (!shouldNarrow && config.sidebarWidth > 260)) && <div className={styles["version-pill"]}>3.0.0</div>}
           </div>
           <div className={styles["sidebar-sub-title"]}>
             Chat with your own AI assistant.
@@ -152,18 +154,27 @@ export function SideBar(props: { className?: string }) {
       <div className={styles["sidebar-header-bar"]}>
         <IconButton
           icon={<MaskIcon />}
-          text={shouldNarrow ? undefined : Locale.Mask.Name}
+          text={shouldNarrow || config.sidebarWidth < 320 ? undefined : Locale.Mask.Name}
           className={styles["sidebar-bar-button"]}
           onClick={() => navigate(Path.NewChat, { state: { fromHome: true } })}
           shadow
         />
         <IconButton
           icon={<PluginIcon />}
-          text={shouldNarrow ? undefined : Locale.Plugin.Name}
+          text={shouldNarrow || config.sidebarWidth < 320 ? undefined : Locale.Plugin.Name}
           className={styles["sidebar-bar-button"]}
-          onClick={() => window.open('https://rptzik3toh.feishu.cn/docx/M34yd0CoSoGHQExQ0f5cgKcCnHb', '_blank')}
+          onClick={() => navigate(Path.Plugins, { state: { fromHome: true } })}
           shadow
         />
+        {shouldNarrow ? null : (
+          <IconButton
+            icon={<AboutIcon />}
+            text={shouldNarrow || config.sidebarWidth < 320 ? undefined : Locale.Auth.About}
+            className={styles["sidebar-bar-button"]}
+            onClick={() => window.open('https://rptzik3toh.feishu.cn/docx/M34yd0CoSoGHQExQ0f5cgKcCnHb', '_blank')}
+            shadow
+          />
+        )}
         {shouldNarrow && (
           <IconButton
             icon={<SearchIcon />}

@@ -42,7 +42,7 @@ import Locale, {
 } from "../locales";
 import { copyToClipboard, downloadAs, readFromFile } from "../utils";
 import Link from "next/link";
-import { Path, UPDATE_URL, StoreKey, FileName } from "../constant";
+import { Path, RELEASE_URL, UPDATE_URL, StoreKey, FileName } from "../constant";
 import { Prompt, SearchService, usePromptStore } from "../store/prompt";
 import { ErrorBoundary } from "./error";
 import { InputRange } from "./input-range";
@@ -50,6 +50,7 @@ import { useNavigate } from "react-router-dom";
 import { Avatar, AvatarPicker } from "./emoji";
 import { getClientConfig } from "../config/client";
 import { nanoid } from "nanoid";
+import { PluginConfigList } from "./plugin-config";
 
 function EditPromptModal(props: { id: string; onClose: () => void }) {
   const promptStore = usePromptStore();
@@ -686,6 +687,17 @@ export function Settings() {
         {shouldShowPromptModal && (
           <UserPromptModal onClose={() => setShowPromptModal(false)} />
         )}
+
+        <List>
+          <PluginConfigList
+            pluginConfig={config.pluginConfig}
+            updateConfig={(updater) => {
+              const pluginConfig = { ...config.pluginConfig };
+              updater(pluginConfig);
+              config.update((config) => (config.pluginConfig = pluginConfig));
+            }}
+          />
+        </List>
 
         <DangerItems />
       </div>
