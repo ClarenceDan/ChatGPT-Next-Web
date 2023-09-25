@@ -17,7 +17,7 @@ export async function requestOpenai(req: NextRequest) {
     "",
   );
 
-  let baseUrl = !authResult.userApiKeyProvided ? USER_BASE_URL : BASE_URL;
+  let baseUrl = authResult.userApiKeyProvided ? USER_BASE_URL : BASE_URL;
 
   if (!baseUrl.startsWith("http")) {
     baseUrl = `${PROTOCOL}://${baseUrl}`;
