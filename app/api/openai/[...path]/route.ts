@@ -51,6 +51,8 @@ async function handle(
       status: 401,
     });
   }
+  // 使用 authResult.userApiKeyProvided 判断用户是否提供了 API key
+  console.log('User provided API key:', authResult.userApiKeyProvided);
 
   try {
     const response = await requestOpenai(req);
