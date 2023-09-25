@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { DEFAULT_API_HOST, DEFAULT_MODELS, StoreKey } from "../constant";
+import { DEFAULT_API_HOST, USER_API_HOST, DEFAULT_MODELS, StoreKey } from "../constant";
 import { getHeaders } from "../client/api";
 import { BOT_HELLO } from "./chat";
 import { getClientConfig } from "../config/client";
@@ -50,11 +50,16 @@ export const useAccessStore = create<AccessControlStore>()(
       updateCode(code: string) {
         set(() => ({ accessCode: code?.trim() }));
       },
-      updateToken(token: string) {
-        set(() => ({ token: token?.trim() }));
-      },
       updateOpenAiUrl(url: string) {
         set(() => ({ openaiUrl: url?.trim() }));
+      },
+      updateToken(token: string) {
+        set((state) => {
+          if (!state.updateOpenAiUrl) {
+            set(() => ({ openaiUrl: USER_API_HOST }));
+          }
+          return { token: token?.trim() }
+        });
       },
       isAuthorized() {
         get().fetch();
