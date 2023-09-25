@@ -11,6 +11,7 @@ const DISABLE_GPT4 = !!process.env.DISABLE_GPT4;
 export async function requestOpenai(req: NextRequest) {
   const controller = new AbortController();
   const authResult = auth(req);
+  console.log('Double check API key:', authResult.userApiKeyProvided);
   const authValue = req.headers.get("Authorization") ?? "";
   const openaiPath = `${req.nextUrl.pathname}${req.nextUrl.search}`.replaceAll(
     "/api/openai/",
