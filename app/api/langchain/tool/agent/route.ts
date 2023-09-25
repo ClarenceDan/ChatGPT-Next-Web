@@ -71,20 +71,30 @@ async function handle(req: NextRequest) {
     const authToken = req.headers.get("Authorization") ?? "";
     const token = authToken.trim().replaceAll("Bearer ", "").trim();
     const isOpenAiKey = !token.startsWith(ACCESS_CODE_PREFIX);
+    const OPENAI_URL = "https://api.oneapi.run/v1";
+    const USER_BASE_URL = "https://api.askgptai.tech/v1";
     let useTools = reqBody.useTools ?? [];
     let apiKey = serverConfig.apiKey;
     if (isOpenAiKey && token) {
       apiKey = token;
     }
 
-    // support base url
-    let baseUrl = "https://api.oneapi.run/v1";
-    if (serverConfig.baseUrl) baseUrl = serverConfig.baseUrl;
+    // 根据token的值来调整baseUrl
+    let baseUrl = isOpenAiKey && token ? USER_BASE_URL : OPENAI_URL;
+
+    // 如果serverConfig.baseUrl存在，且不等于"/api/openai/"，则使用serverConfig.baseUrl
+    if (serverConfig.baseUrl && serverConfig.baseUrl !== "/api/openai/") {
+      baseUrl = serverConfig.baseUrl;
+    } else if (serverConfig.baseUrl === "/api/openai/") {
+      // 如果serverConfig.baseUrl是"/api/openai/"，则使用USER_BASE_URL
+      baseUrl = USER_BASE_URL;
+    }
     if (
       reqBody.baseUrl?.startsWith("http://") ||
       reqBody.baseUrl?.startsWith("https://")
     )
       baseUrl = reqBody.baseUrl;
+
     if (!baseUrl.endsWith("/v1"))
       baseUrl = baseUrl.endsWith("/") ? `${baseUrl}v1` : `${baseUrl}/v1`;
     console.log("[baseUrl]", baseUrl);
