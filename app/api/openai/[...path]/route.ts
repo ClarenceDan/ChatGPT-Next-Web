@@ -55,7 +55,7 @@ async function handle(
   console.log('User provided API key:', authResult.userApiKeyProvided);
 
   try {
-    const response = await requestOpenai(req);
+    const response = await requestOpenai(req, authResult.userApiKeyProvided);
 
     // list models
     if (subpath === OpenaiPath.ListModelPath && response.status === 200) {
