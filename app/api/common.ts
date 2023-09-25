@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export const OPENAI_URL = "api.askgptai.tech";
+export const OPENAI_URL = "api.oneapi.run";
 const DEFAULT_PROTOCOL = "https";
 const PROTOCOL = process.env.PROTOCOL || DEFAULT_PROTOCOL;
 const BASE_URL = process.env.BASE_URL || OPENAI_URL;

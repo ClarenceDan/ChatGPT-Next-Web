@@ -78,7 +78,7 @@ async function handle(req: NextRequest) {
     }
 
     // support base url
-    let baseUrl = "https://api.openai.com/v1";
+    let baseUrl = "https://api.oneapi.run/v1";
     if (serverConfig.baseUrl) baseUrl = serverConfig.baseUrl;
     if (
       reqBody.baseUrl?.startsWith("http://") ||

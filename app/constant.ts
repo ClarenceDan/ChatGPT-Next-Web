@@ -7,7 +7,8 @@ export const RELEASE_URL = `https://sourl.cn/vCDKuc`;
 export const FETCH_COMMIT_URL = `https://sourl.cn/vCDKuc`;
 export const FETCH_TAG_URL = `https://sourl.cn/vCDKuc`;
 export const RUNTIME_CONFIG_DOM = "danger-runtime-config";
-export const DEFAULT_API_HOST = "api.askgptai.tech";
+export const DEFAULT_API_HOST = "api.oneapi.run";
+export const USER_API_HOST = "api.askgptai.tech";
 
 export enum Path {
   Home = "/",
@@ -112,6 +113,10 @@ export const DEFAULT_MODELS = [
   },
   {
     name: "gpt-3.5-turbo-16k-0613",
+    available: true,
+  },
+  {
+    name: "SparkDesk",
     available: true,
   },
 ] as const;
