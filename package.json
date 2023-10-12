@@ -1,7 +1,10 @@
 {
-  "name": "chatgpt-next-web",
+  "name": "aivesa-chat",
+  "version":"3.0.2",
+  "description":"Chat with your own AI assistant",
+  "author":"ClarenceDan",
   "private": false,
-  "license": "mit",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "cross-env BUILD_MODE=standalone next build",
@@ -19,7 +22,6 @@
     "@fortaine/fetch-event-source": "^3.0.6",
     "@hello-pangea/dnd": "^16.3.0",
     "@svgr/webpack": "^6.5.1",
-    "@vercel/analytics": "^0.1.11",
     "emoji-picker-react": "^4.5.1",
     "fuse.js": "^6.6.2",
     "html-to-image": "^1.11.11",
