@@ -693,6 +693,12 @@ export const useChatStore = createPersistStore(
         set(() => ({ sessions }));
       },
 
+      clearHistory() {
+        localStorage.removeItem(StoreKey.Chat);
+        location.reload();
+      },
+
+
       clearAllData() {
         localStorage.clear();
         location.reload();
