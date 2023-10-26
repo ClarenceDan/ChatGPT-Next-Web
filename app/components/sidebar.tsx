@@ -4,8 +4,8 @@ import styles from "./home.module.scss";
 
 import { IconButton } from "./button";
 import SettingsIcon from "../icons/settings.svg";
-import GithubIcon from "../icons/github.svg";
-import ChatGptIcon from "../icons/chatgpt.svg";
+import QQIcon from "../icons/qq.svg";
+import AivesaIcon from "../icons/aivesa.svg";
 import AddIcon from "../icons/add.svg";
 import CloseIcon from "../icons/close.svg";
 import MaskIcon from "../icons/mask.svg";
@@ -129,6 +129,7 @@ function useDragSideBar() {
 
 export function SideBar(props: { className?: string }) {
   const chatStore = useChatStore();
+  const isMobileScreen = useMobileScreen();
 
   // drag side bar
   const { onDragStart, shouldNarrow } = useDragSideBar();
@@ -139,26 +140,28 @@ export function SideBar(props: { className?: string }) {
 
   return (
     <div
-      className={`${styles.sidebar} ${props.className} ${
-        shouldNarrow && styles["narrow-sidebar"]
-      }`}
+      className={`${styles.sidebar} ${props.className} ${shouldNarrow && styles["narrow-sidebar"]
+        }`}
     >
       <div className={styles["sidebar-header"]} data-tauri-drag-region>
-        <div className={styles["sidebar-title"]} data-tauri-drag-region>
-          ChatGPT Next
-        </div>
-        <div className={styles["sidebar-sub-title"]}>
-          Build your own AI assistant.
+        <div className={styles["title-container"]}>
+          <div className={styles["title-version-container"]}>
+            <div className={styles["sidebar-title"]} data-tauri-drag-region>Aivesa Chat</div>
+            {(isMobileScreen || (!shouldNarrow && config.sidebarWidth > 260)) && <div className={styles["version-pill"]}>3.1.0</div>}
+          </div>
+          <div className={styles["sidebar-sub-title"]}>
+            Chat with your own AI assistant.
+          </div>
         </div>
         <div className={styles["sidebar-logo"] + " no-dark"}>
-          <ChatGptIcon />
+          <AivesaIcon />
         </div>
       </div>
 
       <div className={styles["sidebar-header-bar"]}>
         <IconButton
           icon={<MaskIcon />}
-          text={shouldNarrow ? undefined : Locale.Mask.Name}
+          text={shouldNarrow || config.sidebarWidth < 320 ? undefined : Locale.Mask.Name}
           className={styles["sidebar-bar-button"]}
           onClick={() => {
             if (config.dontShowMaskSplashScreen !== true) {
@@ -171,11 +174,34 @@ export function SideBar(props: { className?: string }) {
         />
         <IconButton
           icon={<PluginIcon />}
-          text={shouldNarrow ? undefined : Locale.Plugin.Name}
+          text={shouldNarrow || config.sidebarWidth < 320 ? undefined : Locale.Plugin.Name}
           className={styles["sidebar-bar-button"]}
-          onClick={() => showToast(Locale.WIP)}
+          onClick={() => navigate(Path.Plugins, { state: { fromHome: true } })}
           shadow
         />
+        {shouldNarrow ? null : (
+          <IconButton
+            icon={<AboutIcon />}
+            text={shouldNarrow || config.sidebarWidth < 320 ? undefined : Locale.Auth.About}
+            className={styles["sidebar-bar-button"]}
+            onClick={() => window.open('https://rptzik3toh.feishu.cn/docx/M34yd0CoSoGHQExQ0f5cgKcCnHb', '_blank')}
+            shadow
+          />
+        )}
+        {shouldNarrow && (
+          <IconButton
+            icon={<SearchIcon />}
+            className={styles["sidebar-bar-button"]}
+            onClick={() => {
+              expandSidebar();
+              // use setTimeout to avoid the input element not ready
+              setTimeout(() => {
+                searchBarRef.current?.inputElement?.focus();
+              }, 0);
+            }}
+            shadow
+          />
+        )}
       </div>
 
       <div
@@ -208,7 +234,7 @@ export function SideBar(props: { className?: string }) {
           </div>
           <div className={styles["sidebar-action"]}>
             <a href={REPO_URL} target="_blank" rel="noopener noreferrer">
-              <IconButton icon={<GithubIcon />} shadow />
+              <IconButton icon={<QQIcon />} shadow />
             </a>
           </div>
         </div>

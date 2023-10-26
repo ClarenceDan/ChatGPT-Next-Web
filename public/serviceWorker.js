@@ -1,4 +1,4 @@
-const CHATGPT_NEXT_WEB_CACHE = "chatgpt-next-web-cache";
+const AIVESA_CHAT_CACHE = "aivesa-chat-cache";
 
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/7.0.0/workbox-sw.js');
 
@@ -16,6 +16,6 @@ self.addEventListener("message", (event) => {
 workbox.routing.registerRoute(
   new RegExp('/*'),
   new workbox.strategies.StaleWhileRevalidate({
-    cacheName: CHATGPT_NEXT_WEB_CACHE
+    cacheName: AIVESA_CHAT_CACHE
   })
 );

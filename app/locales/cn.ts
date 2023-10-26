@@ -8,7 +8,7 @@ const cn = {
   Error: {
     Unauthorized: isApp
       ? "检测到无效 API Key，请前往[设置](/#/settings)页检查 API Key 是否配置正确。"
-      : "访问密码不正确或为空，请前往[登录](/#/auth)页输入正确的访问密码，或者在[设置](/#/settings)页填入你自己的 OpenAI API Key。",
+      : "前往公众号：**[Aivesa](https://sourl.cn/9mwPzL)** 回复 **密码** 免费获取密码，然后👉 **[点击这里](/#/auth)** 输入密码后解锁**免费使用**。\n\n **提问：** 为什么无法使用？\n **回答：** 可能是当前用户量太大，导致后台暂无可用资源，稍等片刻即可 \n\n 常见问题与使用说明点击查看👉 **[Aivesa产品简介](https://sourl.cn/uTB6WS)** \n\n卡顿或无响应？ [👉点这里获得独立账号 KEY 使用](https://sourl.cn/38eM4A)\n\n需要GPT-4？ [👉点这里使用登录版本](https://a02.aivesa.site/)\n\n欢迎来聊聊 🐧 [QQ频道](https://sourl.cn/XFbJKM) 或 🚀 [TG群组](https://t.me/+gJ-GQFE1GN40NGJl)\n\n 已补充额度并更新版本，更新时间：2023.09.13 15:30",
   },
   Auth: {
     Title: "需要密码",
@@ -63,6 +63,8 @@ const cn = {
       Masks: "所有面具",
       Clear: "清除聊天",
       Settings: "对话设置",
+      EnablePlugins: "开启插件",
+      DisablePlugins: "关闭插件",
     },
     Rename: "重命名对话",
     Typing: "正在输入…",
@@ -86,7 +88,7 @@ const cn = {
     Download: "下载文件",
     Share: "分享到 ShareGPT",
     MessageFromYou: "来自你的消息",
-    MessageFromChatGPT: "来自 ChatGPT 的消息",
+    MessageFromAivesa: "来自 Aivesa 的消息",
     Format: {
       Title: "导出格式",
       SubTitle: "可以导出 Markdown 文本或者 PNG 图片",
@@ -153,7 +155,7 @@ const cn = {
     },
     InjectSystemPrompts: {
       Title: "注入系统级提示信息",
-      SubTitle: "强制给每次请求的消息列表开头添加一个模拟 ChatGPT 的系统提示",
+      SubTitle: "强制给每次请求的消息列表开头添加一个模拟 Aivesa 的系统提示",
     },
     InputTemplate: {
       Title: "用户输入预处理",
@@ -261,7 +263,7 @@ const cn = {
     Token: {
       Title: "API Key",
       SubTitle: "使用自己的 Key 可绕过密码访问限制",
-      Placeholder: "OpenAI API Key",
+      Placeholder: "sk-xxxxx",
     },
 
     Usage: {
@@ -275,7 +277,7 @@ const cn = {
     },
     AccessCode: {
       Title: "访问密码",
-      SubTitle: "管理员已开启加密访问",
+      SubTitle: "到公众号：Aivesa 回复【密码】获取",
       Placeholder: "请输入访问密码",
     },
     Endpoint: {
@@ -307,6 +309,20 @@ const cn = {
       Title: "频率惩罚度 (frequency_penalty)",
       SubTitle: "值越大，越有可能降低重复字词",
     },
+    Plugin: {
+      Enable: {
+        Title: "启用插件",
+        SubTitle: "启用插件调用功能",
+      },
+      MaxIteration: {
+        Title: "最大迭代数",
+        SubTitle: "插件调用最大迭代数",
+      },
+      ReturnIntermediateStep: {
+        Title: "返回中间步骤",
+        SubTitle: "是否返回插件调用的中间步骤",
+      },
+    },
   },
   Store: {
     DefaultTopic: "新的聊天",
@@ -337,6 +353,24 @@ const cn = {
   },
   Plugin: {
     Name: "插件",
+    Page: {
+      Title: "预设插件",
+      SubTitle: (count: number) => `${count} 个预设插件`,
+      Search: "搜索插件",
+      Create: "新建",
+    },
+    Item: {
+      View: "查看",
+      Edit: "编辑",
+      Delete: "删除",
+      DeleteConfirm: "确认删除？",
+    },
+    EditModal: {
+      Title: (readonly: boolean) =>
+        `编辑预设插件 ${readonly ? "（只读）" : ""}`,
+      Download: "下载预设",
+      Clone: "克隆预设",
+    },
   },
   FineTuned: {
     Sysmessage: "你是一个助手",

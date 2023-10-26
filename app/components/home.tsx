@@ -55,6 +55,10 @@ const MaskPage = dynamic(async () => (await import("./mask")).MaskPage, {
   loading: () => <Loading noLogo />,
 });
 
+const Plugins = dynamic(async () => (await import("./plugin")).PluginPage, {
+  loading: () => <Loading noLogo />,
+});
+
 export function useSwitchTheme() {
   const config = useAppConfig();
 
@@ -107,20 +111,6 @@ const useHasHydrated = () => {
   return hasHydrated;
 };
 
-const loadAsyncGoogleFont = () => {
-  const linkEl = document.createElement("link");
-  const proxyFontUrl = "/google-fonts";
-  const remoteFontUrl = "https://fonts.googleapis.com";
-  const googleFontUrl =
-    getClientConfig()?.buildMode === "export" ? remoteFontUrl : proxyFontUrl;
-  linkEl.rel = "stylesheet";
-  linkEl.href =
-    googleFontUrl +
-    "/css2?family=" +
-    encodeURIComponent("Noto Sans:wght@300;400;700;900") +
-    "&display=swap";
-  document.head.appendChild(linkEl);
-};
 
 function Screen() {
   const config = useAppConfig();
@@ -130,17 +120,12 @@ function Screen() {
   const isMobileScreen = useMobileScreen();
   const shouldTightBorder = getClientConfig()?.isApp || (config.tightBorder && !isMobileScreen);
 
-  useEffect(() => {
-    loadAsyncGoogleFont();
-  }, []);
 
   return (
     <div
       className={
         styles.container +
-        ` ${shouldTightBorder ? styles["tight-container"] : styles.container} ${
-          getLang() === "ar" ? styles["rtl-screen"] : ""
-        }`
+        ` ${shouldTightBorder ? styles["tight-container"] : styles.container} `
       }
     >
       {isAuth ? (
@@ -156,6 +141,7 @@ function Screen() {
               <Route path={Path.Home} element={<Chat />} />
               <Route path={Path.NewChat} element={<NewChat />} />
               <Route path={Path.Masks} element={<MaskPage />} />
+              <Route path={Path.Plugins} element={<Plugins />} />
               <Route path={Path.Chat} element={<Chat />} />
               <Route path={Path.Settings} element={<Settings />} />
             </Routes>

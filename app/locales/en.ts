@@ -65,6 +65,8 @@ const en: LocaleType = {
       Masks: "Masks",
       Clear: "Clear Context",
       Settings: "Settings",
+      EnablePlugins: "Enable Plugins",
+      DisablePlugins: "Disable Plugins",
     },
     Rename: "Rename Chat",
     Typing: "Typing…",
@@ -87,7 +89,7 @@ const en: LocaleType = {
     Copy: "Copy All",
     Download: "Download",
     MessageFromYou: "Message From You",
-    MessageFromChatGPT: "Message From ChatGPT",
+    MessageFromAivesa: "Message From Aivesa",
     Share: "Share to ShareGPT",
     Format: {
       Title: "Export Format",
@@ -265,7 +267,7 @@ const en: LocaleType = {
     Token: {
       Title: "API Key",
       SubTitle: "Use your key to ignore access code limit",
-      Placeholder: "OpenAI API Key",
+      Placeholder: "sk-xxxxx",
     },
     Usage: {
       Title: "Account Balance",
@@ -312,6 +314,20 @@ const en: LocaleType = {
       SubTitle:
         "A larger value decreasing the likelihood to repeat the same line",
     },
+    Plugin: {
+      Enable: {
+        Title: "Enable Plugin",
+        SubTitle: "Enable plugin invocation",
+      },
+      MaxIteration: {
+        Title: "Max Iterations",
+        SubTitle: "Max of plugin iterations",
+      },
+      ReturnIntermediateStep: {
+        Title: "Return Intermediate Steps",
+        SubTitle: "Return Intermediate Steps",
+      },
+    },
   },
   Store: {
     DefaultTopic: "New Conversation",
@@ -343,6 +359,24 @@ const en: LocaleType = {
   },
   Plugin: {
     Name: "Plugin",
+    Page: {
+      Title: "Plugin Template",
+      SubTitle: (count: number) => `${count} plugin templates`,
+      Search: "Search Templates",
+      Create: "Create",
+    },
+    Item: {
+      View: "View",
+      Edit: "Edit",
+      Delete: "Delete",
+      DeleteConfirm: "Confirm to delete?",
+    },
+    EditModal: {
+      Title: (readonly: boolean) =>
+        `Edit Plugin Template ${readonly ? "(readonly)" : ""}`,
+      Download: "Download",
+      Clone: "Clone",
+    },
   },
   FineTuned: {
     Sysmessage: "You are an assistant that",
@@ -395,7 +429,7 @@ const en: LocaleType = {
     SubTitle: "Chat with the Soul behind the Mask",
     More: "Find More",
     NotShow: "Never Show Again",
-    ConfirmNoShow: "Confirm to disable？You can enable it in settings later.",
+    ConfirmNoShow: "Confirm to disable? You can enable it in settings later.",
   },
 
   UI: {
@@ -417,7 +451,7 @@ const en: LocaleType = {
   },
 
   URLCommand: {
-    Code: "Detected access code from url, confirm to apply? ",
+    Code: "Detected access code from url, confirm to apply?",
     Settings: "Detected settings from url, confirm to apply?",
   },
 };
