@@ -29,8 +29,7 @@ import {
   Select,
   showToast,
   showConfirm,
-  showToast,
-} from "./ui-lib";
+  } from "./ui-lib";
 import { ModelConfigList } from "./model-config";
 
 import { IconButton } from "./button";
