@@ -6,6 +6,14 @@ const tw: PartialLocaleType = {
   Error: {
     Unauthorized: "目前您的狀態是未授權，請前往[設定頁面](/#/auth)輸入授權碼。",
   },
+  Auth: {
+    About: "關於",
+    Title: "需要密碼",
+    Tips: "管理員開啟了密碼驗證，請在下方填入訪問碼",
+    Input: "在此處填寫訪問碼",
+    Confirm: "確認",
+    Later: "稍後再說",
+  },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} 則對話`,
   },
