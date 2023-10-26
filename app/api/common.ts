@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { auth } from "./auth";
 
 export const OPENAI_URL = "api.oneapi.run";
 export const USER_BASE_URL = "api.askgptai.tech";
@@ -9,13 +10,14 @@ const DISABLE_GPT4 = !!process.env.DISABLE_GPT4;
 
 export async function requestOpenai(req: NextRequest) {
   const controller = new AbortController();
+  const authResult = auth(req);
   const authValue = req.headers.get("Authorization") ?? "";
   const openaiPath = `${req.nextUrl.pathname}${req.nextUrl.search}`.replaceAll(
     "/api/openai/",
     "",
   );
 
-  let baseUrl = BASE_URL;
+  let baseUrl = authResult.error ? BASE_URL : USER_BASE_URL;
 
   if (!baseUrl.startsWith("http")) {
     baseUrl = `${PROTOCOL}://${baseUrl}`;
