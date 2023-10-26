@@ -687,7 +687,7 @@ export const useChatStore = createPersistStore(
       },
 
       updateCurrentSession(updater: (session: ChatSession) => void) {
-        const sessions = get().sessions;
+        const sessions = [...get().sessions]; // Create a new session to refresh sessions.
         const index = get().currentSessionIndex;
         updater(sessions[index]);
         set(() => ({ sessions }));

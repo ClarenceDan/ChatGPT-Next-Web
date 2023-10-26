@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
 
 import styles from "./home.module.scss";
 
@@ -10,7 +10,9 @@ import AddIcon from "../icons/add.svg";
 import CloseIcon from "../icons/close.svg";
 import MaskIcon from "../icons/mask.svg";
 import PluginIcon from "../icons/plugin.svg";
+import SearchIcon from "../icons/search.svg";
 import DragIcon from "../icons/drag.svg";
+import AboutIcon from "../icons/about.svg";
 
 import Locale from "../locales";
 
@@ -29,6 +31,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useMobileScreen } from "../utils";
 import dynamic from "next/dynamic";
 import { showConfirm, showToast } from "./ui-lib";
+import { SearchBar, SearchInputRef } from "@/app/components/search-bar";
 
 const ChatList = dynamic(async () => (await import("./chat-list")).ChatList, {
   loading: () => null,
@@ -109,6 +112,9 @@ function useDragSideBar() {
     window.addEventListener("pointerup", handleDragEnd);
   };
 
+  const expandSidebar = () => {
+    config.update((config) => (config.sidebarWidth = MAX_SIDEBAR_WIDTH));
+  };
   const isMobileScreen = useMobileScreen();
   const shouldNarrow =
     !isMobileScreen && config.sidebarWidth < MIN_SIDEBAR_WIDTH;
@@ -124,6 +130,7 @@ function useDragSideBar() {
   return {
     onDragStart,
     shouldNarrow,
+    expandSidebar,
   };
 }
 
@@ -132,9 +139,22 @@ export function SideBar(props: { className?: string }) {
   const isMobileScreen = useMobileScreen();
 
   // drag side bar
-  const { onDragStart, shouldNarrow } = useDragSideBar();
+  const { onDragStart, shouldNarrow, expandSidebar } = useDragSideBar();
   const navigate = useNavigate();
   const config = useAppConfig();
+
+  // search bar
+  const searchBarRef = useRef<SearchInputRef>(null);
+  const [isSearching, setIsSearching] = useState(false);
+
+  useEffect(() => {
+    if (shouldNarrow) stopSearch();
+  }, [shouldNarrow]);
+
+  const stopSearch = () => {
+    setIsSearching(false);
+    searchBarRef.current?.clearInput();
+  };
 
   useHotKey();
 
@@ -205,15 +225,29 @@ export function SideBar(props: { className?: string }) {
       </div>
 
       <div
-        className={styles["sidebar-body"]}
-        onClick={(e) => {
-          if (e.target === e.currentTarget) {
-            navigate(Path.Home);
-          }
-        }}
+        className={
+          styles["sidebar-search-bar"] +
+          " " +
+          (isSearching ? styles["sidebar-search-bar-isSearching"] : "")
+        }
       >
-        <ChatList narrow={shouldNarrow} />
+        {!shouldNarrow && (
+          <SearchBar ref={searchBarRef} setIsSearching={setIsSearching} />
+        )}
       </div>
+
+      {!isSearching && (
+        <div
+          className={styles["sidebar-body"]}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              navigate(Path.Home);
+            }
+          }}
+        >
+          <ChatList narrow={shouldNarrow} />
+        </div>
+      )}
 
       <div className={styles["sidebar-tail"]}>
         <div className={styles["sidebar-actions"]}>
@@ -249,6 +283,7 @@ export function SideBar(props: { className?: string }) {
               } else {
                 navigate(Path.NewChat);
               }
+              stopSearch();
             }}
             shadow
           />

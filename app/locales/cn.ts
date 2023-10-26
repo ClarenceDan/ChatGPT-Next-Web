@@ -275,6 +275,16 @@ const cn = {
       Check: "重新检查",
       NoAccess: "输入 API Key 或访问密码查看余额",
     },
+ChatHistory: {
+      Title: "聊天记录（旧）",
+      SubTitle: "清空，导入/导出聊天记录（JSON 格式）",
+      Clear: "清空",
+      ClearConfirm: "确认删除所有聊天记录？",
+      Import: "导入",
+      ImportConfirm: "确认导入并覆盖现有的聊天记录吗？",
+      ImportToast: "聊天记录导入成功！",
+      Export: "导出",
+    },
     AccessCode: {
       Title: "访问密码",
       SubTitle: "到公众号：Aivesa 回复【密码】获取",

@@ -27,6 +27,7 @@ import {
   PasswordInput,
   Popover,
   Select,
+  showToast,
   showConfirm,
   showToast,
 } from "./ui-lib";
@@ -37,7 +38,6 @@ import {
   SubmitKey,
   useChatStore,
   Theme,
-  useUpdateStore,
   useAccessStore,
   useAppConfig,
 } from "../store";
@@ -48,9 +48,9 @@ import Locale, {
   changeLang,
   getLang,
 } from "../locales";
-import { copyToClipboard } from "../utils";
+import { copyToClipboard, downloadAs, readFromFile } from "../utils";
 import Link from "next/link";
-import { Path, RELEASE_URL, STORAGE_KEY, UPDATE_URL } from "../constant";
+import { Path, RELEASE_URL, STORAGE_KEY, UPDATE_URL, StoreKey, FileName } from "../constant";
 import { Prompt, SearchService, usePromptStore } from "../store/prompt";
 import { ErrorBoundary } from "./error";
 import { InputRange } from "./input-range";
@@ -254,6 +254,79 @@ function DangerItems() {
     </List>
   );
 }
+
+
+
+function createHistoryFileName() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, '0'); // JS month index starts from 0
+  const day = String(now.getDate()).padStart(2, '0');
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  return `chats-${year}_${month}_${day}-${hours}_${minutes}.json`;
+}
+
+// clear chat history
+const clearHistory = () => {
+  localStorage.removeItem(StoreKey.Chat);
+  location.reload();
+};
+
+// download chat history
+const chatHistory = JSON.parse(localStorage.getItem(StoreKey.Chat) ?? "");
+const downloadHistory = () => {
+  const filename = createHistoryFileName();  // 使用函数生成的文件名替代原来的文件名
+  downloadAs(JSON.stringify(chatHistory), filename);
+};
+
+const importHistory = () => {
+  readFromFile().then((content) => {
+    try {
+      const importedChatHistory = JSON.parse(content);
+      const currentChatHistory = JSON.parse(localStorage.getItem(StoreKey.Chat) || '{"state": {"sessions": []}}');
+      const currentSessions = currentChatHistory.state.sessions;
+
+      // 遍历每个导入的会话
+      for (const importedSession of importedChatHistory.state.sessions) {
+        let isDuplicate = false;
+
+        // 检查导入的会话是否与当前会话重复
+        for (const currentSession of currentSessions) {
+          if (currentSession.id === importedSession.id && currentSession.lastUpdate === importedSession.lastUpdate) {
+            isDuplicate = true;
+            break;
+          }
+        }
+
+        // 如果不是重复的，检查id是否需要调整，然后添加到当前会话
+        if (!isDuplicate) {
+          for (const currentSession of currentSessions) {
+            if (currentSession.id === importedSession.id) {
+              importedSession.id += 0.1; // 在 id 上加一个小数点
+              break;
+            }
+          }
+          // 将导入的会话添加到当前会话列表
+          currentSessions.push(importedSession);
+        }
+      }
+
+      // 保存更新后的聊天历史记录
+      currentChatHistory.state.sessions = currentSessions;
+      localStorage.setItem(StoreKey.Chat, JSON.stringify(currentChatHistory));
+
+      console.log(`[Chat History] Successfully imported!`);
+      showToast(Locale.Settings.ChatHistory.ImportToast);
+      location.reload();
+    } catch (e) {
+      console.error(`[Chat History] Error importing chat history: ${e}`);
+    }
+  });
+};
+
+
+
 
 function CheckButton() {
   const syncStore = useSyncStore();
@@ -487,9 +560,8 @@ function SyncItems() {
           title={Locale.Settings.Sync.CloudState}
           subTitle={
             syncStore.lastProvider
-              ? `${new Date(syncStore.lastSyncTime).toLocaleString()} [${
-                  syncStore.lastProvider
-                }]`
+              ? `${new Date(syncStore.lastSyncTime).toLocaleString()} [${syncStore.lastProvider
+              }]`
               : Locale.Settings.Sync.NotSyncYet
           }
         >
@@ -540,6 +612,38 @@ function SyncItems() {
             />
           </div>
         </ListItem>
+
+        <ListItem
+            title={Locale.Settings.ChatHistory.Title}
+            subTitle={Locale.Settings.ChatHistory.SubTitle}
+          >
+            <div className={"password-input-container"}>
+              <IconButton
+                icon={<ClearIcon />}
+                text={Locale.Settings.ChatHistory.Clear}
+                // onClick={() => clearHistory()}
+                onClick={() => {
+                  if (confirm(Locale.Settings.ChatHistory.ClearConfirm)) {
+                    chatStore.clearHistory();
+                  }
+                }}
+              />
+              <IconButton
+                icon={<UploadIcon />}
+                text={Locale.Settings.ChatHistory.Import}
+                onClick={() => {
+                  if (confirm(Locale.Settings.ChatHistory.ImportConfirm)) {
+                    importHistory();
+                  }
+                }}
+              />
+              <IconButton
+                icon={<DownloadIcon />}
+                text={Locale.Settings.ChatHistory.Export}
+                onClick={downloadHistory}
+              />
+            </div>
+          </ListItem>
       </List>
 
       {showSyncConfigModal && (
@@ -582,6 +686,7 @@ export function Settings() {
 
   const clientConfig = useMemo(() => getClientConfig(), []);
   const showAccessCode = enabledAccessControl && !clientConfig?.isApp;
+
 
   return (
     <ErrorBoundary>
@@ -745,8 +850,8 @@ export function Settings() {
               onChange={(e) =>
                 updateConfig(
                   (config) =>
-                    (config.dontShowMaskSplashScreen =
-                      !e.currentTarget.checked),
+                  (config.dontShowMaskSplashScreen =
+                    !e.currentTarget.checked),
                 )
               }
             ></input>

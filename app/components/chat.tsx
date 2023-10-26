@@ -243,6 +243,7 @@ export function PromptHints(props: {
 }) {
   const noPrompts = props.prompts.length === 0;
   const [selectIndex, setSelectIndex] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
   const selectedRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -263,9 +264,11 @@ export function PromptHints(props: {
           Math.min(props.prompts.length - 1, selectIndex + delta),
         );
         setSelectIndex(nextIndex);
+        setIsScrolling(true);
         selectedRef.current?.scrollIntoView({
           block: "center",
         });
+        setTimeout(() => setIsScrolling(false), 100);
       };
 
       if (e.key === "ArrowUp") {
@@ -298,7 +301,11 @@ export function PromptHints(props: {
           }
           key={prompt.title + i.toString()}
           onClick={() => props.onPromptSelect(prompt)}
-          onMouseEnter={() => setSelectIndex(i)}
+          onMouseEnter={() => {
+            if (!isScrolling) {
+              setSelectIndex(i);
+            }
+          }}
         >
           <div className={styles["hint-title"]}>{prompt.title}</div>
           <div className={styles["hint-content"]}>{prompt.content}</div>
@@ -912,27 +919,27 @@ function _Chat() {
       .concat(
         isLoading
           ? [
-              {
-                ...createMessage({
-                  role: "assistant",
-                  content: "……",
-                }),
-                preview: true,
-              },
-            ]
+            {
+              ...createMessage({
+                role: "assistant",
+                content: "……",
+              }),
+              preview: true,
+            },
+          ]
           : [],
       )
       .concat(
         userInput.length > 0 && config.sendPreviewBubble
           ? [
-              {
-                ...createMessage({
-                  role: "user",
-                  content: userInput,
-                }),
-                preview: true,
-              },
-            ]
+            {
+              ...createMessage({
+                role: "user",
+                content: userInput,
+              }),
+              preview: true,
+            },
+          ]
           : [],
       );
   }, [
@@ -1025,7 +1032,7 @@ function _Chat() {
         if (payload.key || payload.url) {
           showConfirm(
             Locale.URLCommand.Settings +
-              `\n${JSON.stringify(payload, null, 4)}`,
+            `\n${JSON.stringify(payload, null, 4)}`,
           ).then((res) => {
             if (!res) return;
             if (payload.key) {
