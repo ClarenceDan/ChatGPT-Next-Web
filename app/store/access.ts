@@ -32,27 +32,12 @@ export const useAccessStore = createPersistStore(
     updateCode(code: string) {
       set(() => ({ accessCode: code?.trim() }));
     },
+    updateToken(token: string) {
+      set(() => ({ token: token?.trim() }));
+    },
     updateOpenAiUrl(url: string) {
       set(() => ({ openaiUrl: url?.trim() }));
     },
-    updateToken(token: string) {
-      set((state) => {
-        // 更新 token
-        const newToken = token?.trim();
-        
-        // 如果提供了 token，则使用 USER_API_HOST
-        if (newToken) {
-          return {
-            token: newToken,
-            openaiUrl: USER_API_HOST
-          };
-        }
-    
-        // 如果没有提供 token，只更新 token
-        return { token: newToken };
-      });
-    },
-    
     isAuthorized() {
       this.fetch();
 

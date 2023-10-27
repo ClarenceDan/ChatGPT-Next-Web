@@ -84,7 +84,7 @@ async function handle(req: NextRequest) {
     }
 
     // 根据token的值来调整baseUrl
-    let baseUrl = isOpenAiKey && token ? USER_BASE_URL : OPENAI_URL;
+    let baseUrl = authResult.userApiKeyProvided ? USER_BASE_URL : OPENAI_URL;
 
     // 如果serverConfig.baseUrl存在，且不等于"/api/openai/"，则使用serverConfig.baseUrl
     if (serverConfig.baseUrl && serverConfig.baseUrl !== "/api/openai/") {

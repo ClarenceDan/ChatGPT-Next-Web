@@ -32,6 +32,8 @@ export function auth(req: NextRequest) {
 
   const hashedCode = md5.hash(accessCode ?? "").trim();
 
+  let userApiKeyProvided = !!token;
+
   const serverConfig = getServerSideConfig();
   console.log("[Auth] allowed hashed codes: ", [...serverConfig.codes]);
   console.log("[Auth] got access code:", accessCode);
@@ -61,5 +63,6 @@ export function auth(req: NextRequest) {
 
   return {
     error: false,
+    userApiKeyProvided
   };
 }

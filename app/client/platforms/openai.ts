@@ -1,6 +1,5 @@
 import {
   DEFAULT_API_HOST,
-  USER_API_HOST,
   DEFAULT_MODELS,
   OpenaiPath,
   REQUEST_TIMEOUT_MS,
@@ -42,12 +41,6 @@ export class ChatGPTApi implements LLMApi {
     if (openaiUrl.length === 0) {
       const isApp = !!getClientConfig()?.isApp;
       openaiUrl = isApp ? DEFAULT_API_HOST : apiPath;
-    }
-
-    // 如果有 token 和没有 updateOpenAiUrl 方法, 则更新 openaiUrl
-    const { token, updateOpenAiUrl } = useAccessStore.getState();
-    if (token && !updateOpenAiUrl) {
-      openaiUrl = USER_API_HOST;
     }
     
     if (openaiUrl.endsWith("/")) {
