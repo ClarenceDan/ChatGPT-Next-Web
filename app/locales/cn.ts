@@ -15,7 +15,7 @@ const cn = {
   Auth: {
     About: "关于",
     Title: "需要密码",
-    Tips: "为避免滥用，本站当前需要使用密码访问，前往公众号：**[Aivesa](https://sourl.cn/3Gg3kc)** 回复 **密码** 免费获取密码，然后在下方输入密码后解锁**免费使用**。",
+    Tips: "为避免滥用，本站当前需要使用密码访问 \n 前往公众号：**[Aivesa](https://sourl.cn/3Gg3kc)** 回复 **密码** 免费获取密码 \n 然后在下方输入密码后解锁**免费使用**。",
     SubTips: "或者输入你的 OpenAI API 密钥，直接使用即可",
     Input: "在此处填写访问密码",
     Confirm: "确认",
