@@ -1,4 +1,5 @@
 import styles from "./auth.module.scss";
+import ReactMarkdown from 'react-markdown';
 import { IconButton } from "./button";
 
 import { useNavigate } from "react-router-dom";
@@ -9,6 +10,7 @@ import Locale from "../locales";
 import BotIcon from "../icons/bot.svg";
 import { useEffect } from "react";
 import { getClientConfig } from "../config/client";
+
 
 export function AuthPage() {
   const navigate = useNavigate();
@@ -32,7 +34,8 @@ export function AuthPage() {
       </div>
 
       <div className={styles["auth-title"]}>{Locale.Auth.Title}</div>
-      <div className={styles["auth-tips"]}>{Locale.Auth.Tips}</div>
+      <div className={styles["auth-tips"]}><ReactMarkdown>{Locale.Auth.Tips}</ReactMarkdown>
+      </div>
 
       <input
         className={styles["auth-input"]}
