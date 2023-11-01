@@ -15,7 +15,7 @@ export const USER_API_HOST = "api.askgptai.tech";
 // constants.ts
 export const UNAUTHORIZED_TEXT = `
 ### 🍀 欢迎使用 Aivesa Chat
-🚀本站已支持免费 GPT-4，欢迎在设置中切换后体验！\n\n
+🚀本站已支持免费 **GPT-4** 和 **讯飞星火** ，欢迎在设置中切换后体验！\n\n
 前往公众号：**[Aivesa](https://sourl.cn/3Gg3kc)** 回复 **密码** 免费获取密码，然后👉 **[点击这里](/#/auth)** 输入密码后解锁**免费使用**。\n\n 
 ---
 **提问：** 为什么当前无法使用？\n 
@@ -96,30 +96,6 @@ export const SUMMARIZE_MODEL = "gpt-3.5-turbo";
 
 export const DEFAULT_MODELS = [
   {
-    name: "gpt-4",
-    available: true,
-  },
-  {
-    name: "gpt-4-0314",
-    available: true,
-  },
-  {
-    name: "gpt-4-0613",
-    available: true,
-  },
-  {
-    name: "gpt-4-32k",
-    available: true,
-  },
-  {
-    name: "gpt-4-32k-0314",
-    available: true,
-  },
-  {
-    name: "gpt-4-32k-0613",
-    available: true,
-  },
-  {
     name: "gpt-3.5-turbo",
     available: true,
   },
@@ -137,6 +113,22 @@ export const DEFAULT_MODELS = [
   },
   {
     name: "gpt-3.5-turbo-16k-0613",
+    available: true,
+  },
+  {
+    name: "gpt-4",
+    available: true,
+  },
+  {
+    name: "gpt-4-0314",
+    available: true,
+  },
+  {
+    name: "gpt-4-0613",
+    available: true,
+  },
+  {
+    name: "SparkDesk",
     available: true,
   },
 ] as const;
