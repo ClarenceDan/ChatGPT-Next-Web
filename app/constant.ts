@@ -18,8 +18,10 @@ export const UNAUTHORIZED_TEXT = `
 🚀本站已支持免费 **GPT-4** 和 **讯飞星火** ，欢迎在设置中切换后体验！\n\n
 前往公众号：**[Aivesa](https://sourl.cn/3Gg3kc)** 回复 **密码** 免费获取密码，然后👉 **[点击这里](/#/auth)** 输入密码后解锁**免费使用**。\n\n 
 ---
-**提问：** 为什么当前无法使用？\n 
-**回答：** 可能是当前用户量太大，导致后台暂无可用资源\n 
+**提问：** 偶尔无法使用？\n 
+**回答：** 当前模型用量较高，到设置换个模型试试？\n\n
+**提问：** 所有模型均无法使用？\n 
+**回答：** 当日用户量太大资源耗尽，可加群提醒补充额度，或等待额度刷新\n 
 **推荐：** 推荐使用 **[Aivesa Pro](https://aivesa.cn/)**，高速稳定支持绘画 [👉点这里使用 Pro 版本](https://aivesa.cn/) \n\n 
 常见问题与使用说明点击查看👉 **[Aivesa产品简介](https://sourl.cn/uTB6WS)** \n\n
 欢迎来聊聊 🐧 [QQ频道](https://sourl.cn/XFbJKM) 或 🚀 [TG群组](https://t.me/+gJ-GQFE1GN40NGJl)\n\n 
