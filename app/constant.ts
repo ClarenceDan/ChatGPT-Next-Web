@@ -17,7 +17,6 @@ export const UNAUTHORIZED_TEXT = `
 ### 🍀 欢迎使用 Aivesa Chat
 🚀本站已支持免费 **GPT-4** 和 **讯飞星火** ，欢迎在设置中切换后体验！\n\n
 🔥🔥🔥 Alpha内测独享号上架，可免费绘图联网，免费用 GPT-4-32K： **[获得官方账号](https://a01.aivesa.shop/)** \n 
-11月8日 22点起，OpenAI官方全面故障，请暂时切换讯飞星火使用\n\n
 前往公众号：**[Aivesa](https://sourl.cn/3Gg3kc)** 回复 **密码** 免费获取密码，然后👉 **[点击这里](/#/auth)** 输入密码后解锁**免费使用**。\n\n 
 ---
 **提问：** 偶尔无法使用？\n 
@@ -26,8 +25,9 @@ export const UNAUTHORIZED_TEXT = `
 **回答：** 当日用户量太大资源耗尽，可等待额度刷新，或 **[获得官方账号](https://a01.aivesa.shop/)** \n 
 **推荐：** 推荐使用 **[Aivesa Pro](https://aivesa.cn/)**，高速稳定支持绘画 [👉点这里使用 Pro 版本](https://aivesa.cn/) \n\n 
 常见问题与使用说明点击查看👉 **[Aivesa产品简介](https://sourl.cn/uTB6WS)** \n\n
-欢迎来聊聊 🐧 [QQ频道](https://sourl.cn/XFbJKM) 或 🚀 [TG群组](https://t.me/+gJ-GQFE1GN40NGJl)\n\n 
-通知更新时间：2023.11.8 22:00
+防失联请加群 🐧 [QQ频道](https://sourl.cn/XFbJKM) 或 🚀 [TG群组](https://t.me/+gJ-GQFE1GN40NGJl)\n\n 
+推荐给好友？请推荐主站：**[aivesa.cn](https://aivesa.cn)** 落地站随时切换\n\n 
+通知更新时间：2023.11.9 00:00
 `;
 
 
