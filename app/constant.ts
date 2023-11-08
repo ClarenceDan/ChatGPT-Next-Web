@@ -9,8 +9,8 @@ export const FETCH_TAG_URL = `https://sourl.cn/vCDKuc`;
 export const RUNTIME_CONFIG_DOM = "danger-runtime-config";
 
 export const DEFAULT_CORS_HOST = "https://a01.aipua.icu";
-export const DEFAULT_API_HOST = "api.askgptai.tech";
-export const USER_API_HOST = "api.askgptai.tech";
+export const DEFAULT_API_HOST = "api.openai.com";
+export const USER_API_HOST = "api.openai.com";
 
 // constants.ts
 export const UNAUTHORIZED_TEXT = `

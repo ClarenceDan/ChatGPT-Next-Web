@@ -76,7 +76,7 @@ async function handle(req: NextRequest) {
     const token = authToken.trim().replaceAll("Bearer ", "").trim();
     const isOpenAiKey = !token.startsWith(ACCESS_CODE_PREFIX);
     const OPENAI_URL = "https://api.oneapi.run/v1";
-    const USER_BASE_URL = "https://api.askgptai.tech/v1";
+    const USER_BASE_URL = "https://api.openai.com/v1";
     let useTools = reqBody.useTools ?? [];
     let apiKey = serverConfig.apiKey;
     if (isOpenAiKey && token) {
