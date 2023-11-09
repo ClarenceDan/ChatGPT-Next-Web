@@ -16,7 +16,6 @@ export const USER_API_HOST = "api.openai.com";
 export const UNAUTHORIZED_TEXT = `
 ### 🍀 欢迎使用 Aivesa Chat
 🚀本站已支持免费 **GPT-4** 和 **讯飞星火** ，欢迎在设置中切换后体验！\n\n
-🔥🔥🔥 Alpha内测独享号上架，可免费绘图联网，免费用 GPT-4-32K： **[获得官方账号](https://a01.aivesa.shop/)** \n 
 前往公众号：**[Aivesa](https://sourl.cn/3Gg3kc)** 回复 **密码** 免费获取密码，然后👉 **[点击这里](/#/auth)** 输入密码后解锁**免费使用**。\n\n 
 ---
 **提问：** 偶尔无法使用？\n 
