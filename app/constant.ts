@@ -15,13 +15,15 @@ export const USER_API_HOST = "api.openai.com";
 // constants.ts
 export const UNAUTHORIZED_TEXT = `
 ### 🍀 欢迎使用 Aivesa Chat
-🚀本站已支持免费 **GPT-4** 和 **讯飞星火** ，欢迎在设置中切换后体验！\n\n
-前往公众号：**[Aivesa](https://sourl.cn/3Gg3kc)** 回复 **密码** 免费获取密码，然后👉 **[点击这里](/#/auth)** 输入密码后解锁**免费使用**。\n\n 
+🚀 本站支持免费 **GPT-4** 和 **讯飞星火** ，欢迎在设置中切换后体验！\n\n
+🚗 已更新支持 3.5-1106 和 4.0-1106 新模型，对话框切换即可。\n\n
+**提问：** 如何免费使用？\n 
+**回答：** 前往公众号：**[Aivesa](https://sourl.cn/3Gg3kc)** 回复 **密码** 免费获取密码，然后👉 **[点击这里](/#/auth)** 输入密码后解锁**免费使用**。\n\n 
 ---
 **提问：** 偶尔无法使用？\n 
 **回答：** 当前模型用量较高，到设置换个模型试试？\n\n
-**提问：** 所有模型均无法使用？\n 
-**回答：** 当日用户量太大资源耗尽，可等待额度刷新，或 **[获得官方账号](https://a01.aivesa.shop/)** \n 
+**提问：** 怎么使用插件？\n
+**回答：** 在设置中开启插件，然后在聊天框点亮即可.\n\n
 **推荐：** 推荐使用 **[Aivesa Pro](https://aivesa.cn/)**，高速稳定支持绘画 [👉点这里使用 Pro 版本](https://aivesa.cn/) \n\n 
 常见问题与使用说明点击查看👉 **[Aivesa产品简介](https://sourl.cn/uTB6WS)** \n\n
 防失联请加群 🐧 [QQ频道](https://sourl.cn/XFbJKM) 或 🚀 [TG群组](https://t.me/+gJ-GQFE1GN40NGJl)\n\n 
@@ -91,7 +93,7 @@ export const OpenaiPath = {
 export const DEFAULT_INPUT_TEMPLATE = `{{input}}`; // input / time / model / lang
 export const DEFAULT_SYSTEM_TEMPLATE = `
 You are Aivesa, a large language model trained by OpenAI.
-Knowledge cutoff: 2021-09
+Knowledge cutoff: 2023-04
 Current model: {{model}}
 Current time: {{time}}`;
 
