@@ -16,19 +16,20 @@ export const USER_API_HOST = "api.openai.com";
 export const UNAUTHORIZED_TEXT = `
 ### 🍀 欢迎使用 Aivesa Chat
 🚀 本站支持免费 **GPT-4** 和 **讯飞星火** ，欢迎在设置中切换后体验！\n\n
-🚗 已更新支持 3.5-1106 和 4.0-1106 新模型，对话框切换即可。\n\n
+🚗 已更新支持免费 3.5-1106，免费GPT-4被撸到账号被封，正在头大中，后续将考虑新的按需取用模式，避免被专业羊毛党撸爆。\n\n
 **提问：** 如何免费使用？\n 
 **回答：** 前往公众号：**[Aivesa](https://sourl.cn/3Gg3kc)** 回复 **密码** 免费获取密码，然后👉 **[点击这里](/#/auth)** 输入密码后解锁**免费使用**。\n\n 
 ---
 **提问：** 偶尔无法使用？\n 
 **回答：** 当前模型用量较高，到设置换个模型试试？\n\n
 **提问：** 怎么使用插件？\n
-**回答：** 在设置中开启插件，然后在聊天框点亮即可.\n\n
-**推荐：** 推荐使用 **[Aivesa Pro](https://aivesa.cn/)**，高速稳定支持绘画 [👉点这里使用 Pro 版本](https://aivesa.cn/) \n\n 
+**回答：** 在设置中开启插件，然后在聊天框点亮即可，当前支持联网，计算器和百科插件.\n\n
+---
+**推荐：** 推荐使用 **[Aivesa Pro](https://aivesa.cn/)**，高速稳定GPT-4，支持绘画 [👉点这里使用 Pro 版本](https://aivesa.cn/) \n\n 
 常见问题与使用说明点击查看👉 **[Aivesa产品简介](https://sourl.cn/uTB6WS)** \n\n
 防失联请加群 🐧 [QQ频道](https://sourl.cn/XFbJKM) 或 🚀 [TG群组](https://t.me/+gJ-GQFE1GN40NGJl)\n\n 
 推荐给好友？请推荐主站：**[aivesa.cn](https://aivesa.cn)** 落地站随时切换\n\n 
-通知更新时间：2023.11.9 00:00
+通知更新时间：2023.11.20 14:00
 `;
 
 
