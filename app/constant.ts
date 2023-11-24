@@ -25,7 +25,7 @@ export const UNAUTHORIZED_TEXT = `
 **提问：** 怎么使用插件？\n
 **回答：** 在设置中开启插件，然后在聊天框点亮即可，当前支持联网，计算器和百科插件.\n\n
 ---
-**推荐：** 推荐使用 **[Aivesa Pro](https://aivesa.cn/)**，高速稳定GPT-4，支持绘画 [👉点这里使用 Pro 版本](https://aivesa.cn/) \n\n 
+**推荐：** **[Aivesa Pro](https://aivesa.cn/)** 黑五特惠进行中！海量 tokens加赠！高速稳定GPT-4 半价中，支持绘画 [👉点这里使用 Pro 版本](https://aivesa.cn/) \n\n 
 常见问题与使用说明点击查看👉 **[Aivesa产品简介](https://sourl.cn/uTB6WS)** \n\n
 防失联请加群 🐧 [QQ频道](https://sourl.cn/XFbJKM) 或 🚀 [TG群组](https://t.me/+gJ-GQFE1GN40NGJl)\n\n 
 推荐给好友？请推荐主站：**[aivesa.cn](https://aivesa.cn)** 落地站随时切换\n\n 
