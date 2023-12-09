@@ -16,8 +16,7 @@ export const USER_API_HOST = "api.openai.com";
 export const UNAUTHORIZED_TEXT = `
 ### 🍀 欢迎使用 Aivesa Chat
 🚗 本站支持免费 **GPT-4** 和 **讯飞星火** ，欢迎在设置中切换后体验！\n\n
-🚀 本免费 **GPT-4** 已暂时恢复，欢迎分享给好友一起来玩！\n\n
-👉 领取 **[支付宝无门槛红包](https://sourl.cn/awAFV5)** ，每天可领一次，帮助 Aivesa 回血一波！\n\n
+🚀 本站将在下周调整免费额度获取方式，且支持第三方调用，敬请期待！\n\n
 
 **提问：** 如何免费使用？\n 
 **回答：** 前往公众号：**[Aivesa](https://sourl.cn/3Gg3kc)** 回复 **密码** 免费获取密码，然后👉 **[点击这里](/#/auth)** 输入密码后解锁**免费使用**。\n\n 
@@ -31,7 +30,7 @@ export const UNAUTHORIZED_TEXT = `
 常见问题与使用说明点击查看👉 **[Aivesa产品简介](https://sourl.cn/uTB6WS)** \n\n
 防失联请加群 🐧 [QQ频道](https://sourl.cn/XFbJKM) 或 🚀 [TG群组](https://t.me/+gJ-GQFE1GN40NGJl)\n\n 
 推荐给好友？请推荐主站：**[aivesa.cn](https://aivesa.cn)** 落地站随时切换\n\n 
-通知更新时间：2023.12.02 15:00
+通知更新时间：2023.12.09 11:00
 `;
 
 
