@@ -167,7 +167,7 @@ export function SideBar(props: { className?: string }) {
         <div className={styles["title-container"]}>
           <div className={styles["title-version-container"]}>
             <div className={styles["sidebar-title"]} data-tauri-drag-region>Aivesa Chat</div>
-            {(isMobileScreen || (!shouldNarrow && config.sidebarWidth > 260)) && <div className={styles["version-pill"]}>3.1.1</div>}
+            {(isMobileScreen || (!shouldNarrow && config.sidebarWidth > 260)) && <div className={styles["version-pill"]}>3.1.2</div>}
           </div>
           <div className={styles["sidebar-sub-title"]}>
             Chat with your own AI assistant.
