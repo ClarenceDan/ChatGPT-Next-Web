@@ -17,6 +17,7 @@ export const UNAUTHORIZED_TEXT = `
 ### 🍀 欢迎使用 Aivesa Chat
 🚗 本站支持免费 **GPT-4** 和 **讯飞星火** ，欢迎在设置中切换后体验！\n\n
 🚀 已调整为单人单 KEY 模式，每人每天可领 $1.00，稳定后将支持GPT-4！\n\n
+⚙ 官方浏览器插件上线，试试看👉 **[Edge浏览器插件](https://sourl.cn/yupVgj)**
 
 **提问：** 如何免费使用？\n 
 **回答：** 前往公众号：**[Aivesa](https://sourl.cn/3Gg3kc)** 回复 **密码** 免费获取KEY，参考使用引导使用即可。\n\n 
@@ -30,7 +31,7 @@ export const UNAUTHORIZED_TEXT = `
 常见问题与使用说明点击查看👉 **[Aivesa产品简介](https://sourl.cn/uTB6WS)** \n\n
 防失联请加群 🐧 [QQ频道](https://sourl.cn/XFbJKM) 或 🚀 [TG群组](https://t.me/+gJ-GQFE1GN40NGJl)\n\n 
 推荐给好友？请推荐主站：**[aivesa.cn](https://aivesa.cn)** 落地站随时切换\n\n 
-通知更新时间：2023.12.10 23:00
+通知更新时间：2023.12.11 09:30
 `;
 
 
