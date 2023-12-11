@@ -20,7 +20,7 @@ export const UNAUTHORIZED_TEXT = `
 ⚙ 官方浏览器插件上线，试试看👉 **[Edge浏览器插件](https://microsoftedge.microsoft.com/addons/detail/pnofkjcbmclfdclmfohnkjagbalhmcbe)**
 
 **提问：** 如何免费使用？\n 
-**回答：** 前往公众号：**[Aivesa](https://sourl.cn/3Gg3kc)** 回复 **密码** 免费获取KEY，参考使用引导使用即可。\n\n 
+**回答：** 前往公众号：**[Aivesa](https://mp.weixin.qq.com/s/-KRHhKB5-_w0flyp1I1QRw)** 回复 **密码** 免费获取KEY，参考使用引导使用即可。\n\n 
 ---
 **提问：** 偶尔无法使用？\n 
 **回答：** 当前模型用量较高，到设置换个模型试试？\n\n
@@ -28,8 +28,8 @@ export const UNAUTHORIZED_TEXT = `
 **回答：** 在设置中开启插件，然后在聊天框点亮即可，当前支持联网，计算器和百科插件.\n\n
 ---
 **推荐：** **[Aivesa Pro](https://aivesa.cn/)** ，支持绘画 [👉点这里使用 Pro 版本](https://aivesa.cn/) \n\n 
-常见问题与使用说明点击查看👉 **[Aivesa产品简介](https://sourl.cn/uTB6WS)** \n\n
-防失联请加群 🐧 [QQ频道](https://sourl.cn/XFbJKM) 或 🚀 [TG群组](https://t.me/+gJ-GQFE1GN40NGJl)\n\n 
+常见问题与使用说明点击查看👉 **[Aivesa产品简介](https://askopenai.feishu.cn/docx/M34yd0CoSoGHQExQ0f5cgKcCnHb)** \n\n
+防失联请加群 🐧 [QQ频道](https://qun.qq.com/qqweb/qunpro/share?_wv=3&_wwv=128&appChannel=share&inviteCode=1ZxJUuvW8EB&businessType=9&jumpsource=shorturl) 或 🚀 [TG群组](https://t.me/+gJ-GQFE1GN40NGJl)\n\n 
 推荐给好友？请推荐主站：**[aivesa.cn](https://aivesa.cn)** 落地站随时切换\n\n 
 通知更新时间：2023.12.11 09:30
 `;
