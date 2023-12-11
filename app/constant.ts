@@ -16,8 +16,8 @@ export const USER_API_HOST = "api.openai.com";
 export const UNAUTHORIZED_TEXT = `
 ### 🍀 欢迎使用 Aivesa Chat
 🚗 本站支持免费 **GPT-4** 和 **讯飞星火** ，欢迎在设置中切换后体验！\n\n
-🚀 已调整为单人单 KEY 模式，每人每天可领 $1.00，稳定后将支持GPT-4！\n\n
-⚙ 官方浏览器插件上线，试试看👉 **[Edge浏览器插件](https://sourl.cn/yupVgj)**
+🚀 已调整为单人单 KEY 模式，每人每天可领 50万Tokens，稳定后将支持GPT-4！\n\n
+⚙ 官方浏览器插件上线，试试看👉 **[Edge浏览器插件](https://microsoftedge.microsoft.com/addons/detail/pnofkjcbmclfdclmfohnkjagbalhmcbe)**
 
 **提问：** 如何免费使用？\n 
 **回答：** 前往公众号：**[Aivesa](https://sourl.cn/3Gg3kc)** 回复 **密码** 免费获取KEY，参考使用引导使用即可。\n\n 
