@@ -16,8 +16,8 @@ export const USER_API_HOST = "api.openai.com";
 export const UNAUTHORIZED_TEXT = `
 ### 🍀 欢迎使用 Aivesa Chat
 🚗 本站支持免费 **GPT-4** 和 **讯飞星火** ，欢迎在设置中切换后体验！\n\n
-🚀 已调整为单人单 KEY 模式，每人每天可领 50万Tokens，稳定后将支持GPT-4！\n\n
-⚙ 官方浏览器插件上线，试试看👉 **[Edge浏览器插件](https://microsoftedge.microsoft.com/addons/detail/pnofkjcbmclfdclmfohnkjagbalhmcbe)**
+🚀 已调整为单人单 KEY 模式，每人每天可领 500000 Tokens，稳定后将支持GPT-4！\n\n
+⚙ 官方浏览器插件上线，求五星好评👉 **[Edge浏览器插件](https://microsoftedge.microsoft.com/addons/detail/pnofkjcbmclfdclmfohnkjagbalhmcbe)**
 
 **提问：** 如何免费使用？\n 
 **回答：** 前往公众号：**[Aivesa](https://mp.weixin.qq.com/s/-KRHhKB5-_w0flyp1I1QRw)** 回复 **密码** 免费获取KEY，参考使用引导使用即可。\n\n 
@@ -27,11 +27,11 @@ export const UNAUTHORIZED_TEXT = `
 **提问：** 怎么使用插件？\n
 **回答：** 在设置中开启插件，然后在聊天框点亮即可，当前支持联网，计算器和百科插件.\n\n
 ---
-**推荐：** **[Aivesa Pro](https://aivesa.cn/)** ，支持绘画 [👉点这里使用 Pro 版本](https://aivesa.cn/) \n\n 
+**推荐：** 使用 GPT-4 请暂时移步 **[Aivesa Pro](https://aivesa.cn/)** ，支持绘画 [👉点这里使用 Pro 版本](https://aivesa.cn/) \n\n 
 常见问题与使用说明点击查看👉 **[Aivesa产品简介](https://askopenai.feishu.cn/docx/M34yd0CoSoGHQExQ0f5cgKcCnHb)** \n\n
 防失联请加群 🐧 [QQ频道](https://qun.qq.com/qqweb/qunpro/share?_wv=3&_wwv=128&appChannel=share&inviteCode=1ZxJUuvW8EB&businessType=9&jumpsource=shorturl) 或 🚀 [TG群组](https://t.me/+gJ-GQFE1GN40NGJl)\n\n 
 推荐给好友？请推荐主站：**[aivesa.cn](https://aivesa.cn)** 落地站随时切换\n\n 
-通知更新时间：2023.12.11 09:30
+通知更新时间：2023.12.12 17:00
 `;
 
 
