@@ -1,4 +1,5 @@
 import styles from "./auth.module.scss";
+import ReactMarkdown from 'react-markdown';
 import { IconButton } from "./button";
 
 import { useNavigate } from "react-router-dom";
@@ -10,18 +11,14 @@ import BotIcon from "../icons/bot.svg";
 import { useEffect } from "react";
 import { getClientConfig } from "../config/client";
 
+
 export function AuthPage() {
   const navigate = useNavigate();
-  const accessStore = useAccessStore();
+  const access = useAccessStore();
 
   const goHome = () => navigate(Path.Home);
   const goChat = () => navigate(Path.Chat);
-  const resetAccessCode = () => {
-    accessStore.update((access) => {
-      access.openaiApiKey = "";
-      access.accessCode = "";
-    });
-  }; // Reset access code to empty string
+  const resetAccessCode = () => { access.updateCode(""); access.updateToken(""); }; // Reset access code to empty string
 
   useEffect(() => {
     if (getClientConfig()?.isApp) {
@@ -37,35 +34,18 @@ export function AuthPage() {
       </div>
 
       <div className={styles["auth-title"]}>{Locale.Auth.Title}</div>
-      <div className={styles["auth-tips"]}>{Locale.Auth.Tips}</div>
+      <div className={styles["auth-tips"]}><ReactMarkdown>{Locale.Auth.Tips}</ReactMarkdown>
+      </div>
 
       <input
         className={styles["auth-input"]}
         type="password"
         placeholder={Locale.Auth.Input}
-        value={accessStore.accessCode}
+        value={access.accessCode}
         onChange={(e) => {
-          accessStore.update(
-            (access) => (access.accessCode = e.currentTarget.value),
-          );
+          access.updateCode(e.currentTarget.value);
         }}
       />
-      {!accessStore.hideUserApiKey ? (
-        <>
-          <div className={styles["auth-tips"]}>{Locale.Auth.SubTips}</div>
-          <input
-            className={styles["auth-input"]}
-            type="password"
-            placeholder={Locale.Settings.Access.OpenAI.ApiKey.Placeholder}
-            value={accessStore.openaiApiKey}
-            onChange={(e) => {
-              accessStore.update(
-                (access) => (access.openaiApiKey = e.currentTarget.value),
-              );
-            }}
-          />
-        </>
-      ) : null}
 
       <div className={styles["auth-actions"]}>
         <IconButton

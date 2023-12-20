@@ -30,15 +30,15 @@ export async function requestOpenai(req: NextRequest) {
 
   console.log("[Proxy] ", path);
   console.log("[Base Url]", baseUrl);
-  // this fix [Org ID] undefined in server side if not using custom point
+// this fix [Org ID] undefined in server side if not using custom point
   if (serverConfig.openaiOrgId !== undefined) {
     console.log("[Org ID]", serverConfig.openaiOrgId);
   }
 
   const timeoutId = setTimeout(
     () => {
-      controller.abort();
-    },
+    controller.abort();
+  },
     10 * 60 * 1000,
   );
 
@@ -74,7 +74,7 @@ export async function requestOpenai(req: NextRequest) {
   // #1815 try to refuse gpt4 request
   if (serverConfig.customModels && req.body) {
     try {
-      const modelTable = collectModelTable(
+const modelTable = collectModelTable(
         DEFAULT_MODELS,
         serverConfig.customModels,
       );

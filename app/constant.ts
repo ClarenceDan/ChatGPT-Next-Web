@@ -1,16 +1,40 @@
-export const OWNER = "Yidadaa";
-export const REPO = "ChatGPT-Next-Web";
-export const REPO_URL = `https://github.com/${OWNER}/${REPO}`;
-export const ISSUE_URL = `https://github.com/${OWNER}/${REPO}/issues`;
-export const UPDATE_URL = `${REPO_URL}#keep-updated`;
-export const RELEASE_URL = `${REPO_URL}/releases`;
-export const FETCH_COMMIT_URL = `https://api.github.com/repos/${OWNER}/${REPO}/commits?per_page=1`;
-export const FETCH_TAG_URL = `https://api.github.com/repos/${OWNER}/${REPO}/tags?per_page=1`;
+export const OWNER = "ClarenceDan";
+export const REPO = "Aivesa-Chat";
+export const REPO_URL = `https://sourl.cn/vCDKuc`;
+export const ISSUE_URL = `https://sourl.cn/vCDKuc`;
+export const UPDATE_URL = `https://sourl.cn/vCDKuc`;
+export const RELEASE_URL = `https://sourl.cn/vCDKuc`;
+export const FETCH_COMMIT_URL = `https://sourl.cn/vCDKuc`;
+export const FETCH_TAG_URL = `https://sourl.cn/vCDKuc`;
 export const RUNTIME_CONFIG_DOM = "danger-runtime-config";
 
-export const DEFAULT_CORS_HOST = "https://a.nextweb.fun";
-export const DEFAULT_API_HOST = `${DEFAULT_CORS_HOST}/api/proxy`;
+export const DEFAULT_CORS_HOST = "https://a01.aipua.icu";
+export const DEFAULT_API_HOST = "api.openai.com";
+export const USER_API_HOST = "api.openai.com";
 export const OPENAI_BASE_URL = "https://api.openai.com";
+
+// constants.ts
+export const UNAUTHORIZED_TEXT = `
+### 🍀 欢迎使用 Aivesa Chat
+🚗 本站支持免费 **GPT-4** 和 **讯飞星火** ，欢迎在设置中切换后体验！\n\n
+🚀 已调整为单人单 KEY 模式，每人每天可领 500000 Tokens，稳定后将支持GPT-4！\n\n
+⚙ 官方浏览器插件上线，求五星好评👉 **[Edge浏览器插件](https://microsoftedge.microsoft.com/addons/detail/pnofkjcbmclfdclmfohnkjagbalhmcbe)**
+
+**提问：** 如何免费使用？\n 
+**回答：** 前往公众号：**[Aivesa](https://mp.weixin.qq.com/s/-KRHhKB5-_w0flyp1I1QRw)** 回复 **密码** 免费获取KEY，参考使用引导使用即可。\n\n 
+---
+**提问：** 偶尔无法使用？\n 
+**回答：** 当前模型用量较高，到设置换个模型试试？\n\n
+**提问：** 怎么使用插件？\n
+**回答：** 在设置中开启插件，然后在聊天框点亮即可，当前支持联网，计算器和百科插件.\n\n
+---
+**推荐：** 使用 GPT-4 请暂时移步 **[Aivesa Pro](https://aivesa.cn/)** ，支持绘画 [👉点这里使用 Pro 版本](https://aivesa.cn/) \n\n 
+常见问题与使用说明点击查看👉 **[Aivesa产品简介](https://askopenai.feishu.cn/docx/M34yd0CoSoGHQExQ0f5cgKcCnHb)** \n\n
+防失联请加群 🐧 [QQ频道](https://qun.qq.com/qqweb/qunpro/share?_wv=3&_wwv=128&appChannel=share&inviteCode=1ZxJUuvW8EB&businessType=9&jumpsource=shorturl) 或 🚀 [TG群组](https://t.me/+gJ-GQFE1GN40NGJl)\n\n 
+推荐给好友？请推荐主站：**[aivesa.cn](https://aivesa.cn)** 落地站随时切换\n\n 
+通知更新时间：2023.12.12 17:00
+`;
+
 
 export enum Path {
   Home = "/",
@@ -18,21 +42,23 @@ export enum Path {
   Settings = "/settings",
   NewChat = "/new-chat",
   Masks = "/masks",
+  Plugins = "/plugins",
   Auth = "/auth",
 }
 
 export enum ApiPath {
   Cors = "/api/cors",
-  OpenAI = "/api/openai",
+OpenAI = "/api/openai",
 }
 
 export enum SlotID {
   AppBody = "app-body",
-  CustomModel = "custom-model",
+CustomModel = "custom-model",
 }
 
 export enum FileName {
   Masks = "masks.json",
+  Plugins = "plugins.json",
   Prompts = "prompts.json",
 }
 
@@ -41,6 +67,7 @@ export enum StoreKey {
   Access = "access-control",
   Config = "app-config",
   Mask = "mask-store",
+  Plugin = "plugin-store",
   Prompt = "prompt-store",
   Update = "chat-update",
   Sync = "sync",
@@ -54,6 +81,7 @@ export const NARROW_SIDEBAR_WIDTH = 100;
 export const ACCESS_CODE_PREFIX = "nk-";
 
 export const LAST_INPUT_KEY = "last-input";
+export const LAST_INPUT_IMAGE_KEY = "last-input-image";
 export const UNFINISHED_INPUT = (id: string) => "unfinished-input-" + id;
 
 export const STORAGE_KEY = "chatgpt-next-web";
@@ -80,13 +108,10 @@ export const Azure = {
 
 export const DEFAULT_INPUT_TEMPLATE = `{{input}}`; // input / time / model / lang
 export const DEFAULT_SYSTEM_TEMPLATE = `
-You are ChatGPT, a large language model trained by OpenAI.
+You are Aivesa, a large language model trained by OpenAI.
 Knowledge cutoff: {{cutoff}}
 Current model: {{model}}
-Current time: {{time}}
-Latex inline: $x^2$ 
-Latex block: $$e=mc^2$$
-`;
+Current time: {{time}}`;
 
 export const SUMMARIZE_MODEL = "gpt-3.5-turbo";
 
@@ -97,38 +122,6 @@ export const KnowledgeCutOffDate: Record<string, string> = {
 };
 
 export const DEFAULT_MODELS = [
-  {
-    name: "gpt-4",
-    available: true,
-  },
-  {
-    name: "gpt-4-0314",
-    available: true,
-  },
-  {
-    name: "gpt-4-0613",
-    available: true,
-  },
-  {
-    name: "gpt-4-32k",
-    available: true,
-  },
-  {
-    name: "gpt-4-32k-0314",
-    available: true,
-  },
-  {
-    name: "gpt-4-32k-0613",
-    available: true,
-  },
-  {
-    name: "gpt-4-1106-preview",
-    available: true,
-  },
-  {
-    name: "gpt-4-vision-preview",
-    available: true,
-  },
   {
     name: "gpt-3.5-turbo",
     available: true,
@@ -151,6 +144,34 @@ export const DEFAULT_MODELS = [
   },
   {
     name: "gpt-3.5-turbo-16k-0613",
+    available: true,
+  },
+  {
+    name: "gpt-4",
+    available: true,
+  },
+  {
+    name: "gpt-4-0314",
+    available: true,
+  },
+  {
+    name: "gpt-4-0613",
+    available: true,
+  },
+  {
+    name: "gpt-4-1106-preview",
+    available: true,
+  },
+  {
+    name: "gpt-4-vision-preview",
+    available: true,
+  },
+  {
+    name: "SparkDesk",
+    available: true,
+  },
+  {
+    name: "gemini-pro",
     available: true,
   },
 ] as const;

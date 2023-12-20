@@ -6,11 +6,19 @@ const tw: PartialLocaleType = {
   Error: {
     Unauthorized: "目前您的狀態是未授權，請前往[設定頁面](/#/auth)輸入授權碼。",
   },
+  Auth: {
+    About: "關於",
+    Title: "需要密碼",
+    Tips: "管理員開啟了密碼驗證，請在下方填入訪問碼",
+    Input: "在此處填寫訪問碼",
+    Confirm: "確認",
+    Later: "稍後再說",
+  },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} 則對話`,
   },
   Chat: {
-    SubTitle: (count: number) => `您已經與 ChatGPT 進行了 ${count} 則對話`,
+    SubTitle: (count: number) => `您已經與 Aivesa 進行了 ${count} 則對話`,
     Actions: {
       ChatList: "檢視訊息列表",
       CompressedHistory: "檢視壓縮後的歷史 Prompt",
@@ -40,7 +48,7 @@ const tw: PartialLocaleType = {
     Copy: "複製全部",
     Download: "下載檔案",
     MessageFromYou: "來自您的訊息",
-    MessageFromChatGPT: "來自 ChatGPT 的訊息",
+    MessageFromAivesa: "來自 Aivesa 的訊息",
   },
   Memory: {
     Title: "上下文記憶 Prompt",
@@ -71,7 +79,7 @@ const tw: PartialLocaleType = {
     },
     InjectSystemPrompts: {
       Title: "匯入系統提示",
-      SubTitle: "強制在每個請求的訊息列表開頭新增一個模擬 ChatGPT 的系統提示",
+      SubTitle: "強制在每個請求的訊息列表開頭新增一個模擬 Aivesa 的系統提示",
     },
     Update: {
       Version: (x: string) => `目前版本：${x}`,
@@ -120,7 +128,7 @@ const tw: PartialLocaleType = {
       Title: "歷史訊息長度壓縮閾值",
       SubTitle: "當未壓縮的歷史訊息超過該值時，將進行壓縮",
     },
-
+    
     Usage: {
       Title: "帳戶餘額",
       SubTitle(used: any, total: any) {
@@ -130,7 +138,7 @@ const tw: PartialLocaleType = {
       Check: "重新檢查",
       NoAccess: "輸入 API Key 檢視餘額",
     },
-
+    
     Model: "模型 (model)",
     Temperature: {
       Title: "隨機性 (temperature)",

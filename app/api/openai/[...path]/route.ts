@@ -51,7 +51,7 @@ async function handle(
       status: 401,
     });
   }
-
+  
   try {
     const response = await requestOpenai(req);
 

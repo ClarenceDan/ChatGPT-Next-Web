@@ -18,6 +18,10 @@
 
   .auth-tips {
     font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 
   .auth-input {

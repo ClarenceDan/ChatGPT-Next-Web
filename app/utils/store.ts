@@ -39,24 +39,24 @@ export function createPersistStore<T extends object, M>(
           lastUpdateTime: 0,
         },
         (set, get) => {
-          return {
-            ...methods(set, get as any),
+      return {
+        ...methods(set, get as any),
 
-            markUpdate() {
-              set({ lastUpdateTime: Date.now() } as Partial<
-                T & M & MakeUpdater<T>
-              >);
-            },
-            update(updater) {
-              const state = deepClone(get());
-              updater(state);
-              set({
+                markUpdate() {
+          set({ lastUpdateTime: Date.now() } as Partial<
+            T & M & MakeUpdater<T>
+          >);
+        },
+        update(updater) {
+          const state = deepClone(get());
+          updater(state);
+          set({
                 ...state,
                 lastUpdateTime: Date.now(),
               });
-            },
-          } as M & MakeUpdater<T>;
         },
+      } as M & MakeUpdater<T>;
+    },
       ),
       persistOptions as any,
     ),

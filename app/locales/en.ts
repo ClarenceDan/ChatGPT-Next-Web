@@ -13,6 +13,7 @@ const en: LocaleType = {
       : "Unauthorized access, please enter access code in [auth](/#/auth) page, or enter your OpenAI API Key.",
   },
   Auth: {
+    About: "About",
     Title: "Need Access Code",
     Tips: "Please enter access code below",
     SubTips: "Or enter your OpenAI API Key",
@@ -65,6 +66,8 @@ const en: LocaleType = {
       Masks: "Masks",
       Clear: "Clear Context",
       Settings: "Settings",
+      EnablePlugins: "Enable Plugins",
+      DisablePlugins: "Disable Plugins",
     },
     Rename: "Rename Chat",
     Typing: "Typing…",
@@ -87,7 +90,7 @@ const en: LocaleType = {
     Copy: "Copy All",
     Download: "Download",
     MessageFromYou: "Message From You",
-    MessageFromChatGPT: "Message From ChatGPT",
+    MessageFromAivesa: "Message From Aivesa",
     Share: "Share to ShareGPT",
     Format: {
       Title: "Export Format",
@@ -262,7 +265,7 @@ const en: LocaleType = {
       SubTitle:
         "Will compress if uncompressed messages length exceeds the value",
     },
-
+    
     Usage: {
       Title: "Account Balance",
       SubTitle(used: any, total: any) {
@@ -273,12 +276,12 @@ const en: LocaleType = {
       NoAccess: "Enter API Key to check balance",
     },
     Access: {
-      AccessCode: {
-        Title: "Access Code",
-        SubTitle: "Access control Enabled",
-        Placeholder: "Enter Code",
-      },
-      CustomEndpoint: {
+          AccessCode: {
+      Title: "Access Code",
+      SubTitle: "Access control Enabled",
+      Placeholder: "Enter Code",
+    },
+CustomEndpoint: {
         Title: "Custom Endpoint",
         SubTitle: "Use custom Azure or OpenAI service",
       },
@@ -293,9 +296,9 @@ const en: LocaleType = {
           Placeholder: "sk-xxx",
         },
 
-        Endpoint: {
-          Title: "OpenAI Endpoint",
-          SubTitle: "Must starts with http(s):// or use /api/openai as default",
+    Endpoint: {
+      Title: "OpenAI Endpoint",
+      SubTitle: "Must starts with http(s):// or use /api/openai as default",
         },
       },
       Azure: {
@@ -314,11 +317,11 @@ const en: LocaleType = {
           Title: "Azure Api Version",
           SubTitle: "Check your api version from azure console",
         },
-      },
-      CustomModel: {
-        Title: "Custom Models",
-        SubTitle: "Custom model options, seperated by comma",
-      },
+    },
+    CustomModel: {
+      Title: "Custom Models",
+      SubTitle: "Custom model options, seperated by comma",
+},
     },
 
     Model: "Model",
@@ -343,6 +346,20 @@ const en: LocaleType = {
       Title: "Frequency Penalty",
       SubTitle:
         "A larger value decreasing the likelihood to repeat the same line",
+    },
+    Plugin: {
+      Enable: {
+        Title: "Enable Plugin",
+        SubTitle: "Enable plugin invocation",
+      },
+      MaxIteration: {
+        Title: "Max Iterations",
+        SubTitle: "Max of plugin iterations",
+      },
+      ReturnIntermediateStep: {
+        Title: "Return Intermediate Steps",
+        SubTitle: "Return Intermediate Steps",
+      },
     },
   },
   Store: {
@@ -375,6 +392,25 @@ const en: LocaleType = {
   },
   Plugin: {
     Name: "Plugin",
+    Page: {
+      Title: "Plugin Template",
+      SubTitle: (count: number) => `${count} plugin templates`,
+      Search: "Search Templates",
+      Create: "Create",
+    },
+    Item: {
+      View: "View",
+      Edit: "Edit",
+      Delete: "Delete",
+      DeleteConfirm: "Confirm to delete?",
+    },
+    EditModal: {
+      Title: (readonly: boolean) =>
+        `Edit Plugin Template ${readonly ? "(readonly)" : ""}`,
+      Download: "Download",
+      Clone: "Clone",
+    },
+RuntimeWarning: "Only available when deployed in a non-Vercel environment.",
   },
   FineTuned: {
     Sysmessage: "You are an assistant that",
@@ -427,7 +463,7 @@ const en: LocaleType = {
     SubTitle: "Chat with the Soul behind the Mask",
     More: "Find More",
     NotShow: "Never Show Again",
-    ConfirmNoShow: "Confirm to disable？You can enable it in settings later.",
+    ConfirmNoShow: "Confirm to disable? You can enable it in settings later.",
   },
 
   UI: {
@@ -442,9 +478,9 @@ const en: LocaleType = {
     Config: "Config",
   },
   Exporter: {
-    Description: {
-      Title: "Only messages after clearing the context will be displayed"
-    },  
+Description: {
+      Title: "Only messages after clearing the context will be displayed",
+    },
     Model: "Model",
     Messages: "Messages",
     Topic: "Topic",
@@ -452,7 +488,7 @@ const en: LocaleType = {
   },
 
   URLCommand: {
-    Code: "Detected access code from url, confirm to apply? ",
+    Code: "Detected access code from url, confirm to apply?",
     Settings: "Detected settings from url, confirm to apply?",
   },
 };

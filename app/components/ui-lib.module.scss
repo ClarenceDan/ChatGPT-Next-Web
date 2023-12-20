@@ -31,9 +31,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 40px;
+  min-height: 24px;
   border-bottom: var(--border-in-light);
-  padding: 10px 20px;
+  padding: 12px 16px;
   animation: slide-in ease 0.6s;
 
   .list-header {
@@ -235,7 +235,7 @@
   .select-with-icon-select {
     height: 100%;
     border: var(--border-in-light);
-    padding: 10px 35px 10px 10px;
+    padding: 10px 25px 10px 10px;
     border-radius: 10px;
     appearance: none;
     cursor: pointer;

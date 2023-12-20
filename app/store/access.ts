@@ -15,8 +15,8 @@ const DEFAULT_OPENAI_URL =
   getClientConfig()?.buildMode === "export" ? DEFAULT_API_HOST : ApiPath.OpenAI;
 
 const DEFAULT_ACCESS_STATE = {
-  accessCode: "",
-  useCustomConfig: false,
+    accessCode: "",
+useCustomConfig: false,
 
   provider: ServiceProvider.OpenAI,
 
@@ -34,7 +34,7 @@ const DEFAULT_ACCESS_STATE = {
   hideUserApiKey: false,
   hideBalanceQuery: false,
   disableGPT4: false,
-  disableFastLink: false,
+disableFastLink: false,
   customModels: "",
 };
 
@@ -47,11 +47,11 @@ export const useAccessStore = createPersistStore(
 
       return get().needCode;
     },
-
+    
     isValidOpenAI() {
       return ensure(get(), ["openaiApiKey"]);
     },
-
+    
     isValidAzure() {
       return ensure(get(), ["azureUrl", "azureApiKey", "azureApiVersion"]);
     },

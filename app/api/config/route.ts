@@ -11,7 +11,7 @@ const DANGER_CONFIG = {
   hideUserApiKey: serverConfig.hideUserApiKey,
   disableGPT4: serverConfig.disableGPT4,
   hideBalanceQuery: serverConfig.hideBalanceQuery,
-  disableFastLink: serverConfig.disableFastLink,
+disableFastLink: serverConfig.disableFastLink,
   customModels: serverConfig.customModels,
 };
 

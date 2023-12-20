@@ -18,7 +18,7 @@ import {
   ChatMessage,
   createMessage,
   ModelConfig,
-  ModelType,
+ModelType,
   useAppConfig,
   useChatStore,
 } from "../store";

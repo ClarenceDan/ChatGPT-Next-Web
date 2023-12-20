@@ -1,5 +1,7 @@
 import { getClientConfig } from "../config/client";
 import { SubmitKey } from "../store/config";
+import { UNAUTHORIZED_TEXT } from "../constant"; 
+
 
 const isApp = !!getClientConfig()?.isApp;
 
@@ -8,13 +10,14 @@ const cn = {
   Error: {
     Unauthorized: isApp
       ? "检测到无效 API Key，请前往[设置](/#/settings)页检查 API Key 是否配置正确。"
-      : "访问密码不正确或为空，请前往[登录](/#/auth)页输入正确的访问密码，或者在[设置](/#/settings)页填入你自己的 OpenAI API Key。",
+      : UNAUTHORIZED_TEXT,
   },
   Auth: {
+    About: "关于",
     Title: "需要密码",
-    Tips: "管理员开启了密码验证，请在下方填入访问码",
-    SubTips: "或者输入你的 OpenAI API 密钥",
-    Input: "在此处填写访问码",
+    Tips: "为避免滥用，本站当前需要使用密码访问 \n\n 前往公众号：**[Aivesa](https://sourl.cn/3Gg3kc)** 回复 **密码** 免费获取密码 \n\n 然后在下方输入密码后解锁**免费使用** \n\n 👇",
+    SubTips: "或者输入你的 OpenAI API 密钥，直接使用即可",
+    Input: "在此处填写访问密码",
     Confirm: "确认",
     Later: "稍后再说",
   },
@@ -63,6 +66,8 @@ const cn = {
       Masks: "所有面具",
       Clear: "清除聊天",
       Settings: "对话设置",
+      EnablePlugins: "开启插件",
+      DisablePlugins: "关闭插件",
     },
     Rename: "重命名对话",
     Typing: "正在输入…",
@@ -85,8 +90,8 @@ const cn = {
     Copy: "全部复制",
     Download: "下载文件",
     Share: "分享到 ShareGPT",
-    MessageFromYou: "用户",
-    MessageFromChatGPT: "ChatGPT",
+    MessageFromYou: "来自你的消息",
+    MessageFromAivesa: "来自 Aivesa 的消息",
     Format: {
       Title: "导出格式",
       SubTitle: "可以导出 Markdown 文本或者 PNG 图片",
@@ -153,7 +158,7 @@ const cn = {
     },
     InjectSystemPrompts: {
       Title: "注入系统级提示信息",
-      SubTitle: "强制给每次请求的消息列表开头添加一个模拟 ChatGPT 的系统提示",
+      SubTitle: "强制给每次请求的消息列表开头添加一个模拟 Aivesa 的系统提示",
     },
     InputTemplate: {
       Title: "用户输入预处理",
@@ -258,7 +263,7 @@ const cn = {
       Title: "历史消息长度压缩阈值",
       SubTitle: "当未压缩的历史消息超过该值时，将进行压缩",
     },
-
+    
     Usage: {
       Title: "余额查询",
       SubTitle(used: any, total: any) {
@@ -268,14 +273,14 @@ const cn = {
       Check: "重新检查",
       NoAccess: "输入 API Key 或访问密码查看余额",
     },
-
+    
     Access: {
-      AccessCode: {
-        Title: "访问密码",
-        SubTitle: "管理员已开启加密访问",
-        Placeholder: "请输入访问密码",
-      },
-      CustomEndpoint: {
+          AccessCode: {
+      Title: "访问密码",
+      SubTitle: "到公众号：Aivesa 回复【密码】获取",
+      Placeholder: "请输入访问密码",
+    },
+CustomEndpoint: {
         Title: "自定义接口",
         SubTitle: "是否使用自定义 Azure 或 OpenAI 服务",
       },
@@ -290,10 +295,10 @@ const cn = {
           Placeholder: "OpenAI API Key",
         },
 
-        Endpoint: {
-          Title: "接口地址",
-          SubTitle: "除默认地址外，必须包含 http(s)://",
-        },
+    Endpoint: {
+      Title: "接口地址",
+      SubTitle: "除默认地址外，必须包含 http(s)://",
+},
       },
       Azure: {
         ApiKey: {
@@ -311,12 +316,12 @@ const cn = {
           Title: "接口版本 (azure api version)",
           SubTitle: "选择指定的部分版本",
         },
-      },
-      CustomModel: {
-        Title: "自定义模型名",
-        SubTitle: "增加自定义模型可选项，使用英文逗号隔开",
-      },
     },
+    CustomModel: {
+      Title: "自定义模型名",
+      SubTitle: "增加自定义模型可选项，使用英文逗号隔开",
+    },
+},
 
     Model: "模型 (model)",
     Temperature: {
@@ -339,10 +344,24 @@ const cn = {
       Title: "频率惩罚度 (frequency_penalty)",
       SubTitle: "值越大，越有可能降低重复字词",
     },
+    Plugin: {
+      Enable: {
+        Title: "启用插件",
+        SubTitle: "启用插件调用功能",
+      },
+      MaxIteration: {
+        Title: "最大迭代数",
+        SubTitle: "插件调用最大迭代数",
+      },
+      ReturnIntermediateStep: {
+        Title: "返回中间步骤",
+        SubTitle: "是否返回插件调用的中间步骤",
+      },
+    },
   },
   Store: {
     DefaultTopic: "新的聊天",
-    BotHello: "有什么可以帮你的吗",
+    BotHello: UNAUTHORIZED_TEXT,
     Error: "出错了，稍后重试吧",
     Prompt: {
       History: (content: string) => "这是历史聊天总结作为前情提要：" + content,
@@ -369,6 +388,25 @@ const cn = {
   },
   Plugin: {
     Name: "插件",
+    Page: {
+      Title: "预设插件",
+      SubTitle: (count: number) => `${count} 个预设插件`,
+      Search: "搜索插件",
+      Create: "新建",
+    },
+    Item: {
+      View: "查看",
+      Edit: "编辑",
+      Delete: "删除",
+      DeleteConfirm: "确认删除？",
+    },
+    EditModal: {
+      Title: (readonly: boolean) =>
+        `编辑预设插件 ${readonly ? "（只读）" : ""}`,
+      Download: "下载预设",
+      Clone: "克隆预设",
+    },
+RuntimeWarning: "仅在非Vercel环境部署时可用",
   },
   FineTuned: {
     Sysmessage: "你是一个助手",
@@ -441,9 +479,9 @@ const cn = {
     Config: "配置",
   },
   Exporter: {
-    Description : {
-      Title: "只有清除上下文之后的消息会被展示"
-    },  
+Description: {
+      Title: "只有清除上下文之后的消息会被展示",
+    },
     Model: "模型",
     Messages: "消息",
     Topic: "主题",
@@ -453,8 +491,8 @@ const cn = {
 
 type DeepPartial<T> = T extends object
   ? {
-      [P in keyof T]?: DeepPartial<T[P]>;
-    }
+    [P in keyof T]?: DeepPartial<T[P]>;
+  }
   : T;
 
 export type LocaleType = typeof cn;

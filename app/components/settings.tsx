@@ -27,9 +27,9 @@ import {
   PasswordInput,
   Popover,
   Select,
-  showConfirm,
   showToast,
-} from "./ui-lib";
+  showConfirm,
+  } from "./ui-lib";
 import { ModelConfigList } from "./model-config";
 
 import { IconButton } from "./button";
@@ -37,7 +37,6 @@ import {
   SubmitKey,
   useChatStore,
   Theme,
-  useUpdateStore,
   useAccessStore,
   useAppConfig,
 } from "../store";
@@ -68,6 +67,7 @@ import { Avatar, AvatarPicker } from "./emoji";
 import { getClientConfig } from "../config/client";
 import { useSyncStore } from "../store/sync";
 import { nanoid } from "nanoid";
+import { PluginConfigList } from "./plugin-config";
 import { useMaskStore } from "../store/mask";
 import { ProviderType } from "../utils/cloud";
 
@@ -497,7 +497,7 @@ function SyncItems() {
             syncStore.lastProvider
               ? `${new Date(syncStore.lastSyncTime).toLocaleString()} [${
                   syncStore.lastProvider
-                }]`
+              }]`
               : Locale.Settings.Sync.NotSyncYet
           }
         >
@@ -545,9 +545,9 @@ function SyncItems() {
               onClick={() => {
                 syncStore.import();
               }}
-            />
-          </div>
-        </ListItem>
+                          />
+            </div>
+          </ListItem>
       </List>
 
       {showSyncConfigModal && (
@@ -563,53 +563,7 @@ export function Settings() {
   const config = useAppConfig();
   const updateConfig = config.update;
 
-  const updateStore = useUpdateStore();
-  const [checkingUpdate, setCheckingUpdate] = useState(false);
-  const currentVersion = updateStore.formatVersion(updateStore.version);
-  const remoteId = updateStore.formatVersion(updateStore.remoteVersion);
-  const hasNewVersion = currentVersion !== remoteId;
-  const updateUrl = getClientConfig()?.isApp ? RELEASE_URL : UPDATE_URL;
-
-  function checkUpdate(force = false) {
-    setCheckingUpdate(true);
-    updateStore.getLatestVersion(force).then(() => {
-      setCheckingUpdate(false);
-    });
-
-    console.log("[Update] local version ", updateStore.version);
-    console.log("[Update] remote version ", updateStore.remoteVersion);
-  }
-
   const accessStore = useAccessStore();
-  const shouldHideBalanceQuery = useMemo(() => {
-    const isOpenAiUrl = accessStore.openaiUrl.includes(OPENAI_BASE_URL);
-    return (
-      accessStore.hideBalanceQuery ||
-      isOpenAiUrl ||
-      accessStore.provider === ServiceProvider.Azure
-    );
-  }, [
-    accessStore.hideBalanceQuery,
-    accessStore.openaiUrl,
-    accessStore.provider,
-  ]);
-
-  const usage = {
-    used: updateStore.used,
-    subscription: updateStore.subscription,
-  };
-  const [loadingUsage, setLoadingUsage] = useState(false);
-  function checkUsage(force = false) {
-    if (shouldHideBalanceQuery) {
-      return;
-    }
-
-    setLoadingUsage(true);
-    updateStore.updateUsage(force).finally(() => {
-      setLoadingUsage(false);
-    });
-  }
-
   const enabledAccessControl = useMemo(
     () => accessStore.enabledAccessControl(),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -621,21 +575,14 @@ export function Settings() {
   const customCount = promptStore.getUserPrompts().length ?? 0;
   const [shouldShowPromptModal, setShowPromptModal] = useState(false);
 
-  const showUsage = accessStore.isAuthorized();
-  useEffect(() => {
-    // checks per minutes
-    checkUpdate();
-    showUsage && checkUsage();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   useEffect(() => {
     const keydownEvent = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         navigate(Path.Home);
       }
     };
-    if (clientConfig?.isApp) { // Force to set custom endpoint to true if it's app
+if (clientConfig?.isApp) {
+      // Force to set custom endpoint to true if it's app
       accessStore.update((state) => {
         state.useCustomConfig = true;
       });
@@ -697,31 +644,6 @@ export function Settings() {
             </Popover>
           </ListItem>
 
-          <ListItem
-            title={Locale.Settings.Update.Version(currentVersion ?? "unknown")}
-            subTitle={
-              checkingUpdate
-                ? Locale.Settings.Update.IsChecking
-                : hasNewVersion
-                ? Locale.Settings.Update.FoundUpdate(remoteId ?? "ERROR")
-                : Locale.Settings.Update.IsLatest
-            }
-          >
-            {checkingUpdate ? (
-              <LoadingIcon />
-            ) : hasNewVersion ? (
-              <Link href={updateUrl} target="_blank" className="link">
-                {Locale.Settings.Update.GoToUpdate}
-              </Link>
-            ) : (
-              <IconButton
-                icon={<ResetIcon></ResetIcon>}
-                text={Locale.Settings.Update.CheckUpdate}
-                onClick={() => checkUpdate(true)}
-              />
-            )}
-          </ListItem>
-
           <ListItem title={Locale.Settings.SendKey}>
             <Select
               value={config.submitKey}
@@ -780,7 +702,7 @@ export function Settings() {
               title={`${config.fontSize ?? 14}px`}
               value={config.fontSize}
               min="12"
-              max="40"
+              max="18"
               step="1"
               onChange={(e) =>
                 updateConfig(
@@ -837,8 +759,8 @@ export function Settings() {
               onChange={(e) =>
                 updateConfig(
                   (config) =>
-                    (config.dontShowMaskSplashScreen =
-                      !e.currentTarget.checked),
+                  (config.dontShowMaskSplashScreen =
+                    !e.currentTarget.checked),
                 )
               }
             ></input>
@@ -914,13 +836,13 @@ export function Settings() {
 
           {!accessStore.hideUserApiKey && (
             <>
-              {
+{
                 // Conditionally render the following ListItem based on clientConfig.isApp
                 !clientConfig?.isApp && ( // only show if isApp is false
-                  <ListItem
-                    title={Locale.Settings.Access.CustomEndpoint.Title}
-                    subTitle={Locale.Settings.Access.CustomEndpoint.SubTitle}
-                  >
+              <ListItem
+                title={Locale.Settings.Access.CustomEndpoint.Title}
+                subTitle={Locale.Settings.Access.CustomEndpoint.SubTitle}
+>
                     <input
                       type="checkbox"
                       checked={accessStore.useCustomConfig}
@@ -965,39 +887,39 @@ export function Settings() {
                         subTitle={
                           Locale.Settings.Access.OpenAI.Endpoint.SubTitle
                         }
-                      >
-                        <input
-                          type="text"
-                          value={accessStore.openaiUrl}
-                          placeholder={OPENAI_BASE_URL}
-                          onChange={(e) =>
-                            accessStore.update(
+              >
+                <input
+                  type="text"
+                  value={accessStore.openaiUrl}
+                  placeholder={OPENAI_BASE_URL}
+                  onChange={(e) =>
+                    accessStore.update(
                               (access) =>
                                 (access.openaiUrl = e.currentTarget.value),
                             )
-                          }
-                        ></input>
-                      </ListItem>
-                      <ListItem
-                        title={Locale.Settings.Access.OpenAI.ApiKey.Title}
-                        subTitle={Locale.Settings.Access.OpenAI.ApiKey.SubTitle}
-                      >
-                        <PasswordInput
-                          value={accessStore.openaiApiKey}
-                          type="text"
-                          placeholder={
+                  }
+                ></input>
+              </ListItem>
+              <ListItem
+                title={Locale.Settings.Access.OpenAI.ApiKey.Title}
+                subTitle={Locale.Settings.Access.OpenAI.ApiKey.SubTitle}
+              >
+                <PasswordInput
+                  value={accessStore.openaiApiKey}
+                  type="text"
+                  placeholder={
                             Locale.Settings.Access.OpenAI.ApiKey.Placeholder
                           }
-                          onChange={(e) => {
-                            accessStore.update(
+                  onChange={(e) => {
+                    accessStore.update(
                               (access) =>
                                 (access.openaiApiKey = e.currentTarget.value),
                             );
-                          }}
-                        />
-                      </ListItem>
-                    </>
-                  ) : (
+                  }}
+                />
+              </ListItem>
+            </>
+) : (
                     <>
                       <ListItem
                         title={Locale.Settings.Access.Azure.Endpoint.Title}
@@ -1119,6 +1041,17 @@ export function Settings() {
         {shouldShowPromptModal && (
           <UserPromptModal onClose={() => setShowPromptModal(false)} />
         )}
+
+        <List>
+          <PluginConfigList
+            pluginConfig={config.pluginConfig}
+            updateConfig={(updater) => {
+              const pluginConfig = { ...config.pluginConfig };
+              updater(pluginConfig);
+              config.update((config) => (config.pluginConfig = pluginConfig));
+            }}
+          />
+        </List>
 
         <DangerItems />
       </div>

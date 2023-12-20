@@ -1,4 +1,4 @@
-import { ModalConfigValidator, ModelConfig } from "../store";
+import { ModalConfigValidator, ModelConfig, useAppConfig } from "../store";
 
 import Locale from "../locales";
 import { InputRange } from "./input-range";
@@ -28,10 +28,10 @@ export function ModelConfigList(props: {
           {allModels
             .filter((v) => v.available)
             .map((v, i) => (
-              <option value={v.name} key={i}>
-                {v.displayName}
-              </option>
-            ))}
+            <option value={v.name} key={i}>
+              {v.displayName}
+            </option>
+          ))}
         </Select>
       </ListItem>
       <ListItem
