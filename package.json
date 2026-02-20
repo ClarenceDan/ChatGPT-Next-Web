@@ -39,7 +39,7 @@
     "markdown-to-txt": "^2.0.1",
     "mermaid": "^10.6.1",
     "nanoid": "^5.0.3",
-    "next": "^15.1.8",
+    "next": "^15.5.12",
     "node-fetch": "^3.3.1",
     "openapi-client-axios": "^7.5.5",
     "react": "^19.0.0",
