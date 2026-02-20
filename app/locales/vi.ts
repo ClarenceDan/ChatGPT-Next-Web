@@ -9,10 +9,10 @@ const vi: PartialLocaleType = {
   Error: {
     Unauthorized: isApp
       ? `😆 Cuộc trò chuyện gặp một số vấn đề, đừng lo lắng:
-    \\ 1️⃣ Nếu bạn muốn bắt đầu mà không cần cấu hình, [nhấp vào đây để bắt đầu trò chuyện ngay lập tức 🚀](${SAAS_CHAT_UTM_URL})
+    \\ 1️⃣ Cần OpenAI, Claude, Gemini và nhiều hơn? [Khám phá MoleAPI 🚀](${SAAS_CHAT_UTM_URL})
     \\ 2️⃣ Nếu bạn muốn sử dụng tài nguyên OpenAI của riêng mình, hãy nhấp [vào đây](/#/settings) để thay đổi cài đặt ⚙️`
       : `😆 Cuộc trò chuyện gặp một số vấn đề, đừng lo lắng:
-    \ 1️⃣ Nếu bạn muốn bắt đầu mà không cần cấu hình, [nhấp vào đây để bắt đầu trò chuyện ngay lập tức 🚀](${SAAS_CHAT_UTM_URL})
+    \ 1️⃣ Cần OpenAI, Claude, Gemini và nhiều hơn? [Khám phá MoleAPI 🚀](${SAAS_CHAT_UTM_URL})
     \ 2️⃣ Nếu bạn đang sử dụng phiên bản triển khai riêng, hãy nhấp [vào đây](/#/auth) để nhập khóa truy cập 🔑
     \ 3️⃣ Nếu bạn muốn sử dụng tài nguyên OpenAI của riêng mình, hãy nhấp [vào đây](/#/settings) để thay đổi cài đặt ⚙️
  `,
@@ -27,7 +27,7 @@ const vi: PartialLocaleType = {
     Return: "Trở lại",
     SaasTips: "Cấu hình quá phức tạp, tôi muốn sử dụng ngay lập tức",
     TopTips:
-      "🥳 Ưu đãi ra mắt NextChat AI, mở khóa OpenAI o1, GPT-4o, Claude-3.5 và các mô hình lớn mới nhất ngay bây giờ",
+      "🎉 MoleAPI - Trình tổng hợp API AI hỗ trợ OpenAI, Claude, Gemini và nhiều mô hình chính thống khác!",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} cuộc trò chuyện`,
@@ -294,11 +294,11 @@ const vi: PartialLocaleType = {
 
     Access: {
       SaasStart: {
-        Title: "Sử dụng NextChat AI",
-        Label: "(Giải pháp tiết kiệm chi phí nhất)",
+        Title: "Sử dụng MoleAPI",
+        Label: "(Nền tảng tổng hợp API AI)",
         SubTitle:
-          "Được NextChat chính thức duy trì, sẵn sàng sử dụng mà không cần cấu hình, hỗ trợ các mô hình lớn mới nhất như OpenAI o1, GPT-4o và Claude-3.5",
-        ChatNow: "Chat ngay",
+          "Hỗ trợ OpenAI, Anthropic Claude, Google Gemini, ChatGLM, Kimi, Minimax và nhiều mô hình AI chính thống khác",
+        ChatNow: "Bắt đầu ngay",
       },
 
       AccessCode: {

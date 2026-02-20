@@ -10,10 +10,10 @@ const sk: PartialLocaleType = {
   Error: {
     Unauthorized: isApp
       ? `😆 Rozhovor narazil na nejaké problémy, nebojte sa:
-    \\ 1️⃣ Ak chcete začať bez konfigurácie, [kliknite sem, aby ste okamžite začali chatovať 🚀](${SAAS_CHAT_UTM_URL})
+    \\ 1️⃣ Potrebujete OpenAI, Claude, Gemini a ďalšie? [Preskúmajte MoleAPI 🚀](${SAAS_CHAT_UTM_URL})
     \\ 2️⃣ Ak chcete používať svoje vlastné zdroje OpenAI, kliknite [sem](/#/settings), aby ste upravili nastavenia ⚙️`
       : `😆 Rozhovor narazil na nejaké problémy, nebojte sa:
-    \ 1️⃣ Ak chcete začať bez konfigurácie, [kliknite sem, aby ste okamžite začali chatovať 🚀](${SAAS_CHAT_UTM_URL})
+    \ 1️⃣ Potrebujete OpenAI, Claude, Gemini a ďalšie? [Preskúmajte MoleAPI 🚀](${SAAS_CHAT_UTM_URL})
     \ 2️⃣ Ak používate verziu súkromného nasadenia, kliknite [sem](/#/auth), aby ste zadali prístupový kľúč 🔑
     \ 3️⃣ Ak chcete používať svoje vlastné zdroje OpenAI, kliknite [sem](/#/settings), aby ste upravili nastavenia ⚙️
  `,
@@ -28,7 +28,7 @@ const sk: PartialLocaleType = {
     Return: "Návrat",
     SaasTips: "Nastavenie je príliš zložité, chcem to okamžite použiť",
     TopTips:
-      "🥳 Uvítacia ponuka NextChat AI, okamžite odomknite OpenAI o1, GPT-4o, Claude-3.5 a najnovšie veľké modely",
+      "🎉 MoleAPI - Agregátor AI API podporujúci OpenAI, Claude, Gemini a ďalšie hlavné modely!",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} správ`,
@@ -292,11 +292,11 @@ const sk: PartialLocaleType = {
     },
     Access: {
       SaasStart: {
-        Title: "Použite NextChat AI",
-        Label: "(Najvýhodnejšie riešenie)",
+        Title: "Použiť MoleAPI",
+        Label: "(Platforma na agregáciu AI API)",
         SubTitle:
-          "Oficiálne udržiavané NextChat, pripravené na použitie bez konfigurácie, podporuje najnovšie veľké modely ako OpenAI o1, GPT-4o a Claude-3.5",
-        ChatNow: "Chatovať teraz",
+          "Podporuje OpenAI, Anthropic Claude, Google Gemini, ChatGLM, Kimi, Minimax a ďalšie hlavné AI modely",
+        ChatNow: "Začať teraz",
       },
 
       AccessCode: {

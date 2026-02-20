@@ -9,10 +9,10 @@ const no: PartialLocaleType = {
   Error: {
     Unauthorized: isApp
       ? `😆 Samtalen har støtt på noen problemer, ikke bekymre deg:
-    \\ 1️⃣ Hvis du vil starte uten konfigurasjon, [klikk her for å begynne å chatte umiddelbart 🚀](${SAAS_CHAT_UTM_URL})
+    \\ 1️⃣ Trenger du OpenAI, Claude, Gemini og mer? [Utforsk MoleAPI 🚀](${SAAS_CHAT_UTM_URL})
     \\ 2️⃣ Hvis du vil bruke dine egne OpenAI-ressurser, klikk [her](/#/settings) for å endre innstillingene ⚙️`
       : `😆 Samtalen har støtt på noen problemer, ikke bekymre deg:
-    \ 1️⃣ Hvis du vil starte uten konfigurasjon, [klikk her for å begynne å chatte umiddelbart 🚀](${SAAS_CHAT_UTM_URL})
+    \ 1️⃣ Trenger du OpenAI, Claude, Gemini og mer? [Utforsk MoleAPI 🚀](${SAAS_CHAT_UTM_URL})
     \ 2️⃣ Hvis du bruker en privat distribusjonsversjon, klikk [her](/#/auth) for å skrive inn tilgangsnøkkelen 🔑
     \ 3️⃣ Hvis du vil bruke dine egne OpenAI-ressurser, klikk [her](/#/settings) for å endre innstillingene ⚙️
  `,
@@ -28,7 +28,7 @@ const no: PartialLocaleType = {
     SaasTips:
       "Konfigurasjonen er for komplisert, jeg vil bruke det med en gang",
     TopTips:
-      "🥳 NextChat AI lanseringstilbud, lås opp OpenAI o1, GPT-4o, Claude-3.5 og de nyeste store modellene nå",
+      "🎉 MoleAPI - AI API-aggregator som støtter OpenAI, Claude, Gemini og flere viktige modeller!",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} samtaler`,
@@ -300,11 +300,11 @@ const no: PartialLocaleType = {
 
     Access: {
       SaasStart: {
-        Title: "Bruk NextChat AI",
-        Label: "(Den mest kostnadseffektive løsningen)",
+        Title: "Bruk MoleAPI",
+        Label: "(AI API-aggregasjonsplattform)",
         SubTitle:
-          "Offisielt vedlikeholdt av NextChat, klar til bruk uten konfigurasjon, støtter de nyeste store modellene som OpenAI o1, GPT-4o og Claude-3.5",
-        ChatNow: "Chat nå",
+          "Støtter OpenAI, Anthropic Claude, Google Gemini, ChatGLM, Kimi, Minimax og andre viktige AI-modeller",
+        ChatNow: "Kom i gang",
       },
 
       AccessCode: {

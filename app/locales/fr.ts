@@ -9,10 +9,10 @@ const fr: PartialLocaleType = {
   Error: {
     Unauthorized: isApp
       ? `😆 La conversation a rencontré quelques problèmes, pas de panique :
-    \\ 1️⃣ Si vous souhaitez commencer sans configuration, [cliquez ici pour démarrer la conversation immédiatement 🚀](${SAAS_CHAT_UTM_URL})
+    \\ 1️⃣ Besoin de OpenAI, Claude, Gemini et plus ? [Découvrir MoleAPI 🚀](${SAAS_CHAT_UTM_URL})
     \\ 2️⃣ Si vous souhaitez utiliser vos propres ressources OpenAI, cliquez [ici](/#/settings) pour modifier les paramètres ⚙️`
       : `😆 La conversation a rencontré quelques problèmes, pas de panique :
-    \ 1️⃣ Si vous souhaitez commencer sans configuration, [cliquez ici pour démarrer la conversation immédiatement 🚀](${SAAS_CHAT_UTM_URL})
+    \ 1️⃣ Besoin de OpenAI, Claude, Gemini et plus ? [Découvrir MoleAPI 🚀](${SAAS_CHAT_UTM_URL})
     \ 2️⃣ Si vous utilisez une version déployée privée, cliquez [ici](/#/auth) pour entrer la clé d'accès 🔑
     \ 3️⃣ Si vous souhaitez utiliser vos propres ressources OpenAI, cliquez [ici](/#/settings) pour modifier les paramètres ⚙️
  `,
@@ -28,7 +28,7 @@ const fr: PartialLocaleType = {
     SaasTips:
       "La configuration est trop compliquée, je veux l'utiliser immédiatement",
     TopTips:
-      "🥳 Offre de lancement NextChat AI, débloquez OpenAI o1, GPT-4o, Claude-3.5 et les derniers grands modèles",
+      "🎉 MoleAPI - Agrégateur d'API IA, supporte OpenAI, Claude, Gemini et d'autres grands modèles !",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} conversations`,
@@ -306,11 +306,11 @@ const fr: PartialLocaleType = {
 
     Access: {
       SaasStart: {
-        Title: "Utiliser NextChat AI",
-        Label: "(La solution la plus rentable)",
+        Title: "Utiliser MoleAPI",
+        Label: "(Plateforme d'agrégation d'API IA)",
         SubTitle:
-          "Officiellement maintenu par NextChat, prêt à l'emploi sans configuration, prend en charge les derniers grands modèles comme OpenAI o1, GPT-4o et Claude-3.5",
-        ChatNow: "Discuter maintenant",
+          "Supporte OpenAI, Anthropic Claude, Google Gemini, ChatGLM, Kimi, Minimax et de nombreux autres modèles IA",
+        ChatNow: "Commencer",
       },
 
       AccessCode: {

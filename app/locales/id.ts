@@ -9,10 +9,10 @@ const id: PartialLocaleType = {
   Error: {
     Unauthorized: isApp
       ? `😆 Percakapan mengalami beberapa masalah, tidak perlu khawatir:
-   \\ 1️⃣ Jika Anda ingin memulai tanpa konfigurasi, [klik di sini untuk mulai mengobrol segera 🚀](${SAAS_CHAT_UTM_URL})
+   \\ 1️⃣ Butuh OpenAI, Claude, Gemini dan lainnya? [Jelajahi MoleAPI 🚀](${SAAS_CHAT_UTM_URL})
    \\ 2️⃣ Jika Anda ingin menggunakan sumber daya OpenAI Anda sendiri, klik [di sini](/#/settings) untuk mengubah pengaturan ⚙️`
       : `😆 Percakapan mengalami beberapa masalah, tidak perlu khawatir:
-   \ 1️⃣ Jika Anda ingin memulai tanpa konfigurasi, [klik di sini untuk mulai mengobrol segera 🚀](${SAAS_CHAT_UTM_URL})
+   \ 1️⃣ Butuh OpenAI, Claude, Gemini dan lainnya? [Jelajahi MoleAPI 🚀](${SAAS_CHAT_UTM_URL})
    \ 2️⃣ Jika Anda menggunakan versi penyebaran pribadi, klik [di sini](/#/auth) untuk memasukkan kunci akses 🔑
    \ 3️⃣ Jika Anda ingin menggunakan sumber daya OpenAI Anda sendiri, klik [di sini](/#/settings) untuk mengubah pengaturan ⚙️
 `,
@@ -27,7 +27,7 @@ const id: PartialLocaleType = {
     Return: "Kembali",
     SaasTips: "Konfigurasi terlalu rumit, saya ingin menggunakannya segera",
     TopTips:
-      "🥳 Penawaran Peluncuran NextChat AI, buka OpenAI o1, GPT-4o, Claude-3.5 dan model besar terbaru sekarang",
+      "🎉 MoleAPI - Agregator API AI yang mendukung OpenAI, Claude, Gemini, dan model utama lainnya!",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} percakapan`,
@@ -296,11 +296,11 @@ const id: PartialLocaleType = {
 
     Access: {
       SaasStart: {
-        Title: "Gunakan NextChat AI",
-        Label: "(Solusi paling hemat biaya)",
+        Title: "Gunakan MoleAPI",
+        Label: "(Platform Agregasi API AI)",
         SubTitle:
-          "Dikelola secara resmi oleh NextChat, siap digunakan tanpa konfigurasi, mendukung model besar terbaru seperti OpenAI o1, GPT-4o, dan Claude-3.5",
-        ChatNow: "Chat Sekarang",
+          "Mendukung OpenAI, Anthropic Claude, Google Gemini, ChatGLM, Kimi, Minimax, dan model AI utama lainnya",
+        ChatNow: "Mulai Sekarang",
       },
 
       AccessCode: {

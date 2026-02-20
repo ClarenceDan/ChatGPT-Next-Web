@@ -10,10 +10,10 @@ const en: LocaleType = {
   Error: {
     Unauthorized: isApp
       ? `😆 Oops, there's an issue. No worries:
-     \\ 1️⃣ New here? [Click to start chatting now 🚀](${SAAS_CHAT_UTM_URL})
+     \\ 1️⃣ Need OpenAI, Claude, Gemini and more? [Explore MoleAPI 🚀](${SAAS_CHAT_UTM_URL})
      \\ 2️⃣ Want to use your own OpenAI resources? [Click here](/#/settings) to change settings ⚙️`
       : `😆 Oops, there's an issue. Let's fix it:
-     \ 1️⃣ New here? [Click to start chatting now 🚀](${SAAS_CHAT_UTM_URL})
+     \ 1️⃣ Need OpenAI, Claude, Gemini and more? [Explore MoleAPI 🚀](${SAAS_CHAT_UTM_URL})
      \ 2️⃣ Using a private setup? [Click here](/#/auth) to enter your key 🔑
      \ 3️⃣ Want to use your own OpenAI resources? [Click here](/#/settings) to change settings ⚙️
      `,
@@ -28,7 +28,7 @@ const en: LocaleType = {
     Later: "Later",
     SaasTips: "Too Complex, Use Immediately Now",
     TopTips:
-      "🥳 NextChat AI launch promotion: Instantly unlock the latest models like OpenAI o1, GPT-4o, Claude-3.5!",
+      "🎉 MoleAPI - AI API aggregator supporting OpenAI, Claude, Gemini, and more mainstream models!",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} messages`,
@@ -315,12 +315,11 @@ const en: LocaleType = {
     },
     Access: {
       SaasStart: {
-        Title: "Use NextChat AI",
-        Label: " (Most Cost-Effective Option)",
+        Title: "Use MoleAPI",
+        Label: " (AI API Aggregator)",
         SubTitle:
-          "Maintained by NextChat, zero setup needed, unlock OpenAI o1, GPT-4o," +
-          " Claude-3.5 and more",
-        ChatNow: "Start Now",
+          "Supports OpenAI, Anthropic Claude, Google Gemini, ChatGLM, Kimi, Minimax, and more mainstream AI models",
+        ChatNow: "Get Started",
       },
       AccessCode: {
         Title: "Access Code",

@@ -9,10 +9,10 @@ const jp: PartialLocaleType = {
   Error: {
     Unauthorized: isApp
       ? `😆 会話中に問題が発生しましたが、心配しないでください:
-    \\ 1️⃣ 設定なしで始めたい場合は、[ここをクリックしてすぐにチャットを開始 🚀](${SAAS_CHAT_UTM_URL})
+    \\ 1️⃣ OpenAI、Claude、Geminiなどのモデルが必要ですか？[MoleAPIを探索する 🚀](${SAAS_CHAT_UTM_URL})
     \\ 2️⃣ 自分のOpenAIリソースを使用したい場合は、[ここをクリックして](/#/settings)設定を変更してください ⚙️`
       : `😆 会話中に問題が発生しましたが、心配しないでください:
-    \ 1️⃣ 設定なしで始めたい場合は、[ここをクリックしてすぐにチャットを開始 🚀](${SAAS_CHAT_UTM_URL})
+    \ 1️⃣ OpenAI、Claude、Geminiなどのモデルが必要ですか？[MoleAPIを探索する 🚀](${SAAS_CHAT_UTM_URL})
     \ 2️⃣ プライベートデプロイ版を使用している場合は、[ここをクリックして](/#/auth)アクセストークンを入力してください 🔑
     \ 3️⃣ 自分のOpenAIリソースを使用したい場合は、[ここをクリックして](/#/settings)設定を変更してください ⚙️
  `,
@@ -27,7 +27,7 @@ const jp: PartialLocaleType = {
     Return: "戻る",
     SaasTips: "設定が面倒すぎる、すぐに使いたい",
     TopTips:
-      "🥳 NextChat AIの発売特典で、OpenAI o1、GPT-4o、Claude-3.5などの最新の大規模モデルを今すぐアンロック",
+      "🎉 MoleAPI - AI APIアグリゲーター、OpenAI、Claude、Geminiなど主要モデルをサポート！",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count}件の会話`,
@@ -293,11 +293,11 @@ const jp: PartialLocaleType = {
 
     Access: {
       SaasStart: {
-        Title: "NextChat AIを使用する",
-        Label: "(コストパフォーマンスの最も高いソリューション)",
+        Title: "MoleAPIを使用する",
+        Label: "(AI API アグリゲーションプラットフォーム)",
         SubTitle:
-          "NextChatによって公式に管理されており、設定なしですぐに使用でき、OpenAI o1、GPT-4o、Claude-3.5などの最新の大規模モデルをサポートしています",
-        ChatNow: "今すぐチャット",
+          "OpenAI、Anthropic Claude、Google Gemini、ChatGLM、Kimi、Minimaxなど主要なAIモデルをサポート",
+        ChatNow: "今すぐ始める",
       },
 
       AccessCode: {

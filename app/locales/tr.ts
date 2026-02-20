@@ -9,10 +9,10 @@ const tr: PartialLocaleType = {
   Error: {
     Unauthorized: isApp
       ? `😆 Sohbet bazı sorunlarla karşılaştı, endişelenmeyin:
-    \\ 1️⃣ Eğer sıfır yapılandırma ile başlamak istiyorsanız, [buraya tıklayarak hemen sohbete başlayın 🚀](${SAAS_CHAT_UTM_URL})
+    \\ 1️⃣ OpenAI, Claude, Gemini ve daha fazlasına mı ihtiyacınız var? [MoleAPI'yi keşfedin 🚀](${SAAS_CHAT_UTM_URL})
     \\ 2️⃣ Kendi OpenAI kaynaklarınızı kullanmak istiyorsanız, [buraya tıklayarak](/#/settings) ayarları değiştirin ⚙️`
       : `😆 Sohbet bazı sorunlarla karşılaştı, endişelenmeyin:
-    \ 1️⃣ Eğer sıfır yapılandırma ile başlamak istiyorsanız, [buraya tıklayarak hemen sohbete başlayın 🚀](${SAAS_CHAT_UTM_URL})
+    \ 1️⃣ OpenAI, Claude, Gemini ve daha fazlasına mı ihtiyacınız var? [MoleAPI'yi keşfedin 🚀](${SAAS_CHAT_UTM_URL})
     \ 2️⃣ Eğer özel dağıtım sürümü kullanıyorsanız, [buraya tıklayarak](/#/auth) erişim anahtarını girin 🔑
     \ 3️⃣ Kendi OpenAI kaynaklarınızı kullanmak istiyorsanız, [buraya tıklayarak](/#/settings) ayarları değiştirin ⚙️
  `,
@@ -27,7 +27,7 @@ const tr: PartialLocaleType = {
     Return: "Geri",
     SaasTips: "Ayarlar çok karmaşık, hemen kullanmak istiyorum",
     TopTips:
-      "🥳 NextChat AI lansman teklifi, OpenAI o1, GPT-4o, Claude-3.5 ve en son büyük modelleri şimdi açın",
+      "🎉 MoleAPI - AI API Toplayıcı, OpenAI, Claude, Gemini ve daha fazla ana model destekler!",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} konuşma`,
@@ -297,11 +297,11 @@ const tr: PartialLocaleType = {
 
     Access: {
       SaasStart: {
-        Title: "NextChat AI kullanın",
-        Label: "(En maliyet etkin çözüm)",
+        Title: "MoleAPI kullanın",
+        Label: "(AI API Toplama Platformu)",
         SubTitle:
-          "NextChat tarafından resmi olarak yönetilmektedir, yapılandırma olmadan hemen kullanıma hazırdır, OpenAI o1, GPT-4o, Claude-3.5 gibi en son büyük modelleri destekler",
-        ChatNow: "Şimdi sohbet et",
+          "OpenAI, Anthropic Claude, Google Gemini, ChatGLM, Kimi, Minimax ve diğer ana AI modellerini destekler",
+        ChatNow: "Hemen başla",
       },
 
       AccessCode: {

@@ -9,10 +9,10 @@ const cs: PartialLocaleType = {
   Error: {
     Unauthorized: isApp
       ? `😆 Rozhovor narazil na nějaké problémy, nebojte se:
-    \\ 1️⃣ Pokud chcete začít bez konfigurace, [klikněte sem pro okamžitý začátek chatu 🚀](${SAAS_CHAT_UTM_URL})
+    \\ 1️⃣ Potřebujete OpenAI, Claude, Gemini a více? [Prozkoumat MoleAPI 🚀](${SAAS_CHAT_UTM_URL})
     \\ 2️⃣ Pokud chcete využít své vlastní zdroje OpenAI, klikněte [sem](/#/settings) a upravte nastavení ⚙️`
       : `😆 Rozhovor narazil na nějaké problémy, nebojte se:
-    \ 1️⃣ Pokud chcete začít bez konfigurace, [klikněte sem pro okamžitý začátek chatu 🚀](${SAAS_CHAT_UTM_URL})
+    \ 1️⃣ Potřebujete OpenAI, Claude, Gemini a více? [Prozkoumat MoleAPI 🚀](${SAAS_CHAT_UTM_URL})
     \ 2️⃣ Pokud používáte verzi soukromého nasazení, klikněte [sem](/#/auth) a zadejte přístupový klíč 🔑
     \ 3️⃣ Pokud chcete využít své vlastní zdroje OpenAI, klikněte [sem](/#/settings) a upravte nastavení ⚙️
  `,
@@ -27,7 +27,7 @@ const cs: PartialLocaleType = {
     Return: "Návrat",
     SaasTips: "Konfigurace je příliš složitá, chci okamžitě začít používat",
     TopTips:
-      "🥳 Uvítací nabídka NextChat AI, okamžitě odemkněte OpenAI o1, GPT-4o, Claude-3.5 a nejnovější velké modely",
+      "🎉 MoleAPI - Agregátor AI API, podporuje OpenAI, Claude, Gemini a další hlavní modely!",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} konverzací`,
@@ -295,11 +295,11 @@ const cs: PartialLocaleType = {
 
     Access: {
       SaasStart: {
-        Title: "Použití NextChat AI",
-        Label: "(Nejlepší nákladově efektivní řešení)",
+        Title: "Použít MoleAPI",
+        Label: "(Platforma pro agregaci AI API)",
         SubTitle:
-          "Oficiálně udržováno NextChat, připraveno k použití bez konfigurace, podporuje nejnovější velké modely jako OpenAI o1, GPT-4o, Claude-3.5",
-        ChatNow: "Začněte chatovat nyní",
+          "Podporuje OpenAI, Anthropic Claude, Google Gemini, ChatGLM, Kimi, Minimax a další hlavní AI modely",
+        ChatNow: "Začít nyní",
       },
 
       AccessCode: {

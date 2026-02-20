@@ -9,10 +9,10 @@ const es: PartialLocaleType = {
   Error: {
     Unauthorized: isApp
       ? `😆 La conversación encontró algunos problemas, no te preocupes:
-    \\ 1️⃣ Si deseas comenzar sin configuración, [haz clic aquí para empezar a chatear inmediatamente 🚀](${SAAS_CHAT_UTM_URL})
+    \\ 1️⃣ ¿Necesitas OpenAI, Claude, Gemini y más? [Explorar MoleAPI 🚀](${SAAS_CHAT_UTM_URL})
     \\ 2️⃣ Si deseas usar tus propios recursos de OpenAI, haz clic [aquí](/#/settings) para modificar la configuración ⚙️`
       : `😆 La conversación encontró algunos problemas, no te preocupes:
-    \ 1️⃣ Si deseas comenzar sin configuración, [haz clic aquí para empezar a chatear inmediatamente 🚀](${SAAS_CHAT_UTM_URL})
+    \ 1️⃣ ¿Necesitas OpenAI, Claude, Gemini y más? [Explorar MoleAPI 🚀](${SAAS_CHAT_UTM_URL})
     \ 2️⃣ Si estás utilizando una versión de implementación privada, haz clic [aquí](/#/auth) para ingresar la clave de acceso 🔑
     \ 3️⃣ Si deseas usar tus propios recursos de OpenAI, haz clic [aquí](/#/settings) para modificar la configuración ⚙️
  `,
@@ -28,7 +28,7 @@ const es: PartialLocaleType = {
     SaasTips:
       "La configuración es demasiado complicada, quiero usarlo de inmediato",
     TopTips:
-      "🥳 Oferta de lanzamiento de NextChat AI, desbloquea OpenAI o1, GPT-4o, Claude-3.5 y los últimos grandes modelos",
+      "🎉 MoleAPI - Agregador de API de IA que soporta OpenAI, Claude, Gemini y más modelos principales!",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} conversaciones`,
@@ -306,11 +306,11 @@ const es: PartialLocaleType = {
 
     Access: {
       SaasStart: {
-        Title: "Use NextChat AI",
-        Label: "(The most cost-effective solution)",
+        Title: "Usar MoleAPI",
+        Label: "(Plataforma de agregación de API de IA)",
         SubTitle:
-          "Officially maintained by NextChat, zero configuration ready to use, supports the latest large models like OpenAI o1, GPT-4o, and Claude-3.5",
-        ChatNow: "Chat Now",
+          "Compatible con OpenAI, Anthropic Claude, Google Gemini, ChatGLM, Kimi, Minimax y más modelos de IA principales",
+        ChatNow: "Comenzar",
       },
 
       AccessCode: {

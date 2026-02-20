@@ -9,10 +9,10 @@ const de: PartialLocaleType = {
   Error: {
     Unauthorized: isApp
       ? `😆 Das Gespräch hatte einige Probleme, keine Sorge:
-    \\ 1️⃣ Wenn du ohne Konfiguration sofort starten möchtest, [klicke hier, um sofort zu chatten 🚀](${SAAS_CHAT_UTM_URL})
+    \\ 1️⃣ OpenAI, Claude, Gemini und mehr benötigt? [MoleAPI entdecken 🚀](${SAAS_CHAT_UTM_URL})
     \\ 2️⃣ Wenn du deine eigenen OpenAI-Ressourcen verwenden möchtest, klicke [hier](/#/settings), um die Einstellungen zu ändern ⚙️`
       : `😆 Das Gespräch hatte einige Probleme, keine Sorge:
-    \ 1️⃣ Wenn du ohne Konfiguration sofort starten möchtest, [klicke hier, um sofort zu chatten 🚀](${SAAS_CHAT_UTM_URL})
+    \ 1️⃣ OpenAI, Claude, Gemini und mehr benötigt? [MoleAPI entdecken 🚀](${SAAS_CHAT_UTM_URL})
     \ 2️⃣ Wenn du eine private Bereitstellung verwendest, klicke [hier](/#/auth), um den Zugriffsschlüssel einzugeben 🔑
     \ 3️⃣ Wenn du deine eigenen OpenAI-Ressourcen verwenden möchtest, klicke [hier](/#/settings), um die Einstellungen zu ändern ⚙️
  `,
@@ -28,7 +28,7 @@ const de: PartialLocaleType = {
     SaasTips:
       "Die Konfiguration ist zu kompliziert, ich möchte es sofort nutzen",
     TopTips:
-      "🥳 NextChat AI Einführungsangebot, schalte jetzt OpenAI o1, GPT-4o, Claude-3.5 und die neuesten großen Modelle frei",
+      "🎉 MoleAPI - KI-API-Aggregator, unterstützt OpenAI, Claude, Gemini und viele weitere Modelle!",
   },
   ChatItem: {
     ChatItemCount: (count: number) => `${count} Gespräche`,
@@ -303,11 +303,11 @@ const de: PartialLocaleType = {
 
     Access: {
       SaasStart: {
-        Title: "NextChat AI verwenden",
-        Label: "(Die kosteneffektivste Lösung)",
+        Title: "MoleAPI verwenden",
+        Label: "(KI-API-Aggregator-Plattform)",
         SubTitle:
-          "Offiziell von NextChat verwaltet, sofort einsatzbereit ohne Konfiguration, unterstützt die neuesten großen Modelle wie OpenAI o1, GPT-4o und Claude-3.5",
-        ChatNow: "Jetzt chatten",
+          "Unterstützt OpenAI, Anthropic Claude, Google Gemini, ChatGLM, Kimi, Minimax und viele weitere KI-Modelle",
+        ChatNow: "Jetzt starten",
       },
 
       AccessCode: {
