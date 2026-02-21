@@ -1,3 +1,4 @@
+import React from "react";
 import { IconButton } from "./button";
 import { ErrorBoundary } from "./error";
 
@@ -76,7 +77,7 @@ export function MaskAvatar(props: { avatar: string; model?: ModelType }) {
 export function MaskConfig(props: {
   mask: Mask;
   updateMask: Updater<Mask>;
-  extraListItems?: JSX.Element;
+  extraListItems?: React.JSX.Element;
   readonly?: boolean;
   shouldSyncFromGlobal?: boolean;
 }) {

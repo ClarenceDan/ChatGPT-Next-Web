@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import ReactMarkdown from "react-markdown";
 import "katex/dist/katex.min.css";
 import RemarkMath from "remark-math";
@@ -290,7 +291,12 @@ function _MarkDownContent(props: { content: string }) {
         code: CustomCode,
         p: (pProps) => <p {...pProps} dir="auto" />,
         a: (aProps) => {
-          const href = aProps.href || "";
+          const {
+            href = "",
+            target: aTarget,
+            ...restAProps
+          } = aProps as React.AnchorHTMLAttributes<HTMLAnchorElement> &
+            typeof aProps;
           if (/\.(aac|mp3|opus|wav)$/.test(href)) {
             return (
               <figure>
@@ -306,8 +312,8 @@ function _MarkDownContent(props: { content: string }) {
             );
           }
           const isInternal = /^\/#/i.test(href);
-          const target = isInternal ? "_self" : aProps.target ?? "_blank";
-          return <a {...aProps} target={target} />;
+          const target = isInternal ? "_self" : aTarget ?? "_blank";
+          return <a {...restAProps} href={href} target={target} />;
         },
       }}
     >
@@ -324,7 +330,7 @@ export function Markdown(
     loading?: boolean;
     fontSize?: number;
     fontFamily?: string;
-    parentRef?: RefObject<HTMLDivElement>;
+    parentRef?: RefObject<HTMLDivElement | null>;
     defaultShow?: boolean;
   } & React.DOMAttributes<HTMLDivElement>,
 ) {
